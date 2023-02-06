@@ -1,0 +1,5 @@
+[
+    {"clinicId": "1","address": "920 NW 39th Ave, Miami FL, 33125", "datebuilt": "1/2/2005", "parentsLimit": 100, "clinicname": "FIU Clinic", "headclinician": "1", "isactive": true},
+    {"clinicId": "2","address": "920 NW 39th Ave, Miami FL, 33125", "datebuilt": "1/2/2005", "parentsLimit": 100, "clinicname": "Mercy Hospital", "headclinician": "3",  "isactive": true}
+
+]

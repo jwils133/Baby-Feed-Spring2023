@@ -1,0 +1,46 @@
+<admin-header></admin-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" *ngIf="dataLoaded">
+      <div class="container" style="margin-top: 15px;"><a routerLink="/admin/research/users"><span
+        class="fa fa-chevron-circle-left"></span> Back to Research/Users </a></div>
+
+      <!-- Update Research Institution starts here -->
+
+      <div class="container mt-3">
+        <div align="right">
+           <button mat-raised-button class="delete" style="margin-right: 20px;" (click)="deleteResearchInstitution()"> Delete </button>
+          <button mat-raised-button class="update" (click)="updateResearchInstitution()"
+                  [disabled]="!myForm.form.valid"> Update</button>
+        </div>
+        <div class="container frame-fooditem">
+          <h6> Update Research Institution </h6>
+          <div class="form-group col-12">
+            <br>
+            <label style="font-weight: bold"> Research Institution ID </label>
+            <input style="border-color: gray; border-width: 0.05cm" type="text"
+                   class="form-control" readonly name="id_of_research_institution" [(ngModel)]="researchInstitutionAttributes.researchInstitutionId">
+            <br>
+            <label style="font-weight: bold"> Name </label><label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+            <input placeholder="Name of Research Institution" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                   class="form-control" name="name_of_research_institution" [(ngModel)]="researchInstitutionAttributes.institutionName" required/>
+            <br>
+            <label style="font-weight: bold"> Location </label>
+            <input placeholder="Address" width="25" style="border-width: 0.05cm" type="text"
+                   class="form-control" name="address" [(ngModel)]="researchInstitutionAttributes.address"/>
+            <br>
+            <label for="participantsLimit" style="font-weight: bold"> Number of Participants Limit </label>
+            <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"
+                   class="form-control" id="participantsLimit" name="participantsLimit" [(ngModel)]="researchInstitutionAttributes.participantsLimit" min="1" required/>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Update Research Institution ends here -->
+
+    </div>
+  </div>
+</form>

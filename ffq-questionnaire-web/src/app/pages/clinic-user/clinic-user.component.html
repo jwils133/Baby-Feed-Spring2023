@@ -1,0 +1,117 @@
+
+<clinical-header></clinical-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" *ngIf="dataLoaded">
+      <div class="container" style="margin-top: 15px;"><a routerLink="/clinic/home" style="color:#7E1608" ><span
+            class="fa fa-chevron-circle-left"></span> Back to Home </a>
+      </div>
+
+
+      <div class="container mt-3">
+        <div align="right">
+          <!-- <button mat-raised-button class="delete" (click)="deleteUser()" style="margin-right: 20px;"> Delete </button> Don't need delete -->
+          <button mat-raised-button class="update" (click)="updateUser()"> Update User </button>
+        </div>
+        <div class="container frame-fooditem">
+          <h6> Update User </h6>
+          <div class="form-group col-12">
+            <label style="font-weight: bold"> Account Type </label>
+            <br>
+            <mat-radio-group aria-label="Select an option">
+              <mat-radio-button value="parent" [checked]="isParent" color="warn" [disabled]="true">Parent</mat-radio-button>
+              <br>
+              <mat-radio-button value="clinician" [checked]="isClinician" color="warn"  [disabled]="true">Clinician</mat-radio-button>
+            </mat-radio-group>
+
+            <br>
+
+            <!-- Update Parent starts here -->
+
+            <div class="optional_container" *ngIf="isParent">
+              <hr>
+              <div class="form-group col-12">
+
+                <label style="font-weight: bold"> Username </label>
+                <!--<input style="border-color: gray; border-width: 0.05cm" type="text"
+                  class="form-control" readonly name="username" [(ngModel)]="userAttributes[0].username">-->
+
+                <input style="border-width: 0.05cm" type="text"
+                  class="form-control" name="username" [(ngModel)]="userAttributes.username" [disabled]="true">
+                <br>
+                <label style="font-weight: bold"> Password Reset </label>
+                <div style="display: flex; align-items: stretch; justify-content: space-between">
+                  <input style="border-color: gray; border-width: 0.05cm; width:68%" type="text"
+                         class="form-control" name="newPassword" [(ngModel)]="userAttributes.userpassword">
+                  <button mat-raised-button style="width:30%" class="update" (click)="generatePassword()">
+                    Generate new password
+                  </button>
+                </div>
+                <br>
+                <label style="font-weight: bold"> Assigned Clinician </label>
+                <br>
+                <mat-form-field>
+                  <mat-label appearance="fill">Choose Clinician...</mat-label>
+                  <mat-select matNativeControl name="assignedclinician" [(value)]="userAttributes.assignedclinician" required>
+                    <mat-option *ngFor="let u of ffqclinicianList" [hidden]="u.assignedclinic != userAttributes.assignedclinic" [value]="u.userId">{{ "clinician" + u.userId }}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <!--<div align="middle"><button mat-raised-button class="delete" style="margin-right: 20px;" (click)="deleteUser()">
+                  Delete
+                </button></div> Don't need delete button -->
+                <!--<hr>
+                <label style="font-weight: bold"> Children </label>
+                <table class="table table-bordered table-inverse">
+                  <tr>
+                      <th width="30%"> Name </th>
+                      <th width="10%"> Age </th>
+                      <th width="10%"> Gender </th>
+                      <th width="30%"> Assigned Clinician </th>
+                      <th width="20%"> No. of Questionnaires </th>
+                  </tr>
+                  <tr *ngFor="let u of ffqparentList | searchFilter: p_search; index as i" [hidden]="hideUnassignedParents && !clinicianNames[i] || (filtered && filtered_clinicians.indexOf(clinicianNames[i]) === -1)">
+                      <td><a [routerLink]="['/clinic/user/p', u.userId]"> {{ u.username }} </a></td>
+                      <td> {{ u.firstname }} {{ u.lastname }}</td>
+                      <td> </td>
+                      <td> {{ clinicianNames[i] }}</td>
+                  </tr>
+              </table>-->
+
+              </div>
+            </div>
+
+            <!-- Update Parent ends here -->
+
+            <!-- Update Clinician starts here -->
+
+            <div class="optional_container" *ngIf="isClinician">
+              <hr>
+              <div class="form-group col-12">
+
+                <label style="font-weight: bold"> Username </label>
+                <input style="border-width: 0.05cm" type="text"
+                  class="form-control" name="username" [(ngModel)]="userAttributes.username" [disabled]="true">
+                <br>
+                <label style="font-weight: bold"> Role / Abbreviation </label>
+                <input style="border-width: 0.05cm" placeholder="Role" type="text" class="form-control" name="abbreviation" [(ngModel)]="userAttributes.abbreviation"/>
+                <br>
+                <label style="font-weight: bold"> Name </label>
+                <input style="border-width: 0.05cm" placeholder="First Name" type="text" class="form-control" name="firstname" [(ngModel)]="userAttributes.firstname"/>
+                <br>
+                <input style="border-width: 0.05cm" placeholder="Last Name" type="text" class="form-control" name="lastname" [(ngModel)]="userAttributes.lastname"/>
+
+              </div>
+
+            </div>
+
+            <!-- Update Clinician ends here -->
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>

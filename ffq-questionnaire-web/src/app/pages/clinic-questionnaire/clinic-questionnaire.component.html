@@ -1,0 +1,100 @@
+<clinical-header></clinical-header>
+<div class="questionnaire-container" *ngIf="dataLoaded | async">
+  <h2 matDialogTitle>{{ TITLE }}</h2>
+  <br />
+  <text-card
+    mainMessage="{{ MAIN_MESSAGE }}"
+    [bulletedMessages]="BULLETED_INSTRUCTIONS"
+    [instructionsTitle]="INSTRUCTIONS_TITLE"
+  ></text-card>
+  <br />
+  <!--Question block per food item before button-->
+
+  <div class="qb-container">
+    <mat-card class="qb-card">
+      <mat-label style="text-align:center" class="qb-row-item"
+        ><strong>Infant age</strong></mat-label
+      >
+      <mat-form-field>
+        <input
+          matInput
+          value="infantage"
+          class="qb-row-item"
+          [(ngModel)]="infantage"
+          type="number"
+          min="1"
+          max="24"
+          placeholder=" In months "
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+      <mat-error *ngIf="">
+        Age (in months) of the infant is required.
+      </mat-error>
+    </mat-card>
+  </div>
+  <div class="qb-container">
+    <mat-card class="qb-card">
+      <mat-label style="text-align:center" class="qb-row-item"
+        ><strong>Infant gender</strong></mat-label
+      >
+
+      <label class="radio-inline">
+        <input
+          type="radio"
+          value="male"
+          [(ngModel)]="gender"
+          name="gender"
+          required
+        />
+        Male
+        <input
+          type="radio"
+          value="female"
+          [(ngModel)]="gender"
+          name="gender"
+          required
+        />
+        Female
+      </label>
+      <mat-error *ngIf="">
+        Gender is required.
+      </mat-error>
+    </mat-card>
+  </div>
+  <div *ngFor="let item of foodItems">
+    <question-block *ngIf="item.isPrimary" [foodItem]="item"></question-block>
+  </div>
+  <!--Hide foods button-->
+  <div *ngIf="!hideSecondaryItems" class="skip-foods-div">
+    <mat-label
+      >If your baby did not eat any additional foods, click to skip.</mat-label
+    >
+    <button
+      mat-raised-button
+      class="skip-foods-button"
+      (click)="toggleHideSecondaryItems()"
+      color="primary"
+    >
+      Skip Additional Foods
+    </button>
+  </div>
+  <div *ngIf="hideSecondaryItems" class="skip-foods-div">
+    <button class="reenable-foods-button" (click)="toggleHideSecondaryItems()">
+      View additional food items
+    </button>
+  </div>
+  <!--Question block per food item after button-->
+  <div *ngFor="let item of foodItems">
+    <question-block
+      *ngIf="!item.isPrimary && !hideSecondaryItems"
+      [foodItem]="item"
+    ></question-block>
+  </div>
+  <div class="questionnaire-footer" *ngIf="foodItems.length < 1">
+    <mat-label style="color: red"
+      >Server returned 0 food items. Please contact administrator.</mat-label
+    >
+  </div>
+</div>

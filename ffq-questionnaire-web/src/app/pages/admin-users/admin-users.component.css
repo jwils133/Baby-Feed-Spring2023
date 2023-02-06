@@ -1,0 +1,33 @@
+h2 {
+    text-align: center;
+    color: aliceblue;
+  }
+
+  .container_page{
+    padding-top: 200px;
+    margin-bottom: 50px;
+  }
+
+  .header1{
+    background-color: #3f51b5;
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+    position: fixed;
+  }
+
+  .row{
+    display:inline-block;
+    /*padding-left: 10%;*/
+  }
+
+a:hover {
+    color: blue;
+    cursor: pointer;
+  }
+
+  .mat-raised-button{
+    background-color: #6573C3;
+    color: white;
+    width: 200px;
+  }

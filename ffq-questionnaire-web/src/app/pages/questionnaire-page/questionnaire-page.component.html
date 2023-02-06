@@ -1,0 +1,180 @@
+<div
+  class="questionnaire-container"
+  style="background-color: white"
+  *ngIf="dataLoaded | async"
+>
+  <div align="center">
+    <i> <img src="assets/images/logo.png" alt="" height="80" width="80" /> </i>
+  </div>
+  <h2 matDialogTitle style="font-size: 2rem">
+    {{ "Food Frequency Questionnaire" | translate }}
+  </h2>
+  <br />
+  <text-card
+    mainMessage="{{
+      'Below is a list of foods and drinks to help us learn what your baby is eating and drinking. We want to know: How many times did your baby eat or drink of the following in the last 7 days?'
+        | translate
+    }}"
+    [bulletedMessages]="BULLETED_INSTRUCTIONS"
+    [instructionsTitle]="'How to fill out this questionnaire?' | translate"
+  ></text-card>
+  <br />
+
+  <!--
+  <div class="qb-container">
+    <mat-card class="qb-card-ref">
+      <mat-label style="text-align:center" class="qb-row-item"><strong>{{'Serving sizes for the questionnaire are
+          reviewed' | translate}} <a href="assets/pdf/QuestionnaireRef.pdf" target="_blank">{{'here' |
+            translate}}</a>.</strong></mat-label>
+    </mat-card>
+  </div>
+-->
+  <!--Question block per food item before button-->
+
+  <div class="qb-container">
+    <mat-card class="qb-card">
+      <mat-label style="text-align: center" class="qb-row-item"
+        ><strong>{{ "Infant age" | translate }}</strong></mat-label
+      >
+      <mat-form-field>
+        <input
+          matInput
+          value="infantage"
+          class="qb-row-item"
+          [(ngModel)]="infantage"
+          type="number"
+          min="1"
+          max="24"
+          step="1"
+          pattern="\d+"
+          placeholder=" {{ 'In months' | translate }} "
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+      <mat-error *ngIf="ageRequiredError && this.infantage == null">
+        {{ "Age (in months) of the infant is required" | translate }}.
+      </mat-error>
+      <!--Added this mat-error to let the user know that they need to input integers only-->
+      <!--Trying to figure out how to stack error messages so they can see a input error and a integer error-->
+      <mat-error *ngIf="decimalError && this.infantage % 1 != 0">
+        {{ "Age cannot be in decimal" | translate }}
+      </mat-error>
+      <mat-error *ngIf="infantage < 0">
+        {{ "Age cannot be negative" | translate }}
+      </mat-error>
+    </mat-card>
+  </div>
+  <div class="qb-container">
+    <mat-card class="qb-card">
+      <mat-label style="text-align: center" class="qb-row-item"
+        ><strong>{{ "Infant gender" | translate }}</strong>
+      </mat-label>
+
+      <label class="radio-inline">
+        <input
+          type="radio"
+          value="male"
+          [(ngModel)]="gender"
+          name="gender"
+          required
+        />
+        {{ "Male" | translate }}
+        <input
+          type="radio"
+          value="female"
+          [(ngModel)]="gender"
+          name="gender"
+          required
+        />
+        {{ "Female" | translate }}
+      </label>
+      <mat-error *ngIf="genderError && !this.gender">
+        {{ "Gender is required" | translate }}
+      </mat-error>
+    </mat-card>
+  </div>
+  <!--Button to show the Feeding Frequency Table-->
+  <div style="text-align: center">
+    <p class="feeding-warning" style="font-family: sans-serif">
+      {{
+        'Please, click on button "Feeding Frequency Table" in case' | translate
+      }}
+    </p>
+    <p
+      class="feeding-warning"
+      style="margin-top: -10px; font-family: sans-serif"
+    >
+      {{ "of doubts about breast milk and infant formula frequencies" | translate }}
+    </p>
+    <button
+      mat-button
+      class="table-button feeding-table-button"
+      (click)="openDialog()"
+    >
+      {{ "Feeding
+      Frequency
+      Table" | translate }}
+    </button>
+    <p></p>
+  </div>
+  <div *ngFor="let item of foodItems">
+    <question-block *ngIf="item.isPrimary" [foodItem]="item"></question-block>
+  </div>
+  <!--Hide foods button-->
+  <div *ngIf="!hideSecondaryItems" class="skip-foods-div">
+    <mat-label
+      >{{
+        "If your baby did not eat any additional foods, click to skip"
+          | translate
+      }}.</mat-label
+    >
+    <button
+      mat-raised-button
+      class="skip-foods-button btn-skip"
+      (click)="toggleHideSecondaryItems()"
+      color="primary"
+    >
+      {{ "Skip
+      Additional Foods" | translate }}
+    </button>
+  </div>
+  <div *ngIf="hideSecondaryItems" class="skip-foods-div">
+    <button class="reenable-foods-button" (click)="toggleHideSecondaryItems()">
+      {{ "View additional food items" | translate }}
+    </button>
+  </div>
+  <!--Question block per food item after button-->
+  <div *ngFor="let item of foodItems">
+    <question-block
+      *ngIf="!item.isPrimary && !hideSecondaryItems"
+      [foodItem]="item"
+    ></question-block>
+  </div>
+  <!--Submit button-->
+  <div class="questionnaire-footer" *ngIf="foodItems.length > 0">
+    <button
+      mat-raised-button
+      class="btn btn-blue btn-animated"
+      (click)="submitQuestionnaire()"
+      color="primary"
+      [disabled]="submitting"
+    >
+      {{ "Submit" | translate }}
+    </button>
+  </div>
+  <div class="questionnaire-footer" *ngIf="foodItems.length < 1">
+    <mat-label style="color: red"
+      >{{
+        "Server returned 0 food items. Please contact administrator"
+          | translate
+      }}.
+    </mat-label>
+  </div>
+  <div class="fixed-bottom">
+    <mat-progress-bar
+      mode="indeterminate"
+      *ngIf="submitting"
+    ></mat-progress-bar>
+  </div>
+</div>

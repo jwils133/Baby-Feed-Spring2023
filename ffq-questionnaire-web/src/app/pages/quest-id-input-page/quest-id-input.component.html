@@ -1,0 +1,24 @@
+<app-parental-header></app-parental-header>
+<div class="quest-id-container">
+  <mat-card class="quest-id-card">
+    <mat-card-content>
+      <span class="quest-id-span">
+        <mat-card-actions>
+          <div class="quest-id-button-div">
+            <button
+              mat-raised-button class="quest-id-button"
+              (click)="startQuestionnaire()"
+              color="primary"
+            >
+              {{ "Begin Questionnaire" | translate }}
+            </button>
+          </div>
+          <div class="lang-button-div">
+            <button (click)="toggleLanguage()" mat-raised-button class="lang-button">{{'For English' | translate}}</button>
+          </div>
+          <div class="quest-id-reference"></div>
+        </mat-card-actions>
+      </span>
+    </mat-card-content>
+  </mat-card>
+</div>

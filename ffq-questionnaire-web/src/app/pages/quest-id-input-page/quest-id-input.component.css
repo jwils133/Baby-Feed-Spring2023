@@ -1,0 +1,51 @@
+.quest-id-container {
+  display: flex;
+  justify-content: center;
+  /* padding-top: 10%; */
+  padding-top: 200px;
+}
+.quest-id-card {
+  width: 60%;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  padding: 10px;
+  height: 220px;
+}
+.quest-id-input {
+  padding-right: 30px;
+}
+
+.quest-id-button-div {
+  text-align: center;
+  /*padding-left: 85px;*/
+}
+.quest-id-button {
+  top: 40px;
+  /*padding-left: 85px;*/
+}
+.quest-id-reference {
+  padding-top: 20px;
+}
+.quest-id-span {
+  display: inline-flex;
+}
+.quest-id-textfield {
+  font-size: large;
+}
+
+.lang-button-div {
+  text-align: center; 
+}
+
+.lang-button {
+  background-color: #35a2a6;
+  top: 60px;
+  color: white;
+}
+
+@media (max-width: 500px) {
+  .lang-button {
+     top: 90px;
+  }
+}

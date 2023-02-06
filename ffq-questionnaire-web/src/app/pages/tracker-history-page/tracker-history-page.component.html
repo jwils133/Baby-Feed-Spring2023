@@ -1,0 +1,74 @@
+<app-parental-header></app-parental-header>
+
+<div class="tracker-container">
+
+  <div class="trackeritem-container">
+    <mat-card class="tracker-card">
+      <h2 matDialogTitle class="GoalTitle">{{'Goal Setting' | translate}}</h2>
+      <ul>
+        <li
+          class="GoalList">{{'If your baby consumed above or below the recommended amount, pick 1 food group to improve this week' | translate}}</li>
+        <li
+          class="GoalList">{{'After age 6 months, your baby should eat a variety of healthy foods because good eating habits start early' | translate}}</li>
+        <li
+          class="GoalList">{{'If your baby does not like a food, try again another day. It can take up to 15 times before they accept a new food' | translate}}</li>
+        <li
+          class="GoalList">{{'Review the food groups in the \"Recommendations\" tab to help you plan your baby\'s menu for this week' | translate}}</li>
+      </ul>
+    </mat-card>
+  </div>
+
+  <div class="trackeritem-container" *ngIf="results.length === 0">
+    <mat-card class="tracker-card2">
+      <h2 matDialogTitle> {{'No responses have been submitted yet' | translate}}</h2>
+    </mat-card>
+  </div>
+
+  <div *ngFor="let result of results" class="trackeritem-container">
+    <mat-card class="tracker-card2">
+      <div><label><strong translate>{{result.date}} - {{result.age}} {{'Months' | translate}}</strong></label></div>
+      <div class="flex-parent">
+        <div class="box">
+          <div style="float: left">
+            <!-- <tr *ngFor="let item of result.responses">{{item.food}}</tr> -->
+            <tr
+              *ngFor="let item of result.responses; let i = index">{{'result.' + i + '.foodItemGroupName' | translate}}</tr>
+
+          </div>
+        </div>
+
+        <div class="box">
+          <div style="float: right">
+            <tr *ngFor="let item of result.responses" [ngClass]="{
+          'top' : item.response == 'Above',
+          'med' : item.response == 'Adequate',
+          'bot' : item.response == 'Below'
+        }">
+              {{item.response | translate}}
+            </tr>
+
+          </div>
+        </div>
+      </div>
+      <div>
+        <br>
+        <b>{{'Instructions: Type a goal for next week and click submit.' | translate}}</b>
+      </div>
+      <form (ngSubmit)="submitGoal(result._id)" [formGroup]="trackerForm">
+        <div class="form-group">
+          <textarea name="goal" type="usertype" class="form-control" formControlName="goal"
+                    placeholder={{result.goal}}></textarea>
+        </div>
+
+        <!-- submit button -->
+        <div class="footer">
+          <button mat-raised-button color="primary">{{'Submit' | translate}}</button>
+        </div>
+
+      </form>
+    </mat-card>
+
+
+  </div>
+
+</div>

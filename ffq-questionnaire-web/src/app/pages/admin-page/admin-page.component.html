@@ -1,0 +1,38 @@
+<admin-header></admin-header>
+
+  <div class="container_page">
+    <div class="container mt-3" align="right">
+        <button routerLink='/admin/fooditem/new' type="submit" mat-raised-button> New Food Item... </button>
+    </div>
+    <div class="container mt-3">
+        <span>{{foodItems.length}} food item(s)</span>
+        <table class="table table-bordered table-inverse">
+          <thead>
+            <tr>
+              <th> # </th>
+              <th> Food Item Name </th>
+              <th><div align="center"> Delete </div></th>
+            </tr>
+          </thead>
+          <tbody cdkDropList (cdkDropListDropped)="onDrop($event)">
+
+            <tr *ngFor="let item of foodItems; let i=index" cdkDrag cdkDragLockAxis="y" >
+              <th class="col-xs">
+                <div class="drag-handle">
+                  <ng-container [ngTemplateOutlet]="dragHandleTmpl"></ng-container>
+
+                  {{i+1}}
+
+
+                </div>
+              </th>
+              <td width="75%">
+                  <a [routerLink]="['/admin/fooditem', item.id]"> {{item.name}} </a>
+              </td>
+              <td width="10%"><div align="center"><a (click)="onModalRequest(item.id)"><span class="fa fa-trash"></span></a></div></td>
+          </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+

@@ -1,0 +1,80 @@
+<title>{{ "PARENTPORTAL.TITLE" | translate }}</title>
+<div class="header">
+  <h2 matDialogTitle><a routerLink="/parent/home">{{ "PARENTPORTAL.TITLE" | translate }}</a></h2>
+  <div align="center">
+    <i> <img class="header-logo" src="assets/images/logo.png" alt="" height="80" width="80" routerLink="/parent/home"/> </i>
+  </div>
+  <div class="login-button">
+    <button mat-raised-button (click)="logout()" translate>
+      {{ "Log out" | translate
+      }}<i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div align="center"><i></i></div>
+  <a class="tab-link" routerLink="/parent/tracker" routerLinkActive="active"
+    >{{ "Tracking" | translate }}
+    <img
+      class="center"
+      src="assets/images/Tracking_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+  <a
+    class="tab-link"
+    routerLink="/parent/tracker-history"
+    routerLinkActive="active"
+    >{{ "History" | translate }}
+    <img
+      class="center"
+      src="assets/images/History_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+  <a class="tab-link" routerLink="/parent/recommend" routerLinkActive="active"
+    >{{ "Recommendations" | translate }}
+    <img
+      class="center"
+      src="assets/images/Recommendations_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+  <a
+    class="tab-link"
+    routerLink="/parent/questionnaire"
+    routerLinkActive="active"
+    >{{ "Questionnaire" | translate }}
+    <img
+      class="center"
+      src="assets/images/Questionnaire_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+
+  <a
+    class="tab-link"
+    routerLink="/parent/growth-charts-page"
+    routerLinkActive="active"
+    >{{ "Charts" | translate }}
+    <img
+      class="center"
+      src="assets/images/Chart_Growth_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+
+  <a class="tab-link" routerLink="/parent/history" routerLinkActive="active"
+    >{{ "Results" | translate }}
+    <img
+      class="center"
+      src="assets/images/Results_Icon.png"
+      height="40"
+      width="40"
+    />
+  </a>
+</div>

@@ -1,0 +1,186 @@
+<app-parental-header></app-parental-header>
+
+<div class="container_page">
+  <div class="container" *ngIf="results.length === 0">
+    <mat-card class="quest-id-card">
+      <h2 matDialogTitle>{{ 'No questionnaires have been submitted yet' | translate }}</h2>
+    </mat-card>
+  </div>
+
+  <div *ngFor="let result of results; let i = index">
+    <div class="container">
+      <mat-card class="quest-id-card">
+        <mat-card-content>
+          <!--Labels for questionnaire results-->
+          <div class="row">
+            <div class="w-100"></div>
+
+            <div class="col">
+            <label><strong translate>Date</strong></label>
+            </div>
+             <div class="col" >
+              {{ result.date }}
+            </div>
+            <div class="w-100"></div>
+           
+            <div class="col">
+              <label><strong translate>Parent Username</strong></label>
+            </div>
+            <div class="col" >
+              {{ getUserName() }}
+            </div>
+            <div class="w-100"></div>
+
+            <div class="col">
+              <label><strong translate>Questionnaire ID</strong></label>
+            </div>
+             <div class="col" >
+              {{ result.questionnaireId }}
+            </div>
+            <div class="w-100"></div>
+
+           
+            <!--
+                        <div class="col-2" >
+                            <label><strong>Patient name</strong></label>
+                        </div>
+                        -->
+            <div class="col">
+              <label><strong translate>Infant age (In months)</strong></label>
+            </div>
+             <div class="col" >
+              {{ result.ageInMonths }}
+            </div>
+            <div class="w-100"></div>
+
+            
+            <div class="col">
+              <label><strong translate>Infant gender</strong></label>
+            </div>
+            <div class="col" >
+              {{ result.gender | translate}}
+            </div>
+            <div class="w-100"></div>
+
+            
+            <div class="col" >
+              <label><strong translate>Nutrients</strong></label>
+            </div>
+            <div class="col" >
+                  <a (click)="getNutrientsRecommendations(result.questionnaireId)">
+                  <i title="nutrients" class="fa fa-flask"></i></a>
+            </div>
+            <div class="w-100"></div>
+
+
+            <div class="col" >
+              <label><strong translate>Food Items</strong></label>
+            </div>
+             <div class="col" >
+              <a (click)="getFoodRecommendations(result.questionnaireId)">
+              <i title="fooditems" class="fa fa-cutlery"></i></a>
+            </div>
+            <div class="w-100"></div>
+
+
+          </div>
+
+          <!--Questionnaire results-->
+          
+            <div class="offset-10" style="padding-top:15px;">
+              <button class="btn btn-info" (click)="toggle(i)" id="bt">
+                {{ 'buttonName' | translate }}
+              </button>
+
+              <!-- <button mat-raised-button (click)="toggleFeedback(i)">
+                Feedback
+              </button> -->
+            </div>
+
+          <!--Feedback results-->
+          <!-- <ng-container *ngIf="result.showFeedback"> -->
+          <label class="mt-3 mb-0 ml-3"
+          ><strong translate>Additional Recommendations and Feedback</strong>
+          </label>
+          <hr />
+          <mat-card class="qb-card">
+            <p>{{ result.feedback }}</p>
+          </mat-card>
+          <hr />
+          <!-- </ng-container> -->
+
+          <!--User choice results-->
+          <ng-container *ngIf="result.show">
+            <label class="mt-3 mb-0 ml-3"><strong>{{'User choices' | translate}}</strong> </label>
+            <hr />
+            <div class="row mt-3">
+              <div class="col" >
+                <label><strong translate>Name</strong></label>
+              </div>
+              <div class="col" >
+                <label><strong translate>Frequency</strong></label>
+              </div>
+              <div class="col" >
+                <label><strong translate>Frequency Type</strong></label>
+              </div>
+              <div class="col" >
+                <label><strong translate>Servings</strong></label>
+              </div>
+              <div class="col" >
+                <label><strong translate>Sugar(g)</strong></label>
+              </div>
+            </div>
+            <div *ngFor="let choice of result.userChoices; let i = index">
+              <div class="row" >
+                <div class="col">
+                  {{choice.name | translate}}
+                </div>
+                <div class="col">
+                  {{ choice.frequency }}
+                </div>
+                <div class="col">
+                  {{ choice.frequencyType }}
+                </div>
+                <div class="col">
+                  {{ choice.serving }}
+                </div>
+                <div class="col">
+                  {{ choice.sugar }}
+                </div>
+              </div>
+            </div>
+            <hr />
+
+            <!-- Calculations breakdown -->
+            <div class="tableDiv">
+              <h6 translate>Nutrient Breakdown</h6>
+              <div class="row">
+                <table class="col">
+                  <tr>
+                    <th translate>Nutrient</th>
+                    <th translate>Daily Average</th>
+                  </tr>
+                  <!-- Below code changed to show requested digits by PO-->
+                  <tr
+                    *ngFor="
+                      let item of result.dailyAverages | keyvalue: returnZero;
+                      let i = index
+                    "
+                  >
+                    <!--td *ngIf="i != 0 && i != 1 && i != 2"-->
+                    <!-- This item.key is really random with each result, Its really hard to dynamically translate this. -->
+                    <td>{{ item.key | translate}}</td>
+                    <!--Khalid, changed item.value to display 3 digits-->
+                    <!--td *ngIf="i != 0 && i != 1 && i != 2"-->
+                    <td>{{ item.value | resultRound }}</td>
+                  </tr>
+                </table>
+              </div>
+              <br />
+            </div>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

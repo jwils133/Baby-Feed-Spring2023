@@ -1,0 +1,197 @@
+<h1 mat-dialog-title class="title">{{ "Growth Charts' Info" | translate }}</h1>
+<mat-dialog-content class="mat-typography">
+  <h3 class="section">Menus</h3>
+
+  <div>
+    <p>
+      {{
+        "Menus are composed from the following panels: Child Personal Information Panel, Child Body Measurements Panel, Chart Options Panel. The buttons located on top-right screen side are the Download, Language and Info buttons in the respectively order. The Download button allows you to save the visible current chart and their respectively data into a pdf file. The language button allows to change the language from English to Spanish and vice versa. The Info button allows gives a basic guideline to interact with the Graphical User Interface"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="menuPicture" alt="" />
+  <h3 class="section">{{ "Child Personal Information" | translate }}</h3>
+  <div>
+    <p>
+      {{
+        "The Child Personal Information panel is used to identify which child of
+      the parent will be selected to display or modify the child's information.
+      The Child Personal Information panel has to menus: Children and Gender. Both menus are
+      required, meaning that for interacting with the other panels it is
+      necessary to fill up the data in the Child Personal Information Panel
+      first. The menu Children allows the parent to select the child first name,
+      and the menu Gender identifies which charts must be displayed. The data
+      for the charts are different depending on the gender selected"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="selectChildPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "The menu Children will display all the children of the parent"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="genderChildPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "The menu Gender will display the following options: male and female. The
+      parent should select accordingly to their children's gender to guarantee
+      reliable data and results of the charts interpretation"
+          | translate
+      }}.
+    </p>
+  </div>
+  <h3 class="section">{{ "Child Body Measurements" | translate }}</h3>
+  <div>
+    <p>
+      {{
+        "The Child Body Measurements panel is used to determine the type of units
+      of measurements to use, add and save data along the time of the children
+      as height and weight to plot them on the different type of charts. The
+      data of charts is retrieved from the World Health Organization and by
+      default is expressed in Centimeters and Kilograms. That being said, to
+      facilitate a better compression of the units below you can find a
+      conversion table"
+          | translate
+      }}:
+    </p>
+  </div>
+
+  <table mat-table [dataSource]="dataSource" id="table">
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>{{ "No." | translate }}</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- from Column -->
+    <ng-container matColumnDef="from">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "US Customary System" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.from | translate }}</td>
+    </ng-container>
+
+    <!-- to Column -->
+    <ng-container matColumnDef="to">
+      <th mat-header-cell *matHeaderCellDef>
+        {{ "Metric System" | translate }}
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.to | translate }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <div>
+    <p>
+      {{
+        "The data required consist of age, height and weight of the child. The wight
+      cannot be lesser than 1 kilogram or greater than 30 Kilograms. The height
+      cannot be lesser than 40 centimeters and greater than 110 centimeters"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="selectUnitsOfMeasurementsPicture" alt="" />
+
+  <div>
+    <p>
+      {{
+        "Changing the unit of measurements to US Customary System and recalculating
+      the minimum and maximum weight values as 2 and 66 pounds. Doing the same
+      for the height we got 15 inches as minimum and 43 inches as maximum"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="ageChildPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "The valid values for age are on the interval from zero month to 24 months"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="heightChildPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "All the data is required, meaning that all the data is necessary in order to plot it on the charts or to save it in the database"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="weightChildPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "It is recommendable to use the Metric System to work with the charts because it is standardized around the world. However, you can feel free to
+      use US Customary System or a combination of Metric System and US Customary
+      System. That being said, the formula for BMI using the Metric System is
+      slightly different to the formula of BMI using the US Customary System"
+          | translate
+      }}.
+    </p>
+    <pre>{{"BMI formula using Metric System"|translate}}:           {{"BMI"|translate}} =  kg/m<sup>2</sup></pre>
+    <pre>{{"BMI formula using US Customary System"|translate}}:     {{"BMI"|translate}} = (lb*703))/in<sup>2</sup></pre>
+    <p>
+      {{
+        "The kg refers to the weight in kilograms and m² to the squared height of the child in meters. It is important to point out that 1 meter (m) is equal to 100 cm. Due to the child's height is in centimeters then it is necessary to convert the centimeters to meters. The same is applicable to The BMI formula using the US Customary System interchanging the units of measurements"
+          | translate
+      }}
+    </p>
+  </div>
+  <img class="pictures" [src]="addButtonPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "The button add will be activated once all the data necessary is entered.
+      However, it cannot be added if the data is outside of the valid domain.
+      Adding a point will add a new point to the chart or modify one in case
+      there is one with the same month. That being said, it is important to
+      notice that adding a point will not save the data in the database, so all
+      the changes will be lost in case the data is not saved"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="saveButtonPicture" alt="" />
+  <div>
+    <p>
+      {{
+        "The save button will be activated once the add button is triggered. The
+      save button will save all the point added or modified by the user"
+          | translate
+      }}.
+    </p>
+  </div>
+  <h3 class="section">{{ "Chart Options" | translate }}</h3>
+  <div>
+    <p>
+      {{
+        "The Chart Options Panel provides four types of charts: BMI, Height-Age,
+      Weight-Age and Weight-Height. All the charts will plot the data on an
+      interval from zero to twenty four months except the Weight-Height chart.
+      In order to retrive the interpretation of the charts in a specific point
+      it is necessary to click on it"
+          | translate
+      }}.
+    </p>
+  </div>
+  <img class="pictures" [src]="chartOptionsPicture" alt="" />
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Esc</button>
+</mat-dialog-actions>

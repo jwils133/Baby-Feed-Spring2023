@@ -1,0 +1,45 @@
+.container {
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container_page {
+    padding-top: 200px;
+    margin-bottom: 50px;
+}
+
+.container-choices {
+    padding-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 40px;
+}
+
+.quest-results-card {
+    width: 60%;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    padding: 50px;
+    height: 200px;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.tableDiv {
+    padding: 35px;
+}

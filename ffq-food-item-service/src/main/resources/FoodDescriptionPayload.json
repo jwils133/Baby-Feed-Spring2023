@@ -1,0 +1,90 @@
+[{
+        "imageUrl": "/assets/images/Breastmilk.jpg",
+        "foodItemGroupName": "Milks",
+        "firstBracketIntake": "2 to 3 cups per day (16 - 24 fl oz / day)",
+        "secondBracketIntake": "1 ¼ to 3 ½ cups per day (10 – 28 fl oz / day)",
+        "thirdBracketIntake": "1 to 2 ¼ cups per day (8 – 18 fl oz / day)",
+        "description": "Breastmilk or iron-fortified infant formula is recommended until age 12 months. Do not use low-iron milk, such as cow or soy, even in infant cereal. Do not serve 1% (low-fat) or skim (non-fat) milks before age 24 months."
+    },
+
+    {
+        "imageUrl": "/assets/images/Whole_Grains.jpg",
+        "foodItemGroupName": "Whole Grains",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "1 tablespoon to 1 ¾ cups per day (0.1 - 3.5 oz / day)",
+        "thirdBracketIntake": "1 tablespoon to 2 ¾ cups per day (0.1 – 5.5 oz / day)",
+        "description": "Whole grains contain the entire grain kernel - the bran, germ, and endosperm. Some examples of products are 100% whole wheat, bulgur (cracked wheat), oatmeal, whole cornmeal, and brown rice."
+    },
+
+    {
+        "imageUrl": "/assets/images/Refined_Grains.jpg",
+        "foodItemGroupName": "Refined Grains",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "0 to ¾ cup per day (0 – 1.5 oz / day)",
+        "thirdBracketIntake": "0 to ¾ cup per day (0 – 1.8 oz / day)",
+        "description": "Refined grains have been milled - a process that removes the bran, germ, dietary fiber, iron, and many B vitamins. Some examples are white bread, unbleached flour, durum pasta, enriched cornmeal, and white rice."
+    },
+
+    {
+        "imageUrl": "/assets/images/Proteins.jpg",
+        "foodItemGroupName": "Proteins",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "½ tablespoon to 1 ½ cups per day (0.1 – 6 oz / day)",
+        "thirdBracketIntake": "½ tablespoon to ¾ cup per day (0.1 – 3 oz / day)",
+        "description": "Foods made from meat, poultry, seafood, beans, nuts, seeds, eggs, yogurt, cheese, and soy products are considered proteins. Meat and poultry choices should be lean or low-fat. Serve seafood 2-3 times weekly."
+    },
+
+    {
+        "imageUrl": "/assets/images/Vegetables.jpg",
+        "foodItemGroupName": "Vegetables",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "¼ cup or more per day (2 or more oz / day)",
+        "thirdBracketIntake": "1 cup or more per day (8 or more oz / day)",
+        "description": "Vegetables may be raw or cooked; fresh, frozen, canned, or dried/dehydrated; and may be cut-up or mashed. Some examples are broccoli, tomatoes, carrots, sweet potatoes, corn, plantains, and green beans."
+    },
+
+    {
+        "imageUrl": "/assets/images/Fruits.jpg",
+        "foodItemGroupName": "Fruits",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "¼ cup or more per day (2 or more oz / day)",
+        "thirdBracketIntake": "1 cup or more per day (8 or more oz / day)",
+        "description": "Any fruit counts as part of the Fruit Group. Fruits may be fresh, canned, frozen, or dried, and may be cut-up or pureed. Some examples are apples, bananas, berries, mangos, melons, pears, and prunes."
+    },
+
+    {
+        "imageUrl": "/assets/images/Juices.jpg",
+        "foodItemGroupName": "100% Juices",
+        "firstBracketIntake": "0 cups per day (0 fl oz / day)",
+        "secondBracketIntake": "0 cups per day (0 fl oz / day)",
+        "thirdBracketIntake": "0 to ½ cup per day (0 – 4 fl oz / day)",
+        "description": "Avoid 100% juices - there is no nutritional benefit for infants. Some examples are juices made of 100% fruit or 100% vegetable, such as apple and carrot.  Instead serve whole fruits and vegetables, cut-up or pureed."
+    },
+
+    {
+        "imageUrl": "/assets/images/Sugary_Beverages.jpg",
+        "foodItemGroupName": "Sugary Beverages",
+        "firstBracketIntake": "0 cups per day (0 fl oz / day)",
+        "secondBracketIntake": "0 cups per day (0 fl oz / day)",
+        "thirdBracketIntake": "0 cups per day (0 fl oz / day)",
+        "description": "Avoid sugary beverages. These products are high in calories and have no nutritional benefit. Some examples are sodas, fruit punch, Kool-Aid, Tang, lemonade, iced tea, and sports drinks. Instead serve milk or water."
+    },
+
+    {
+        "imageUrl": "/assets/images/Sweets.jpg",
+        "foodItemGroupName": "Sweets",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "0 cups per day (0 oz / day)",
+        "thirdBracketIntake": "0 cups per day (0 oz / day)",
+        "description": "Avoid sweets. Some examples are chocolates, lollipops, candy, cake, muffins, donuts, cookies, ice cream, and added sugars such as honey, jam, agave, and syrup.  Instead serve plain yogurt and fruits, cut-up or pureed."
+    },
+
+    {
+        "imageUrl": "/assets/images/Salty_Snacks.jpg",
+        "foodItemGroupName": "Salty Snacks",
+        "firstBracketIntake": "0 cups per day (0 oz / day)",
+        "secondBracketIntake": "0 cups per day (0 oz / day)",
+        "thirdBracketIntake": "0 cups per day (0 oz / day)",
+        "description": "Avoid salty snacks. These products also tend to be high in calories and fat. Some examples are french fries, chips, and processed meats such as ham, bacon, and hot dogs. Instead serve whole grains and proteins."
+    }
+]

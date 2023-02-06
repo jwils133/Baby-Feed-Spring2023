@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>{{ data.title | translate }}</h1>
+<mat-dialog-content class="mat-typography">
+  <p *ngFor="let message of data.messages">
+    {{ message | translate }}
+  </p>
+  <h1>
+    {{ data.name }}'s Interpretation for the selected point
+    {{ data.value }} needs to be added here.
+  </h1>
+  <h1>Interpretation is in progress!</h1>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>
+    {{ "Accept" | translate }}
+  </button>
+</mat-dialog-actions>

@@ -1,0 +1,169 @@
+<clinical-header></clinical-header>
+
+<div class="container_page">
+    <div class="container" *ngIf="results.length === 0">
+        <mat-card class="quest-id-card">
+            <h2 matDialogTitle>No questionnaires have been submitted yet!</h2>
+        </mat-card>
+    </div>
+    <div class="container mt-3" *ngIf="results.length != 0">
+        <label style="font-weight:bold"> Questionnaire Results </label>
+        <div style="display: flex; align-items: stretch; justify-content: space-between">
+          <input style="width: 25%" placeholder="Search by Parent Username" type="text" class="form-control" name="search" [(ngModel)]="search" />
+          <div align="right">
+            <button mat-raised-button type="button" (click)="export()">
+              Download Results
+            </button>
+          </div>
+        </div>
+        <div *ngFor="let result of resultInfo| resultsFilter: resultMap: search ; let i = index">
+            <div class="container">
+                <mat-card class="quest-id-card">
+                    <mat-card-content>
+                        <!--Labels for questionnaire results-->
+                        <div class="row">
+
+                            <div class="col-2" style="text-align:center">
+                              <label><strong>Date</strong></label>
+                            </div>
+                            <div class="col-1" style="text-align:center">
+                              <label><strong>Parent Username</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Questionnaire ID</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Infant Age (in months)</strong></label>
+                            </div>
+                            <div class="col-1" style="text-align:center">
+                                <label><strong>Infant Gender</strong></label>
+                            </div>
+
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Nutrient Results</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Food Results</strong></label>
+                            </div>
+                        </div>
+
+                        <!--Questionnaire results-->
+                        <div class="row">
+                            <div class="col-2" style="text-align:center">
+                              {{result.ffqresult.date}}
+                            </div>
+                            <div class="col-1" style="text-align:center">
+                              {{result.ffqresult.patientName}}
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                {{result.ffqresult.questionnaireId}}
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                {{result.ffqresult.ageInMonths}}
+                            </div>
+                            <div class="col-1" style="text-align:center">
+                                {{result.ffqresult.gender}}
+                            </div>
+                            <div class="col-2" style="text-align:center; cursor:pointer">
+                                <a (click)="getNutrientsRecommendations(result.ffqresult.questionnaireId)"><i title="nutrients" class="fa fa-flask"></i></a>
+                            </div>
+                            <div class="col-2" style="text-align:center; cursor:pointer">
+                                <a (click)="getFoodRecommendations(result.ffqresult.questionnaireId)"><i title="fooditems" class="fa fa-cutlery"></i></a>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding: 15px">
+                            <div class="col-12 offset-10">
+                                <button mat-raised-button [hidden]="result.ffqresult.show" (click)="toggle(result.ffqresult.questionnaireId)" [hidden]="result.ffqresult.showFeedback" (click)="toggleFeedback(result.ffqresult.questionnaireId)">
+                    <i class="fa fa-plus-square-o"></i> Results
+                  </button>
+                                <button mat-raised-button [hidden]="!result.ffqresult.show" (click)="toggle(result.ffqresult.questionnaireId)" [hidden]="!result.ffqresult.showFeedback" (click)="toggleFeedback(result.ffqresult.questionnaireId)">
+                    <i class="fa fa-minus-square-o"></i> Results
+                  </button>
+                            </div>
+                        </div>
+
+                        <!-- Additional Recommendation or Feedback -->
+                        <form *ngIf="result.ffqresult.showFeedback" [formGroup]="feedbackForm" (ngSubmit)="submitFeedback(result.ffqresult.questionnaireId)">
+                            <div class="form-group">
+                                <textarea type="usertype" formControlName="feedback" placeholder="Additional Recommendations and Feedback" class="form-control" [(ngModel)]="result.ffqresult.feedback"></textarea>
+                            </div>
+
+                            <!-- submit button -->
+                            <div class="footer">
+                                <button mat-raised-button color="primary">Submit</button>
+                            </div>
+
+                        </form>
+
+                        <!--User choice results-->
+                        <ng-container *ngIf="result.ffqresult.show">
+                            <label class="mt-3 mb-0 ml-3"><strong>User choices</strong> </label>
+                            <hr />
+                            <div class="row mt-3">
+                                <div class="col-3" style="text-align:center">
+                                    <label><strong>Name</strong></label>
+                                </div>
+                                <div class="col-2" style="text-align:center">
+                                    <label><strong>Frequency</strong></label>
+                                </div>
+                                <div class="col-2" style="text-align:center">
+                                    <label><strong>Frequency Type</strong></label>
+                                </div>
+                                <div class="col-2" style="text-align:center">
+                                    <label><strong>Servings</strong></label>
+                                </div>
+                                <div class="col-2" style="text-align:center">
+                                    <label><strong>Sugar(g)</strong></label>
+                                </div>
+                            </div>
+                            <div *ngFor="let choice of result.ffqresult.userChoices">
+                                <div class="row" style="text-align:center">
+                                    <div class="col-3">
+                                        {{choice.name}}
+                                    </div>
+                                    <div class="col-2">
+                                        {{choice.frequency}}
+                                    </div>
+                                    <div class="col-2">
+                                        {{choice.frequencyType}}
+                                    </div>
+                                    <div class="col-2">
+                                        {{choice.serving}}
+                                    </div>
+                                    <div class="col-2">
+                                        {{choice.sugar}}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+
+                            <!-- Calculations breakdown -->
+                            <div class="tableDiv">
+                                <h6>Nutrient Breakdown</h6>
+                                <div class="row">
+                                    <table class="col-12">
+                                        <tr>
+                                            <th>Nutrient</th>
+                                            <th>Daily Average</th>
+                                        </tr>
+                                        <!-- Below code changed to show requested digits by PO-->
+                                        <tr *ngFor="let item of result.ffqresult.dailyAverages | keyvalue : returnZero; let i=index">
+                                            <!--td *ngIf="i != 0 && i != 1 && i != 2"-->
+                                            <td>{{item.key}}</td>
+                                            <!--Khalid, changed item.value to display 3 digits-->
+                                            <!--td *ngIf="i != 0 && i != 1 && i != 2"-->
+                                            <td>{{item.value | resultRound}}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <br>
+                            </div>
+
+                        </ng-container>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

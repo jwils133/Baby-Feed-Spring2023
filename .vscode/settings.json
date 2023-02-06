@@ -1,0 +1,4 @@
+{
+    "editor.maxTokenizationLineLength": 2000000,
+    "java.compile.nullAnalysis.mode": "automatic"
+}

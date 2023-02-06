@@ -1,0 +1,71 @@
+[
+  {
+    "categoryName": "Breastmilk/Formula/Cows Milk/Other milks", "unit":"fl oz/day","recommendationsByAge": {
+    "0-5":   [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":15.9, "label": "Little below"},{ "from":16.0, "to":24.0, "label": "Adequate"},{ "from":24.1, "to":26.0, "label": "Little above"},{ "from":26.1, "to":1000000, "label": "Above"}],
+    "6-12":  [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":9.9, "label": "Little below"},{ "from":10.0, "to":28.0, "label": "Adequate"},{ "from":28.1, "to":35.0, "label": "Little above"},{ "from":35.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":7.9, "label": "Little below"},{ "from":8, "to":18.0, "label": "Adequate"},{ "from":18.1, "to":24.0, "label": "Little above"},{ "from":24.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Whole Grains", "unit":"oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":3.5, "label": "Adequate"},{ "from":3.6, "to":8.0, "label": "Little above"},{ "from":8.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":5.5, "label": "Adequate"},{ "from":5.6, "to":8.0, "label": "Little above"},{ "from":8.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Refined Grains", "unit":"oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":1.5, "label": "Adequate"},{ "from":1.6, "to":3.5, "label": "Little above"},{ "from":3.6, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":1.8, "label": "Adequate"},{ "from":1.9, "to":4.2, "label": "Little above"},{ "from":4.3, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Proteins", "unit":"oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":6.0, "label": "Adequate"},{ "from":6.1, "to":10.0, "label": "Little above"},{ "from":10.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":3.0, "label": "Adequate"},{ "from":3.1, "to":6.0, "label": "Little above"},{ "from":6.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Vegetables", "unit":"fl oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":1.9, "label": "Little below"},{ "from":2, "to":1000000, "label": "Adequate"}],
+    "13-24": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":7.9, "label": "Little below"},{ "from":8, "to":1000000, "label": "Adequate"}]}
+  },
+
+  {
+    "categoryName": "Fruits", "unit":"fl oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":1.9, "label": "Little below"},{ "from":2, "to":1000000, "label": "Adequate"}],
+    "13-24": [{ "from":0, "to":0, "label": "Below"},{ "from":0.1, "to":7.9, "label": "Little below"},{ "from":8, "to":1000000, "label": "Adequate"}]}
+  },
+
+  {
+    "categoryName": "100% Juices", "unit":"fl oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":6.0, "label": "Little above"},{ "from":6.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":4.0, "label": "Adequate"},{ "from":4.1, "to":6.0, "label": "Little above"},{ "from":6.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Sugary Beverages", "unit":"fl oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":4.0, "label": "Little above"},{ "from":4.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":4.0, "label": "Little above"},{ "from":4.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Sweets", "unit":"oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1.0, "label": "Little above"},{ "from":1.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1.0, "label": "Little above"},{ "from":1.1, "to":1000000, "label": "Above"}]}
+  },
+
+  {
+    "categoryName": "Salty snacks", "unit":"oz/day","recommendationsByAge": {
+    "0-5":[{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1000000, "label": "Above"}],
+    "6-12": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1.0, "label": "Little above"},{ "from":1.1, "to":1000000, "label": "Above"}],
+    "13-24": [{ "from":0, "to":0, "label": "Adequate"},{ "from":0.1, "to":1.0, "label": "Little above"},{ "from":1.1, "to":1000000, "label": "Above"}]}
+  }
+]

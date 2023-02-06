@@ -1,0 +1,15 @@
+<div class="tableDiv" style="padding-top: 0px;">
+  <h6>Food Results</h6>
+  <div class="row">
+    <table class="col-12" *ngFor="let result of recommendedFood">
+      <tr>
+        <th> Food Item</th>
+        <th> Calculated Amount (Oz)</th>
+      </tr>
+      <tr *ngFor="let food of result.foodCategoryRecList">
+        <td>{{food.categoryName}}</td>
+        <td style="text-align: center">{{food.calculatedAmount | number: '1.2-2'}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

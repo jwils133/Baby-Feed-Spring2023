@@ -1,0 +1,218 @@
+<div class="qb-container">
+  <mat-card class="qb-card" style="border: 4px inset #32a1ce">
+    <!-- Section for showing the label for skipping or adding a question-->
+    <mat-card-header>
+      <mat-label
+        style="
+          text-align: right;
+          padding-bottom: 1%;
+          font-family: Roboto;
+        "
+        class="qb-row-item"
+        [hidden]="foodItem.disabled"
+        ><b>
+          {{
+            "Click on the 'x' button if my baby does not eat/drink" | translate
+          }}.
+        </b>
+      </mat-label>
+      <mat-label
+        style="
+          text-align: right;
+          padding-bottom: 1%;
+          font-family: Roboto;
+        "
+        class="qb-row-item"
+        [hidden]="!foodItem.disabled"
+        ><b>
+          {{ "Click on the '+' button if my baby does eat/drink" | translate }}:
+          {{ foodItem.name | translate }}.
+        </b>
+      </mat-label>
+    </mat-card-header>
+
+    <!--Section for deactivating/reactivating a question block-->
+    <mat-card-actions>
+      <div class="networks">
+        <button
+          mat-icon-button
+          id="deactivating"
+          class="block-deactivator"
+          cdkFocusInitial
+          style="float: right"
+          [hidden]="foodItem.disabled"
+          (click)="toggleDisable()"
+        >
+          <mat-icon class="deactivating-play" style="margin-top: -50%"
+            >clear</mat-icon
+          >
+        </button>
+
+        <button
+          mat-icon-button
+          id="reactivating"
+          class="block-activator"
+          cdkFocusInitial
+          style="float: right"
+          [hidden]="!foodItem.disabled"
+          (click)="toggleDisable()"
+        >
+          <mat-icon class="reactivating-play" style="margin-top: -20%"
+            >add</mat-icon
+          >
+        </button>
+      </div>
+    </mat-card-actions>
+
+    <!--Required row, Item name, frequency input, and frequency type (Weekly or Daily)-->
+    <tr [hidden]="foodItem.disabled">
+      <label style="width: 100%; padding-top: 4%"
+        ><strong>{{ foodItem.name | translate }}</strong></label
+      >
+      <br />
+      <mat-form-field>
+        <input
+          matInput
+          [(ngModel)]="foodItem.input.frequency"
+          class="qb-row-item"
+          type="number"
+          min="1"
+          placeholder="{{ 'Number of' | translate }}.."
+          autocomplete="off"
+          required
+        />
+      </mat-form-field>
+      <mat-label>{{ "time(s) per" | translate }}</mat-label>
+      <mat-form-field style="padding-left: 10px">
+        <mat-select
+          placeholder="{{ 'week or day' | translate }}..."
+          [(ngModel)]="foodItem.input.frequencyType"
+          required
+        >
+          <mat-option *ngFor="let type of FREQUENCY_TYPES" [value]="type">
+            {{ type | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-error
+        *ngIf="
+          (foodItem.isSubmitted || foodItem.isSubmitted === null) &&
+          foodItem.getErrorState().includes('frequency')
+        "
+      >
+        {{
+          "Please enter the number servings per week or per day" | translate
+        }}.
+      </mat-error>
+      <mat-error
+        *ngIf="
+          foodItem.isSubmitted &&
+          foodItem.getErrorState().includes('frequency-range') &&
+          !foodItem.getErrorState().includes('frequency')
+        "
+      >
+        {{
+          "Oops number of times must be greater than zero and less than 13"
+            | translate
+        }}
+      </mat-error>
+      <!--
+      <mat-error *ngIf="foodItem.isSubmitted && foodItem.limitFrequency().includes('frequency-range')">
+        {{'Frequency cannot exceed 12.'}}
+      </mat-error>
+      -->
+    </tr>
+    <!--Servings option row, contingent on there being more than 1 option-->
+    <tr [hidden]="foodItem.disabled" *ngIf="foodItem.servingOptions.length > 1">
+      <mat-form-field class="qb-row-item-size">
+        <mat-select
+          id="serving"
+          placeholder="{{ 'Size of each serving' | translate }}"
+          [(ngModel)]="foodItem.input.serving"
+          required
+        >
+          <div style="width: fit-content; min-width: 470px">
+            <mat-option
+              *ngFor="let option of foodItem.servingOptions; let i = index"
+              [value]="option"
+            >
+              {{ option | translate }}
+            </mat-option>
+          </div>
+        </mat-select>
+      </mat-form-field>
+      <mat-error
+        *ngIf="
+          foodItem.isSubmitted && foodItem.getErrorState().includes('serving')
+        "
+      >
+        {{ "Serving selection is required" | translate }}
+      </mat-error>
+    </tr>
+
+    
+    <!--Button For Serving Sizes-->
+    <ul class="wrapper" *ngIf="getHasPictures()">
+      <tr [hidden]="foodItem.disabled">
+        <ul class="photo" (click)="zoomPictures()">
+          <li class="icon facebook">
+            <span class="tooltip">{{"Click to zoom image" | translate}}</span>
+            <span
+              ><img *ngIf="getHasPictures()" [src]="imageRef" alt=""
+            /></span>
+          </li>
+        </ul>
+      </tr>
+    </ul>
+
+    <!--Food Type selection row, contingent on there being more than one food type (other than default)-->
+    <tr [hidden]="foodItem.disabled" *ngIf="foodItem.types.length >= 0">
+      <mat-radio-group
+        id="type"
+        class="qb-radio-group"
+        [(ngModel)]="foodItem.input.type"
+        required
+      >
+        <mat-radio-button
+          class="qb-row-item padding"
+          *ngFor="let type of foodItem.types; let i = index"
+          [value]="type"
+        >
+          {{ type | translate }}</mat-radio-button
+        >
+      </mat-radio-group>
+      <mat-error
+        *ngIf="
+          foodItem.isSubmitted && foodItem.getErrorState().includes('type')
+        "
+      >
+        {{ "Type selection is required" | translate }}
+      </mat-error>
+    </tr>
+    <!--Extra sugar added row, contingent if extra sugar is applicable for this food type-->
+    <tr
+      [hidden]="foodItem.disabled"
+      class="qb-row"
+      *ngIf="foodItem.hasSugarSetting"
+    >
+      <mat-label class="qb-row-item"
+        >{{ "Did you add sugar?" | translate }}
+      </mat-label>
+      <mat-form-field>
+        <input
+          matInput
+          id="sugar"
+          class="qb-row-item"
+          type="number"
+          min="1"
+          [(ngModel)]="foodItem.input.sugar"
+          placeholder="{{ 'Extra Sugar' | translate }}"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <mat-label class="qb-row-item">{{ "teaspoon(s)" | translate }}</mat-label>
+    </tr>
+
+    <p><strong></strong></p>
+  </mat-card>
+</div>

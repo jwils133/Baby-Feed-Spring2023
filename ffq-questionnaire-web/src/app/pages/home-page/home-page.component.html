@@ -1,0 +1,140 @@
+<!-- <app-parental-header></app-parental-header> -->
+<title>{{ "PARENTPORTAL.TITLE" | translate }}</title>
+<div class="header">
+  <a routerLink="/parent/home">
+  <div class="homeitem-container">
+    <div class="homeitem-content">
+      <div class="homeitem-svg-title">
+        <img
+          class="header-logo"
+          src="assets/images/logo.png"
+          alt=""
+          height="120"
+          width="120"
+          routerLink="/parent/home"
+        />
+      </div>
+
+      <div class="homeitem-title">
+        <h1>{{"Parental Portal" | translate}}</h1>
+        <h2>{{"Welcome to Parent Portal" | translate}}</h2>
+        <p>
+          {{"Each tab has a different tool, please see the descriptions below" | translate}}
+        </p>
+      </div>
+    </div>
+  </div>
+</a>
+  <!-- <h2 matDialogTitle><a routerLink="/parent/home">{{ "PARENTPORTAL.TITLE" | translate }}</a></h2> -->
+  <div align="center">
+    <!-- <i> <img class="header-logo" src="assets/images/logo.png" alt="" height="80" width="80" routerLink="/parent/home"/> </i> -->
+  </div>
+  <div class="login-button">
+    <button mat-raised-button (click)="logout()" translate>
+      {{ "Log out" | translate
+      }}<i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div align="center"><i></i></div>
+</div>
+
+<div class="home-component-container">
+  <div class="home-container">
+    <div class="homeitem-2-container">
+        <div class="homeitem-container">
+          <a routerLink="/parent/questionnaire">
+          <h1>{{"Questionnaire" | translate}}</h1>
+  
+          <div class="homeitem-content">
+            <p>
+              {{"Complete this questionnaire to learn if you are feeding your child the recommended amounts for each food group." | translate}}
+            </p>
+            <div class="homeitem-svg"><img
+              class="center"
+              src="assets/images/Questionnaire_Icon.png"
+              height="60"
+              width="60"
+            /></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="homeitem-container">
+        <a routerLink="/parent/recommend">
+        <h1>{{"Recommendations" | translate}}</h1>
+        <div class="homeitem-content">
+          <p>
+            {{"Click here to learn what are the recommended amounts of each food
+            group that you should feed your baby every day." | translate}}
+          </p>
+          <div class="homeitem-svg"><img
+            class="center"
+            src="assets/images/Recommendations_Icon.png"
+            height="60"
+            width="60"
+          /></div>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div class="homeitem-2-container">
+      <div class="homeitem-container">
+        <a routerLink="/parent/tracker">
+        <h1>{{"Tracking" | translate}}</h1>
+        <div class="homeitem-content">
+          <p>
+            {{"Complete this short form every week to monitor if you are feeding
+            your child the recommended amounts for each food group." | translate}}
+          </p>
+          <div class="homeitem-svg">
+            <img
+              class="center"
+              src="assets/images/Tracking_Icon.png"
+              height="60"
+              width="60"
+            />
+          </div>
+        </div>
+      </a>
+      </div>
+
+      <div class="homeitem-container">
+        <a routerLink="/parent/growth-charts-page">
+        <h1>{{"Growth Charts" | translate}}</h1>
+        <div class="homeitem-content">
+          <p>
+            {{"Click here to input the weight and length of your child from the
+            last visit to the pediatric office to monitor his/her growth." | translate}}
+          </p>
+          <div class="homeitem-svg"><img
+            class="center"
+            src="assets/images/Chart_Growth_Icon.png"
+            height="60"
+            width="60"
+          /></div>
+        </div>
+      </a>
+      </div>
+    </div>
+
+    <div class="homeitem-container">
+      <!-- # PLACEHOLDER FOR RESOURCES PAGE -->
+      <a routerLink="#">
+      <h1>{{"Other" | translate}}</h1>
+      <div class="homeitem-content">
+        <p>
+          {{"Click here to access other resources (videos and websites) with information related to feeding your child." | translate}}
+        </p>
+        <div class="homeitem-svg"><img
+            class="center"
+            src="assets/images/Other_Resources.png"
+            height="60"
+            width="60"
+          /></div>
+      </div>
+    </a>
+    </div>
+  </div>
+</div>

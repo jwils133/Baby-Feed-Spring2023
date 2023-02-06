@@ -1,0 +1,56 @@
+.dialog-button {
+  width: 20%;
+}
+
+.container {
+  padding: 20px;
+  z-index: 99999999999999 !important;
+  position: relative;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 5px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.tableDiv {
+  padding: 1px;
+  font-weight: bold;
+}
+
+.normal {
+  color: green;
+  font-weight: bold;
+}
+
+.below {
+  color: #ffcb0c;
+  font-weight: bold;
+}
+
+.above {
+  color: red;
+  font-weight: bold;
+}
+
+.adequate {
+  color: green;
+  font-weight: bold;
+}
+.littlebelow
+{
+  color: red;
+  font-weight: bold;
+}

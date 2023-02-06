@@ -1,0 +1,26 @@
+<div class="container">
+  <h2 matDialogTitle>{{'Food Results' | translate}}</h2>
+  <mat-dialog-content>
+    <div class="tableDiv">
+      <table *ngFor="let result of recommendedFood">
+        <tr>
+          <th> {{'Food Item' | translate}} </th>
+          <th style="text-align: center"> {{'From (Oz)' | translate}} </th>
+          <th style="text-align: center">  {{'To (Oz)' | translate}} </th>
+          <th style="text-align: center"> {{'Label' | translate}} </th>
+          <th> {{'Calculated Amount (Oz)' | translate}} </th>
+        </tr>
+        <tr *ngFor="let food of result.foodCategoryRecList; let i = index">
+          <td>{{'result.' + i + '.foodItemGroupName' | translate}}</td>
+          <td  [ngClass]="{'concat': food.rangeTo ===1000000.00}"style="text-align: center">{{food.rangeFrom| resultRound}}</td>
+          <td  [ngClass]="{'cover': food.rangeTo ===1000000.00}" style="text-align: center">{{food.rangeTo| resultRound}}</td>
+          <td style="text-align: center" [ngClass]="color(food.label)">{{food.label | translate }}</td>
+          <td style="text-align: center" >{{food.calculatedAmount | resultRound}}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="dialog-button" mat-raised-button matDialogClose="cancel" color="primary">Ok</button>
+  </mat-dialog-actions>
+</div>

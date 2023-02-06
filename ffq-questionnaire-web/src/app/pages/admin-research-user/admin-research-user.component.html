@@ -1,0 +1,59 @@
+<admin-header></admin-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" >
+      <div class="container" style="margin-top: 15px;"><a routerLink="/admin/research/users"><span
+            class="fa fa-chevron-circle-left"></span> Back to Research/Users </a></div>
+
+       <!-- Add Research Users starts here -->
+
+      <div class="container mt-3">
+        <div align="right">
+          <button type="submit" class="btn btn-primary col-3 margin" (click)="addResearcherUser()"
+            [disabled]="!myForm.form.valid"> Add Researcher User </button>
+        </div>
+
+        <div class="container frame-fooditem">
+            <h6> New Researcher User </h6><br>
+
+          <div>
+            <div class="form-group col-12">
+              <label for="prefix" style="font-weight: bold"> Researcher prefix </label>
+              <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+              <input placeholder="prefix" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                     class="form-control" id="prefix" name="prefix" [(ngModel)]="prefix" required/>
+                <br>
+                <label for="firstname" style="font-weight: bold"> First Name </label>
+                <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+                <input placeholder="firstname" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                    class="form-control" id="firstname" name="firstname" [(ngModel)]="firstname" required/>
+                <br>
+                <label for="lastname" style="font-weight: bold"> Last Name </label>
+                <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+                <input placeholder="lastname" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                    class="form-control" id="lastname" name="lastname" [(ngModel)]="lastname" required/>
+                <br>
+<!--                <label for="limitNumberOfParticipants" style="font-weight: bold"> limit Number Of Participants </label>-->
+<!--                <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>-->
+<!--                <input placeholder="limitNumberOfParticipants" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"-->
+<!--                    class="form-control" id="limitNumberOfParticipants" name="limitNumberOfParticipants" [(ngModel)]="limitNumberOfParticipants" required/>-->
+<!--                <br>-->
+                   <label style="font-weight: bold">Choose Research Institution to assign to:</label>
+              <br>
+              <mat-form-field>
+                <mat-label appearance="fill">Choose Research Institution...</mat-label>
+                <mat-select matNativeControl id="assignedResearchInstitutionName" name="assignedResearchInstitutionName" [(ngModel)]="assignedResearchInstitutionId" required>
+                  <mat-option *ngFor="let c of researchInstitutionList" [value]="c.researchInstitutionId">{{ c.institutionName }}</mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+              <angular2csv [hidden]="!dissabled" class="btn btn-danger" [data]="data" filename="ResearcherLoginInfo" [options]="options"></angular2csv>
+            </div>
+          </div>
+      <!-- Add Research Institution ends here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

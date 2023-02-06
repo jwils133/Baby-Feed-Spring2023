@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>edu.fiu</groupId>
+	<artifactId>ffq-food-item-service</artifactId>
+	<version>0.0.2-SNAPSHOT</version>
+	<name>FFQ Food Item Service</name>
+	<description>Service for accessing FFQ food entries to populate questionnaire.</description>
+
+	<properties>
+		<java.version>1.8</java.version>
+		<jackson.databind.version>2.9.8</jackson.databind.version>
+		<apache.poi.version>4.0.1</apache.poi.version>
+		<apache.poi.ooxml.version>4.0.1</apache.poi.ooxml.version>
+		<powermock.version>1.6.4</powermock.version>
+		<spring.boot.starter.data-mongodb.version>2.1.2.RELEASE</spring.boot.starter.data-mongodb.version>
+		<spring.boot.starter.web.version>2.1.2.RELEASE</spring.boot.starter.web.version>
+		<spring.boot.starter.test.version>2.1.2.RELEASE</spring.boot.starter.test.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb</artifactId>
+			<version>${spring.boot.starter.data-mongodb.version}</version>
+		</dependency>		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${spring.boot.starter.web.version}</version>
+		</dependency>		
+		<dependency>
+    		<groupId>com.fasterxml.jackson.core</groupId>
+    		<artifactId>jackson-databind</artifactId>
+    		<version>${jackson.databind.version}</version>
+		</dependency>		
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi</artifactId>
+    		<version>${apache.poi.version}</version>
+		</dependency>		
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml</artifactId>
+    		<version>${apache.poi.ooxml.version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<version>${spring.boot.starter.test.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+    		<groupId>com.googlecode.json-simple</groupId>
+    		<artifactId>json-simple</artifactId>
+    		<version>1.1</version>
+		</dependency>
+		<dependency>
+		    <groupId>junit</groupId>
+		    <artifactId>junit</artifactId>
+		    <version>4.12</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework</groupId>
+    		<artifactId>spring-test</artifactId>
+    		<version>5.1.6.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<version>2.3.4.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>5.2.9.RELEASE</version>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<finalName>app</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

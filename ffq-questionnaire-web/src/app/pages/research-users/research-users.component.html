@@ -1,0 +1,32 @@
+<research-header></research-header>
+<div class="container_page">
+  <div class="container mt-3" align="right">
+      <div class="container mt-3" align="right">
+        <button routerLink='/researcher/user/new' type="submit" mat-raised-button>Create participant account(s)...</button>
+      </div>
+  </div>
+  <div class="container mt-3">
+
+      <span>{{ participants.length }} user(s)</span>
+    <div style="margin-bottom: 15px">
+        <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text" class="form-control"
+              name="search" [(ngModel)]="searchParticipants"/>
+    </div>
+      <table class="table table-bordered table-inverse">
+          <tr>
+              <th width="20%"> Username </th>
+              <th width="40%"> Password </th>
+              <th width="20%"> Account Type </th>
+              <th width="20%"> Institution </th>
+
+          </tr>
+          <tr *ngFor="let participant of participants | searchFilter: searchParticipants;index as i">
+            <td> {{ participant.username}} </td>
+            <td> {{ participant.userpassword}} </td>
+            <td> {{ participant.usertype }} </td>
+            <td> {{ institutionAttributes.institutionName }} </td>
+          </tr>
+      </table>
+
+  </div>
+</div>

@@ -1,0 +1,63 @@
+<research-header></research-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" >
+      <div class="container" style="margin-top: 15px;"><a routerLink="/researcher/users" style="color:#1e087e">
+        <span class="fa fa-chevron-circle-left"></span> Back to Home </a>
+      </div>
+
+      <div class="container mt-3">
+        <div align="right">
+          <button type="submit" mat-raised-button (click)="addUser()" [hidden]="noMoreRoom" [disabled]="!myForm.form.valid || dissabled || intialLoad" >
+            Add User(s)
+          </button>
+        </div>
+
+        <div class="container frame-fooditem" >
+          <h6> New participant(s) will be added to:</h6>
+          <div class="form-group col-12">
+          <p style="font-weight: bold">{{ loggedInUser[0].username }}</p>
+          </div>
+          <h6>New participant(s) will be assigned to institution:</h6>
+          <div class="form-group col-12">
+            <p style="font-weight: bold">{{ selectedInstitution?.institutionName }}</p></div>
+          <hr>
+          <table class="table table-bordered table-inverse" [hidden]="!clicked">
+            <tr>
+              <th width="16.66%"> No. of participants </th>
+              <th width="16.66%"> Can add this many more </th>
+              <th width="16.66%"> Participant Limit </th>
+            </tr>
+            <tr >
+              <td>{{ numParticipants }}</td>
+              <td>{{ limit - numParticipants}}</td>
+              <td>{{ limit }}</td>
+
+            </tr>
+          </table>
+          <div [hidden]="clicked" class="form-group col-12">
+            <label style="font-weight: bold"> Account Type </label>
+            <br>
+            <mat-radio-group  aria-label="Select an option" [(ngModel)]="userType" name="userType">
+              <mat-radio-button (click)="countParticipants(); clicked = true; intialLoad = false;" [value]="userTypes.participant" color="primary" >Participant</mat-radio-button>
+              <mat-radio-button [hidden]="true" [value]="userTypes.participant" color="primary" >Participant</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="optional_container" >
+            <div class="form-group col-12" [hidden]="!clicked">
+              <label style="font-weight: bold" [hidden]="noMoreRoom">Select Quantity:</label>
+              <br>
+              <input [(ngModel)]="usersQuantity" [hidden]="noMoreRoom" type="number" id="participant_quantity" name="usersQuantity" min="1" max={{limit}} style="margin-bottom: 10px">
+              <h5 align="center" class="container frame-fooditem" [hidden]="!noMoreRoom"> No room to add more participants, contact admin to request increase</h5>
+              <br>
+              <hr>
+            </div>
+          </div>
+        </div>
+         <angular2csv [hidden]="!dissabled" class="btn btn-danger" [data]="data" filename="ParticipantsLoginInfo" [options]="options"></angular2csv>
+      </div>
+    </div>
+  </div>
+</form>
+

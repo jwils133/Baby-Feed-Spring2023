@@ -1,0 +1,31 @@
+<admin-header></admin-header>
+
+<div class="tracker-button-container">
+    <button [hidden]='results.length === 0' type="button" (click)="export()" class="btn btn-danger"> Export Data</button>
+</div>
+
+<div class="tracker-container">
+
+    <div class="trackeritem-container" *ngIf="results.length === 0">
+        <mat-card class="tracker-card">
+            <h2 matDialogTitle>No responses have been submitted yet.</h2>
+        </mat-card>
+    </div>
+
+    <div *ngFor="let result of results" class="trackeritem-container">
+        <mat-card class="tracker-card">
+            <div><label><strong>{{ allParents[result.userId] }} - {{result.date}} - {{result.age}} Months Old</strong></label></div>
+            <div style="float: left">
+                <tr *ngFor="let item of result.responses">{{item.food}}</tr>
+            </div>
+            <div style="float: right">
+                <tr *ngFor="let item of result.responses" [ngClass]="{
+          'top' : item.response == 'Above',
+          'med' : item.response == 'Adequate',
+          'bot' : item.response == 'Below'
+        }">{{item.response}}</tr>
+            </div>
+        </mat-card>
+    </div>
+
+</div>

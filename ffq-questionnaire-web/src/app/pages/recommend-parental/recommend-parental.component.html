@@ -1,0 +1,38 @@
+<app-parental-header></app-parental-header>
+
+<div class="rec-container">
+  <mat-card>
+    <mat-radio-group aria-label="Select an option">
+      <label style="text-align: left;"><strong>{{'Select infant age range:' | translate}}</strong></label>
+      <br/>
+      <mat-radio-button (click)="showFirst()" color="primary" value="1">{{'0 to 5\.9 Months' | translate}}</mat-radio-button>
+      <mat-radio-button (click)="showSecond()" color="primary" value="2">{{'6 to 11\.9 Months' | translate}}</mat-radio-button>
+      <mat-radio-button (click)="showThird()" color="primary" value="3">{{'12 to 24 Months' | translate}}</mat-radio-button>
+    </mat-radio-group>
+  </mat-card>
+
+  <mat-card *ngFor="let result of results; let i = index">
+    <div class="item-container">
+      <img class="image" src="{{ result.imageUrl }}" alt="DataBase Images">
+      <div>
+        <label><strong>{{ 'result.' + i + '.foodItemGroupName'| translate }}</strong></label><br>
+        <label><strong *ngIf="showBracketFirst">{{ 'result.' + i + '.firstBracketIntake' | translate}} {{ 'ageMessage1' | translate }}</strong></label>
+        <label><strong *ngIf="showBracketSecond">{{ 'result.' + i + '.secondBracketIntake' | translate}} {{ 'ageMessage2' | translate}}</strong></label>
+        <label><strong *ngIf="showBracketThird">{{ 'result.' + i + '.thirdBracketIntake' | translate}} {{ 'ageMessage3' | translate}}</strong></label>
+        <label><strong *ngIf="showNone">{{ 'ageMessage' | translate }}</strong></label>
+        <br>
+        <label>
+          {{ 'result.'+ i + '.description' | translate}}
+        </label>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card>
+    <div class="item-container">
+
+      <button mat-raised-button class="submit-btn" color="primary" (click)="submitTime()">{{"Submit" | translate}}</button>
+      <p class="instructions"><strong>{{"Instructions (Rec)" | translate}}.</strong></p>
+
+    </div>
+  </mat-card>
+</div>

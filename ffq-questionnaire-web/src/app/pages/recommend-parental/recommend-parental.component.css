@@ -1,0 +1,44 @@
+.rec-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 200px;
+    
+}
+
+.image {
+    /* change image height here */
+    max-height: 150px;
+    width: auto;
+    padding: 10px;
+}
+
+.item-container {
+    flex-direction: row;
+    text-align: center;
+}
+
+mat-card {
+    width: 60%;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+}
+
+mat-radio-button {
+    margin: 10px;
+}
+
+.submit-btn {
+  align-content: center;
+  margin-right: 20px;
+
+  font-size: larger;
+}
+
+.instructions {
+  font-size: larger;
+}

@@ -1,0 +1,22 @@
+<researchparental-header></researchparental-header>
+
+<div class="research-quest-id-container">
+  <mat-card  class="research-quest-id-card">
+        <div style="color:red;">
+          <h2>
+            {{ 'Welcome to Baby Feed!' | translate }}
+          </h2>
+          <br>
+        </div>
+        <div>
+          <button mat-raised-button
+                  (click)="startQuestionnaireResearch()"
+                  color="primary">
+            {{'Begin Questionnaire' | translate}}
+          </button>
+        </div>
+        <div class="language-padding">
+          <a (click)="toggleLanguage()" mat-raised-button class="language-button">{{'For English' | translate}}</a>
+        </div>
+  </mat-card>
+</div>

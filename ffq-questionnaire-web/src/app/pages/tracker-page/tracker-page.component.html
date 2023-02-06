@@ -1,0 +1,173 @@
+<app-parental-header></app-parental-header>
+
+<div class="tracker-container">
+  <!-- header message -->
+
+  <div class="trackeritem-container">
+    <mat-card class="tracker-card" *ngIf="showItems">
+      <div>
+        <h2 matDialogTitle class="Insta">
+          {{ "NUTRITION.INSTRUCTIONS" | translate }}
+        </h2>
+      </div>
+      <ul>
+        <li class="GoalList">
+          {{
+            "If your baby consumed more than the recommended amount select the up arrow"
+              | translate
+          }}
+        </li>
+        <li class="GoalList">
+          {{
+            "If your baby consumed the recommended amount select the equal sign"
+              | translate
+          }}
+        </li>
+        <li class="GoalList">
+          {{
+            "If your baby consumed less than the recommended amount select the down arrow"
+              | translate
+          }}
+        </li>
+        <li class="GoalList">
+          {{ "Click the submit button when finished" | translate }}
+        </li>
+      </ul>
+    </mat-card>
+  </div>
+
+  <!-- age form -->
+  <div *ngIf="showAgeForm" class="qb-container">
+    <mat-card class="qb-card">
+      <div style="color: red" class="home-greeting">
+        <h2>
+          {{ "Welcome to Baby Feed!" | translate }}
+        </h2>
+
+        <br />
+      </div>
+      <mat-label style="text-align: center" class="qb-row-item"
+        ><strong>{{
+          "Type your baby's age and click enter age." | translate
+        }}</strong></mat-label
+      >
+      <div style="text-align: center" class="qb-row-item">
+        <strong>{{
+          "Please complete the tracking once a week" | translate
+        }}</strong>
+      </div>
+      <mat-label style="text-align: center" class="qb-row-item"
+        ><strong>{{ "Infant age" | translate }}</strong></mat-label
+      >
+      <mat-form-field>
+        <input
+          #ageValue
+          matInput
+          value="infantage"
+          class="qb-row-item"
+          type="number"
+          min="1"
+          max="24"
+          placeholder=" {{ 'In months' | translate }}"
+          autocomplete="off"
+          required
+          translate
+        />
+      </mat-form-field>
+      <mat-card-actions>
+        <div class="qb-button">
+          <button
+            mat-raised-button
+            (click)="enterAge(ageValue.value)"
+            color="primary"
+          >
+            {{ "Enter Age" | translate }}
+          </button>
+        </div>
+        <div class="lang-button-div">
+          <button
+            (click)="toggleLanguage()"
+            mat-raised-button
+            class="lang-button"
+          >
+            {{ "For English" | translate }}
+          </button>
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <form
+    *ngIf="showItems"
+    [formGroup]="trackerForm"
+    (ngSubmit)="submitTracker()"
+  >
+    <!-- tracker cards -->
+    <span formArrayName="responses">
+      <div
+        class="trackeritem-container"
+        *ngFor="let result of foodResults; let $index = index"
+        [formGroupName]="$index"
+      >
+        <mat-card class="tracker-card">
+          <div style="float: left">
+            <label
+              ><strong>{{
+                "result." + $index + ".foodItemGroupName" | translate
+              }}</strong></label
+            ><br />
+            <label *ngIf="showBracketFirst">{{
+              "result." + $index + ".firstBracketIntake" | translate
+            }}</label>
+            <label *ngIf="showBracketSecond">{{
+              "result." + $index + ".secondBracketIntake" | translate
+            }}</label>
+            <label *ngIf="showBracketThird">{{
+              "result." + $index + ".thirdBracketIntake" | translate
+            }}</label>
+          </div>
+          <!--
+          <div class="tracker-buttons">
+            <mat-button-toggle-group formControlName="answer">
+              <mat-button-toggle value="Above"><mat-icon svgIcon="up_arrow"></mat-icon></mat-button-toggle>
+              <mat-button-toggle value="Adequate"><mat-icon svgIcon="equal_sign"></mat-icon></mat-button-toggle>
+              <mat-button-toggle value="Below"><mat-icon svgIcon="down_arrow"></mat-icon></mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+-->
+
+          <div class="tracker-buttons">
+            <mat-button-toggle-group formControlName="answer">
+              <mat-button-toggle
+                value="Above"
+                class="recommended-amount"
+                title="{{ 'Consumed More' | translate}}"
+              >
+                <mat-icon svgIcon="up_arrow"></mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle
+                value="Adequate"
+                class="recommended-amount"
+                title="{{ 'Equal Amount' | translate}}"
+              >
+                <mat-icon svgIcon="equal_sign"></mat-icon>
+              </mat-button-toggle>
+              <mat-button-toggle
+                value="Below"
+                class="recommended-amount"
+                title="{{ 'Consumed Less' | translate}}"
+              >
+                <mat-icon svgIcon="down_arrow"></mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </mat-card>
+      </div>
+    </span>
+    <!-- submit button -->
+    <div class="footer">
+      <button mat-raised-button color="primary">
+        {{ "Submit" | translate }}
+      </button>
+    </div>
+  </form>
+</div>

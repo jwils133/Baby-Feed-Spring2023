@@ -1,0 +1,15 @@
+[
+  {
+    "userId": "1",
+    "username": "FIU_Reresearcher1",
+    "userpassword": "researcher1",
+    "usertype": "researcher",
+    "firstname": "Cristina",
+    "lastname": "Palacio",
+    "assignedResearchInstitutionId":"1",
+    "limitNumberOfParticipants":1000,
+    "isactive": true,
+    "prefix": "FIU"
+   
+  }
+]

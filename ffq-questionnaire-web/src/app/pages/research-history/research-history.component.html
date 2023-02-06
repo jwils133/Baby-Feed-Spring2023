@@ -1,0 +1,127 @@
+<research-header></research-header>
+<div class="container_page">
+    <div class="container" *ngIf="results.length === 0">
+        <mat-card class="quest-id-card">
+            <h2 matDialogTitle>{{MESSAGE}}</h2>
+        </mat-card>
+    </div>
+    <div class="container" *ngIf="results.length > 0">
+        <button type="button" (click)="export()" class="btn btn-danger">
+            Export Data
+        </button>
+    </div>
+    <div *ngFor="let result of results; let i = index">
+        <div class="container">
+            <mat-card class="quest-id-card">
+                <mat-card-content>
+                    <!--Labels for questionnaire results-->
+                  <div class="row">
+                    <div class="col-2" style="text-align:center">
+                      <label><strong>Date</strong></label>
+                    </div>
+                    <div class="col-2" style="text-align:center">
+                      <label><strong>Name</strong></label>
+                    </div>
+                    <div class="col-2" style="text-align:center">
+                      <label><strong>Questionnaire ID</strong></label>
+                    </div>
+                    <div class="col-2" style="text-align:center">
+                      <label><strong>Infant age (In months)</strong></label>
+                    </div>
+                    <div class="col-2" style="text-align:center">
+                      <label><strong>Infant gender</strong></label>
+                    </div>
+                  </div>
+
+                    <!--Questionnaire results-->
+                    <div class="row">
+                      <div class="col-2" style="text-align:center">
+                        {{result.date}}
+                      </div>
+                      <div class="col-2" style="text-align:center">
+                        {{result.patientName}}
+                      </div>
+                      <div class="col-2" style="text-align:center">
+                        {{result.questionnaireId}}
+                      </div>
+                      <div class="col-2" style="text-align:center">
+                        {{result.ageInMonths}}
+                      </div>
+                      <div class="col-2" style="text-align:center">
+                        {{result.gender}}
+                      </div>
+                      <div class="col-2">
+                        <button class="btn btn-info" (click)="toggle(i)" id="bt">
+                          {{buttonName}}
+                        </button>
+                      </div>
+
+
+                    </div>
+
+                    <ng-container *ngIf="result.show">
+                        <label class="mt-3 mb-0 ml-3"><strong>User choices</strong> </label>
+                        <hr />
+                        <div class="row mt-3">
+                            <div class="col-4" style="text-align:center">
+                                <label><strong>Name</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Frequency</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Frequency Type</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Servings</strong></label>
+                            </div>
+                            <div class="col-2" style="text-align:center">
+                                <label><strong>Sugar(g)</strong></label>
+                            </div>
+                        </div>
+                        <div *ngFor="let choice of result.userChoices">
+                            <div class="row" style="text-align:center">
+                                <div class="col-4">
+                                    {{choice.name}}
+                                </div>
+                                <div class="col-2">
+                                    {{choice.frequency}}
+                                </div>
+                                <div class="col-2">
+                                    {{choice.frequencyType}}
+                                </div>
+                                <div class="col-2">
+                                    {{choice.serving}}
+                                </div>
+                                <div class="col-2">
+                                    {{choice.sugar}}
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+                        <!-- Calculations breakdown -->
+                        <div class="tableDiv">
+                            <h6>Nutrient Breakdown</h6>
+                            <div class="row">
+                                <table class="col-12">
+                                    <tr>
+                                        <th>Nutrient</th>
+                                        <th>Daily Average</th>
+                                    </tr>
+                                    <tr *ngFor="let item of result.dailyAverages | keyvalue : returnZero; let i=index">
+                                        <td>{{item.key}}</td>
+                                        <td>{{item.value | resultRound}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <food-items-modal id={{result.questionnaireId}}></food-items-modal>
+
+                    </ng-container>
+
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

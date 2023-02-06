@@ -1,0 +1,59 @@
+[
+    {
+        "userId": "1",
+        "username": "Borinquen_Clinician1",
+        "userpassword": "clinician1",
+        "usertype": "clinician",
+        "abbreviation": "Dr",
+        "firstname": "Mary",
+        "lastname": "Adams",
+        "assignedclinic": 1,
+        "previousclinics": [1],
+        "isactive": true,
+        "parentLimitForClinician": 30,
+        "prefix": "Borinquen"
+    },
+    {
+        "userId": "2",
+        "username": "FIU_Clinician1",
+        "userpassword": "clinician1",
+        "usertype": "clinician",
+        "abbreviation": "Nurse",
+        "firstname": "John",
+        "lastname": "Smith",
+        "assignedclinic": 2,
+        "previousclinics": [1, 2],
+        "isactive": true,
+        "parentLimitForClinician": 35,
+        "prefix": "FIU"
+    },
+    {
+        "userId": "3",
+        "username": "UCF_Clinician1",
+        "userpassword": "clinician1",
+        "usertype": "clinician",
+        "abbreviation": "Dr",
+        "firstname": "Giraldo",
+        "lastname": "Gabriel",
+        "assignedclinic": 2,
+        "previousclinics": [2],
+        "isactive": true,
+        "parentLimitForClinician": 22,
+        "prefix": "UCF"
+    },
+    {
+        "userId": "4",
+        "username": "UF_Clinician1",
+        "userpassword": "clinician1",
+        "usertype": "clinician",
+        "abbreviation": "Nurse",
+        "firstname": "Tom",
+        "lastname": "Hanks",
+        "assignedclinic": 1,
+        "previousclinics": [1],
+        "isactive": true,
+        "parentLimitForClinician": 26,
+        "prefix": "UF"
+    }
+
+]

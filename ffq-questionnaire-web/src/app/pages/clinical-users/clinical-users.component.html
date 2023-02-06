@@ -1,0 +1,56 @@
+<clinical-header></clinical-header>
+
+<div class="container_page">
+    <div class="container mt-3" align="right">
+        <button routerLink='/admin/user/new' type="submit" mat-raised-button>New User(s)...</button>
+    </div>
+    <div class="container mt-3">
+        <span>{{ ffqclinicianList.length + ffqparentList.length }} user(s)</span>
+
+        <div>
+            <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text" class="form-control"
+                name="search" [(ngModel)]="search"/>
+            <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+            <mat-checkbox (change)="toggleParents()" [checked]="true" color="primary"> Show Parents </mat-checkbox>
+            <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+            <mat-checkbox (change)="toggleClinicians()" [checked]="true" color="primary"> Show Clinicians </mat-checkbox>
+            <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+            <mat-checkbox (change)="toggleAdmins()" [checked]="true" color="primary"> Show Admins </mat-checkbox>
+            <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+            <mat-form-field>
+                <mat-label appearance="fill">Filter by Clinic...</mat-label>
+                <mat-select matNativeControl multiple>
+                  <mat-option *ngFor="let c of ffqclinicList" [value]="c.clinicname" (click)="filterByClinic(c.clinicname)">{{ c.clinicname }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <table class="table table-bordered table-inverse">
+            <tr>
+                <th width="25%"> Username </th>
+                <th width="15%"> Account Type </th>
+                <th width="60%"> Clinic </th>
+
+            </tr>
+            <tr *ngFor="let u of ffqclinicianList | searchFilter: search; index as i" [hidden]="!showClinicians || (filtered && filtered_clinics.indexOf(clinicNames[u.assignedclinic]) === -1)">
+                <td><a [routerLink]="['/admin/user/' + usertype.clinician, u.userId]"> {{ u.username }} </a></td>
+                <td> Clinician </td>
+                <td> {{ clinicNames[u.assignedclinic] }} </td>
+
+            </tr>
+            <tr *ngFor="let u of ffqparentList | searchFilter: search; index as i" [hidden]="!showParents || (filtered && filtered_clinics.indexOf(clinicNames[u.assignedclinic]) === -1)">
+                <td><a [routerLink]="['/admin/user/' + usertype.parent, u.userId]"> {{ u.username }} </a></td>
+                <td> Parent </td>
+                <td> {{ clinicNames[u.assignedclinic] }} </td>
+
+            </tr>
+            <tr *ngFor="let u of ffqadminList | searchFilter: search; index as i" [hidden]="!showAdmins">
+                <td> {{ u.username }} </td>
+                <td> Admin </td>
+                <td> <!--{{ clinicNames[u.assignedclinic] }}--> </td>
+
+            </tr>
+        </table>
+
+    </div>
+</div>

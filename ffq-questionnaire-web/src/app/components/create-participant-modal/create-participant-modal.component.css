@@ -1,0 +1,20 @@
+.dialog-button {
+  width: 100px;
+}
+
+.modal-footer {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.modal-header {
+  padding: 20px;
+}
+
+.modal-container {
+  padding: 30px;
+}
+
+div {
+  padding: 5px;
+}

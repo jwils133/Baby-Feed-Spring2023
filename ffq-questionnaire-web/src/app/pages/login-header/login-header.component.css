@@ -1,0 +1,64 @@
+h2 {
+    text-align: center;
+    color: white;
+  }
+    
+  a {
+    text-decoration: none;
+  }
+
+.header {
+  background-color: #AFEEEE;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  z-index: 999;
+}
+    
+  .links{
+    padding-top: 22px;
+  }
+    
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial;
+  }
+
+.tab {
+  margin-top: 10px;
+  background-color: #00CED1;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  font-size: 17px;
+  height: 45.5px;
+  width: 100%;
+  text-align: center;
+}
+    
+  .active{
+    background-color: #2C387E;
+    color: white;
+  }
+  .tab-link:hover {
+    background-color: #B2B9E1;
+    color: #2C387E;
+    font-weight: bold;
+  }
+    
+    /* Style the tab content (and add height:100% for full page content) */
+  .tabcontent {
+    color: white;
+    display: none;
+    padding: 100px 20px;
+    height: 100%;
+   }
+  /*.img{
+    float: center;
+    max-height: 100%;
+    max-width: 100%;
+   }*/
+    

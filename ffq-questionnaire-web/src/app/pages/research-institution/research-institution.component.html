@@ -1,0 +1,43 @@
+<admin-header></admin-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page">
+      <div class="container" style="margin-top: 15px;"><a routerLink="/admin/research/users"><span
+            class="fa fa-chevron-circle-left"></span> Back to Research/Users </a></div>
+
+       <!-- Add Research Institution starts here -->
+
+      <div class="container mt-3">
+        <div align="right">
+          <button type="submit" class="btn btn-primary col-3 margin" (click)="addResearchInstitution(myForm)"
+            [disabled]="!myForm.form.valid"> Add Research Institution </button>
+        </div>
+
+        <div class="container frame-fooditem">
+            <h6> New Research Institution </h6><br>
+
+          <div>
+            <div class="form-group col-12">
+                <label for="institutionName" style="font-weight: bold"> Research Institution Name </label>
+                <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+                <input placeholder="Name of Research Institution" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                    class="form-control" id="institutionName" name="institutionName" [(ngModel)]="institutionName" required/>
+                <br>
+                <label for="location" style="font-weight: bold"> Address </label>
+                <input placeholder="Address" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                    class="form-control" id="location" name="location" [(ngModel)]="location"/>
+              <br>
+              <label for="participantsLimit" style="font-weight: bold"> Number of Participants Limit </label>
+              <label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+              <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"
+                     class="form-control" id="participantsLimit" name="participantsLimit" [(ngModel)]="participantsLimit" min="1" required/>
+
+            </div>
+          </div>
+      <!-- Add Research Institution ends here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

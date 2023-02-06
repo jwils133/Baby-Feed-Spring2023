@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "4e516e0f-7ee4-41cd-8af5-283e40df7a7e",
+		"name": "FFQR - Food Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Food Items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9090/ffq/fooditems",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"ffq",
+						"fooditems"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

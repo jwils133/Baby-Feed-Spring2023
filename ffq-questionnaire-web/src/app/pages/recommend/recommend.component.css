@@ -1,0 +1,88 @@
+h2 {
+    text-align: center;
+    color: aliceblue;
+  }
+  
+  .container_page{
+    padding-top: 200px;
+    margin-bottom: 50px;
+  }
+  
+  .header1{
+    background-color: #3f51b5;
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+    position: fixed;
+  }
+  
+  a:hover {
+    color: blue;
+    cursor: pointer;
+  }
+
+.tooltip {
+    display: inline;
+    position: relative;
+}
+.tooltip:hover {
+    text-decoration: none;
+}
+.tooltip:hover:after{
+    background: #111;
+    background: rgba(0,0,0,.8);
+    border-radius: 5px;
+    bottom: 18px;
+    color: #fff;
+    content: attr(title);
+    display: block;
+    left: 50%;
+    padding: 5px 15px;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 98;
+}
+.tooltip:hover:before{
+    border: solid;
+    border-color: #111 transparent;
+    border-width: 6px 6px 0 6px;
+    bottom: 12px;
+    content: "";
+    display: block;
+    left: 75%;
+    position: absolute;
+    z-index: 99;
+}
+.image {
+  /* change image height here */
+  max-height: 150px;
+  width: auto;
+  padding: 10px;
+}
+
+.item-container {
+  display: flex;
+  flex-direction: row;
+}
+
+mat-card {
+  width: 60%;
+  display: inline-flex;
+  justify-content: center;
+  align-content: center;
+  padding: 30px;
+  margin: 10px;
+}
+
+.rec-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 160px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: row
+}
+  

@@ -1,0 +1,96 @@
+<admin-header></admin-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" *ngIf="dataLoaded">
+      <div class="container" style="margin-top: 15px;"><a routerLink="/admin/users"><span
+        class="fa fa-chevron-circle-left"></span> Back to Clinics/Users </a></div>
+
+      <!-- Update Clinic starts here -->
+
+      <div *ngIf="isUpdate && clinicAttributes" class="container mt-3">
+        <div align="right">
+          <button mat-raised-button class="delete" style="margin-right: 20px;" (click)="deleteClinic()"> Delete </button>
+          <button mat-raised-button class="update" (click)="updateClinic()"
+                  [disabled]="!myForm.form.valid"> Update Clinic </button>
+        </div>
+        <div class="container frame-fooditem">
+          <h6> Update Clinic </h6>
+          <div class="form-group col-12">
+            <br>
+            <label style="font-weight: bold"> Clinic ID </label>
+            <input style="border-color: gray; border-width: 0.05cm" type="text"
+                   class="form-control" readonly name="clinicId" [(ngModel)]="clinicAttributes.clinicId">
+            <br>
+            <label style="font-weight: bold"> Name </label><label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+            <input placeholder="Name of Clinic" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                   class="form-control" name="clinicname" [(ngModel)]="clinicAttributes.clinicname" required/>
+            <br>
+            <label style="font-weight: bold"> Location </label>
+            <input placeholder="Address" width="25" style="border-width: 0.05cm" type="text"
+                   class="form-control" name="address" [(ngModel)]="clinicAttributes.address"/>
+
+            <!--            commentin out clinician limit/ parent limit     -->
+            <!--            <br>-->
+            <!--            <label for="cliniciansLimit" style="font-weight: bold"> Number of Clinicians Limit </label>-->
+            <!--            <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"-->
+            <!--                   class="form-control" id="cliniciansLimitUpdate" name="cliniciansLimitUpdate" [(ngModel)]="clinicAttributes.cliniciansLimit" required/>-->
+                        <br>
+                        <label for="parentsLimit" style="font-weight: bold"> Number of Parents Limit </label>
+                        <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"
+                               class="form-control" id="parentsLimitUpdate" name="parentsLimitUpdate" [(ngModel)]="clinicAttributes.parentsLimit" required/>
+            <br>
+<!--            <label style="font-weight: bold"> Head Clinician </label>-->
+<!--            <mat-form-field>-->
+<!--              <mat-label appearance="fill">Choose...</mat-label>-->
+<!--              <mat-select matNativeControl name="headclinician" [(ngModel)]="clinicAttributes.headclinician">-->
+<!--                <mat-option *ngFor="let u of ffqclinicianList" [value]="u.userId" [hidden]="u.assignedclinic != clinicAttributes.clinicId">{{ u.abbreviation }} {{ u.firstname }} {{ u.lastname }}</mat-option>-->
+<!--              </mat-select>-->
+<!--            </mat-form-field>-->
+
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Update Clinic ends here -->
+
+      <!-- Add Clinic starts here -->
+
+      <div *ngIf="isNew" class="container mt-3">
+        <div align="right">
+          <button type="submit" class="btn btn-primary col-3 margin" (click)="addClinic(myForm)"
+                  [disabled]="!myForm.form.valid"> Add Clinic </button>
+        </div>
+
+        <div class="container frame-fooditem">
+          <h6> New Clinic </h6>
+
+          <div>
+            <div class="form-group col-12">
+              <label for="name_of_clinic" style="font-weight: bold"> Name </label><label style="font-style: italic; font-size: small; margin-left: 10px"> *required </label>
+              <input placeholder="Name of Clinic" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                     class="form-control" id="name_of_clinic" name="name_of_clinic" [(ngModel)]="name_of_clinic" required/>
+              <br>
+              <label for="location" style="font-weight: bold"> Location </label>
+              <input placeholder="Address" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                     class="form-control" id="location" name="location" [(ngModel)]="location"/>
+
+              <!--              commenting out clinician limit parent limit if its needed in future      -->
+<!--                              <br>-->
+<!--                              <label for="cliniciansLimit" style="font-weight: bold" > Number of Clinicians Limit </label>-->
+<!--                              <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"-->
+<!--                                     class="form-control" id="cliniciansLimit" name="usersLimit" [(ngModel)]="cliniciansLimit" min="1"/>-->
+                              <br>
+                              <label for="parentsLimit" style="font-weight: bold"> Number of Parents Limit </label>
+                              <input placeholder="100" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"
+                                     class="form-control" id="parentsLimit" name="parentsLimit" [(ngModel)]="parentsLimit" min="1" required/>
+            </div>
+          </div>
+          <!-- Add Clinic ends here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

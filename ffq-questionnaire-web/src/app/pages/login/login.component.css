@@ -1,0 +1,50 @@
+h2 {
+    text-align: center;
+    color: aliceblue;
+  }
+
+  .card{
+    max-width: 400px;
+  width: 75%;
+  margin: 10px auto;
+
+  }
+
+  .container_page{
+    padding-top: 200px;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  .mat-raised-button{
+    background-color: #6573C3;
+    color: white;
+  }
+
+  .header1{
+    background-color: #3f51b5;
+    width: 100%;
+    height: 100px;
+    padding-top: 20px;
+    position: fixed;
+  }
+
+
+  a:hover {
+    color: blue;
+    cursor: pointer;
+  }
+
+.button1 {
+  margin-top: 25px;
+  background-color: #35a2a6;
+  color: white;
+}
+
+.need-help {
+  position: page;
+  margin-top: 30px;
+  background-color: white;
+  color: black;
+
+}

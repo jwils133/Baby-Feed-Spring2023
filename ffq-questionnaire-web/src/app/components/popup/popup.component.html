@@ -1,0 +1,26 @@
+<!-- Delete Pop Up confirmation added by Daykel Muro 10/4/2019 -->
+
+<div class="modal-header">
+    <h4 class="modal-title">Delete Food Item</h4>
+    <button type="button" class="close" aria-label="Close" (click)="onDismiss('Cross click')">
+        <span aria-hidden="true"><i class="fa fa-times" aria-hidden="true"></i></span>
+    </button>
+</div>
+<div class="modal-body" [hidden]="!hidden">
+
+  <div>You will need to press Delete on next screen to confirm deletion</div>
+  <div>Once deleted this cannot be undone</div>
+  <div>Press Ok to continue</div>
+</div>
+<div class="modal-footer" [hidden]="!hidden">
+  <button class="btn btn-primary" type="button" (click)="onDismiss('Close click')">Cancel</button>
+  <button class="btn btn-danger" type="button" (click)="hidden = false">Ok</button>
+</div>
+<div class="modal-body" [hidden]="hidden">
+    Are you sure you want to delete this food item?
+</div>
+<div class="modal-footer" [hidden]="hidden">
+    <button class="btn btn-primary" type="button" (click)="onDismiss('Close click')">Cancel</button>
+    <button class="btn btn-danger" type="button" (click)="onClose()">Delete</button>
+</div>
+

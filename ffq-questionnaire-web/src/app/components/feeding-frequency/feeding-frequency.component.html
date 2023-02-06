@@ -1,0 +1,42 @@
+<mat-dialog-content
+  class="mat-typography"
+  style="margin-top: 10px; margin-bottom: 10px"
+>
+  <mat-label class="table-header">
+    {{ "Feeding Frequency Table" | translate }}
+  </mat-label>
+
+  <!--Section for creating the-->
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Frequency Column -->
+    <ng-container matColumnDef="frequency">
+      <th mat-header-cell *matHeaderCellDef>{{ "Frequency" | translate }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.frequency | translate }}
+      </td>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>{{ "Quantity" | translate }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.quantity | translate }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button
+    mat-button
+    mat-dialog-close
+    style="background-color: red; color: white"
+  >
+    Close
+  </button>
+</mat-dialog-actions>

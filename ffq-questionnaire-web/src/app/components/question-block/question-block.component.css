@@ -1,0 +1,254 @@
+.qb-container {
+  display: flex;
+  justify-content: center;
+}
+
+.qb-card {
+  width: 60%;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.qb-row-item {
+  width: 100%;
+}
+
+.qb-row-item-size {
+  width: fit-content;
+}
+
+.padding {
+  padding-left: 20%;
+}
+
+.qb-radio-group {
+  padding-top: 10px;
+  width: 100%;
+  display: block;
+}
+
+.qb-row {
+  padding-top: 10px;
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.networks {
+  float: right;
+  margin-top: 1%;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.networks:hover .block-deactivator {
+  background: white;
+  cursor: pointer;
+}
+
+#deactivating.block-deactivator:hover {
+  border-color: red;
+}
+
+.networks:hover .deactivating-play {
+  color: red;
+}
+
+.networks:hover .block-activator {
+  background: white;
+  cursor: pointer;
+}
+
+#reactivating.block-activator:hover {
+  border-color: green;
+}
+
+.networks:hover .reactivating-play {
+  color: green;
+}
+
+.block-activator {
+  margin-top: 5%;
+  text-align: center;
+  display: table;
+  position: relative;
+  background-color: rgba(128, 128, 128, 0);
+  border: 2px solid black;
+  border-radius: 4em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.block-deactivator {
+  margin-top: 5%;
+  text-align: center;
+  display: table;
+  position: relative;
+  background-color: rgba(128, 128, 128,0);
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 4em;
+  transition: background-color 0.2s ease-in-out;
+  padding: 5px;
+}
+
+.serving-size-button {
+  color: white;
+  background-color: black;
+}
+
+.size-pictures {
+  width: 350px;
+}
+
+.image-locations {
+  margin-left: 69%;
+  margin-top: -8%;
+}
+
+.sizing-image {
+  width: 100px;
+  height: 100px;
+  border: ridge #535353;
+}
+
+.photo {
+  transform: translate(-50%, 0%);
+  display: block;
+}
+
+.photo img {
+  width: 200px;
+  height: 200px;
+  display: block;
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  margin-top: -10px;
+}
+
+.photo:hover img {
+  box-shadow: 1px 1px 10px 10px rgba(24, 119, 242, 0.1);
+}
+
+.photo .glow-wrap {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  margin-top: -10px;
+}
+
+.photo .glow {
+  display: block;
+  position: absolute;
+  width: 40%;
+  height: 200%;
+  background: rgba(24, 118, 242, 0.2);
+  top: 0;
+  filter: blur(5px);
+  transform: rotate(45deg) translate(-450%, 0);
+  transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.photo:hover .glow {
+  transform: rotate(45deg) translate(450%, 0);
+  transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.photo:hover img,
+.photo:hover .glow-wrap {
+  margin-top: 0;
+  border: 3px outset rgb(24, 119, 242);
+}
+
+.wrapper {
+  list-style: none;
+  margin-left: 64%;
+  margin-top: 0%;
+}
+
+.wrapper .icon {
+  position: relative;
+  background: #ffffff;
+  border-radius: 0;
+  padding: 15px;
+  margin: 10px;
+  width: 100px;
+  height: 125px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 14px;
+  background: #ffffff;
+  color: #ffffff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  right:auto;
+  width: max-content;
+}
+
+.wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.wrapper .icon:hover span,
+.wrapper .icon:hover .tooltip {
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .facebook:hover,
+.wrapper .facebook:hover .tooltip,
+.wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+  color: #ffffff;
+}
+
+mat-error {
+  font-size: x-large;
+  background-color: yellow;
+}
+
+@media (max-width: 800px) {
+  .qb-card {
+    width: 100%;
+  }
+
+  .qb-card {
+    font-size: smaller;
+  }
+
+  .qb-radio-group {
+    padding-top: 10px;
+    width: 100%;
+  }
+}

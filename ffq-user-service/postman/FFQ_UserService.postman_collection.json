@@ -1,0 +1,32 @@
+{
+	"info": {
+		"_postman_id": "4e516e0f-7ee4-41cd-8af5-283e40df7a7e",
+		"name": "FFQR - User Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9070/ffq/users",
+					"host": [
+						"localhost"
+					],
+					"port": "9070",
+					"path": [
+						"ffq",
+						"users"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,346 @@
+<div id="qb-container">
+  <mat-card class="qb-card">
+    <mat-card-title> {{ "Growth Charts" | translate }} </mat-card-title>
+    <mat-card-actions>
+      <button
+        mat-icon-button
+        class="help-button"
+        cdkFocusInitial
+        style="
+          float: right;
+          border-radius: 50%;
+          border: 1px solid #6200ee;
+          color: #6200ee;
+        "
+        (click)="onHelp()"
+      >
+        {{ "Info" | translate }}
+      </button>
+
+      <button
+        mat-icon-button
+        class="lang-button"
+        cdkFocusInitial
+        style="
+          float: right;
+          border: 1px solid #6200ee;
+          margin-right: 4px;
+          color: #6200ee;
+        "
+        (click)="onLangChange()"
+      >
+        {{ "En" | translate }}
+      </button>
+      <button
+        mat-icon-button
+        class="download-button"
+        cdkFocusInitial
+        style="
+          float: right;
+          border: 1px solid #6200ee;
+          margin-right: 4px;
+          color: #6200ee;
+        "
+        (click)="onDownloadSave()"
+      >
+        <mat-icon>download</mat-icon>
+      </button>
+
+      <br />
+      <br />
+      <mat-accordion multi>
+        <mat-expansion-panel #childPersonalInformationPanel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{
+              "Child Personal Information" | translate
+            }}</mat-panel-title>
+            <!--
+               <mat-panel-description
+              >{{ "Name and gender of the child" | translate }}.
+            </mat-panel-description>
+            -->
+          </mat-expansion-panel-header>
+
+          <p>{{ "Please, provide all the information asked" | translate }}.</p>
+
+          <form
+            id="child-personal-information-form"
+            #childPersonalInformationForm="ngForm"
+            ngNativeValidate
+            (ngSubmit)="onSubmitChildPersonalInformationForm()"
+          >
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ "Children" | translate }}</mat-label>
+              <mat-select
+                name="children"
+                #childrenControl="ngModel"
+                disableRipple
+                required
+                [(ngModel)]="currentChildName"
+                (selectionChange)="onChildrenChange()"
+              >
+                <mat-option
+                  *ngFor="let name of currentParent.childrennames"
+                  [value]="name"
+                  >{{ name }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{ "Gender" | translate }}</mat-label>
+              <mat-select
+                name="gender"
+                #genderControl="ngModel"
+                disableRipple
+                required
+                [(ngModel)]="currentChildGender"
+                (selectionChange)="onTypeChartChange(chosenChartOption)"
+              >
+                <mat-option value="Male">{{ "Male" | translate }}</mat-option>
+                <mat-option value="Female">{{
+                  "Female" | translate
+                }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </form>
+        </mat-expansion-panel>
+        <mat-expansion-panel #childBodyMeasurementsPanel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{
+              "Child Body Measurements" | translate
+            }}</mat-panel-title>
+            <!--<mat-panel-description
+              >{{ "Age, weight and height of the child" | translate }}.
+            </mat-panel-description>-->
+          </mat-expansion-panel-header>
+          <p>{{ "Please, provide all the information asked" | translate }}.</p>
+          <p>
+            {{ "Weight units" | translate }}:
+            <mat-button-toggle-group
+              #weightUnitOptionsGroup="matButtonToggleGroup"
+              name="weightUnitOptionsControl"
+              [(ngModel)]="weightUnitOptions"
+              [value]="weightUnitOptions"
+              (change)="onUnitsChange(chosenChartOption)"
+            >
+              <mat-button-toggle value="kg">{{
+                "Kilograms" | translate
+              }}</mat-button-toggle>
+              <!----
+              <mat-button-toggle value="lb">{{
+                "Pounds" | translate
+              }}</mat-button-toggle>
+              ---->
+            </mat-button-toggle-group>
+          </p>
+          <p>
+            {{ "Length units" | translate }}:
+            <mat-button-toggle-group
+              #heightUnitOptionsGroup="matButtonToggleGroup"
+              name="heightUnitOptionsControl"
+              [(ngModel)]="heightUnitOptions"
+              [value]="heightUnitOptions"
+              (change)="onUnitsChange(chosenChartOption)"
+            >
+              <mat-button-toggle value="cm">{{
+                "Centimeters" | translate
+              }}</mat-button-toggle>
+              <!----
+              <mat-button-toggle value="in">{{
+                "Inches" | translate
+              }}</mat-button-toggle>
+              ---->
+            </mat-button-toggle-group>
+          </p>
+
+          <form
+            id="child-body-measurements-form"
+            #childBodyMeasurementsForm="ngForm"
+            ngNativeValidate
+            (ngSubmit)="onAddingData(childBodyMeasurementsForm)"
+          >
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>{{
+                "Child age in Months (mos)" | translate
+              }}</mat-label>
+              <input
+                name="ageControl"
+                #ageControl="ngModel"
+                [(ngModel)]="currentChildAge"
+                required
+                matInput
+                type="number"
+                placeholder="Ex. 2"
+                [min]="MIN_AGE_MONTHS"
+                [max]="MAX_AGE_MONTHS"
+              />
+              <ng-container *ngIf="ageControl.invalid && ageControl.touched">
+                <mat-label *ngIf="ageControl.errors.required">
+                  {{ "You must enter an age in month" | translate }}.</mat-label
+                >
+              </ng-container>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label
+                >{{ "Weight in" | translate }} ({{
+                  weightUnitOptions
+                }})</mat-label
+              >
+              <input
+                name="weightControl"
+                #weightControl="ngModel"
+                [(ngModel)]="currentChildWeight"
+                required
+                matInput
+                type="number"
+                step="0.1"
+                placeholder="Ex. 20"
+                [min]="MIN_WEIGHT"
+                [max]="MAX_WEIGHT"
+              />
+              <ng-container
+                *ngIf="weightControl.invalid && weightControl.touched"
+              >
+                <mat-label *ngIf="weightControl.errors.required">
+                  {{
+                    "You must enter a weight in kilograms" | translate
+                  }}.</mat-label
+                >
+              </ng-container>
+            </mat-form-field>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label
+                >{{ "Length in" | translate }} ({{
+                  heightUnitOptions
+                }})</mat-label
+              >
+              <input
+                name="heightControl"
+                #heightControl="ngModel"
+                [(ngModel)]="currentChildHeight"
+                required
+                matInput
+                type="number"
+                step="0.1"
+                placeholder="Ex. 60.5"
+                [min]="MIN_HEIGHT"
+                [max]="MAX_HEIGHT"
+              />
+              <ng-container
+                *ngIf="heightControl.invalid && heightControl.touched"
+              >
+                <mat-label *ngIf="heightControl.errors.required">
+                  {{
+                    "You must enter a length in centimeters" | translate
+                  }}.</mat-label
+                >
+              </ng-container>
+            </mat-form-field>
+            <button
+              mat-stroked-button
+              color="primary"
+              name="addControl"
+              type="submit"
+              [disabled]="childBodyMeasurementsForm.invalid"
+            >
+              {{ "Add" | translate }}
+            </button>
+          </form>
+          <button
+            mat-stroked-button
+            color="primary"
+            name="saveControl"
+            [disabled]="[dataWasAdded]"
+            (click)="onSubmitChildBodyMeasurementsForm()"
+          >
+            {{ "Save" | translate }}
+          </button>
+        </mat-expansion-panel>
+        <mat-expansion-panel #chartOptionsPanel hideToggle>
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ "Chart Options" | translate }}</mat-panel-title>
+            <!--<mat-panel-description
+              >{{
+                "BMI, Height - Age, Weight - Age, and Weight - Height charts"
+                  | translate
+              }}.
+            </mat-panel-description>-->
+          </mat-expansion-panel-header>
+          <p>{{ "Please select a chart option" | translate }}.</p>
+          <form>
+            <mat-button-toggle-group
+              id="chart-options"
+              #chartOptionsGroup="matButtonToggleGroup"
+              name="chartOptionsControl"
+              [disabled]="childPersonalInformationForm.invalid"
+              [(ngModel)]="chosenChartOption"
+              (change)="onTypeChartChange($event.value)"
+            >
+            <!----  
+              <mat-button-toggle value="BMI">{{
+                "BMI" | translate
+              }}</mat-button-toggle>
+              <mat-button-toggle value="Height-Age">{{
+                "Length" | translate
+              }}</mat-button-toggle>
+              <mat-button-toggle value="Weight-Age"
+                >{{ "Weight" | translate }}
+                </mat-button-toggle>
+              </mat-button-toggle>
+              ---->
+              <mat-button-toggle value="Weight-Length"
+                >{{ "Weight-Length" | translate }}
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-card-actions>
+  </mat-card>
+</div>
+<br />
+
+<div class="spinner">
+  <mat-progress-spinner
+    *ngIf="loading"
+    style="margin: auto"
+    [color]="color"
+    [mode]="mode"
+    [value]="value"
+    >></mat-progress-spinner
+  >
+</div>
+<div class="chart-container">
+  <h3
+    *ngIf="
+      !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
+    "
+    class="chart-title"
+  >
+    {{ currentChildGender + " " + chosenChartOption + " Chart" | translate }}
+  </h3>
+  <div #containerRef id="chart-line">
+    <ngx-charts-line-chart
+      *ngIf="
+        !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
+      "
+      [view]="[containerRef.offsetWidth, 1400]"
+      [scheme]="colorScheme"
+      [legendPosition]="position"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="results"
+      [autoScale]="true"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</div>

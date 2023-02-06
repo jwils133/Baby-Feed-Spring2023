@@ -1,0 +1,13 @@
+<div class="text-card-container">
+  <mat-card  class="text-card">
+    <mat-card-content class="text-card-content">
+      <mat-label class="large-font-style">{{mainMessage}}</mat-label><br>
+      <mat-label class="large-font-style"><strong>{{instructionsTitle}}</strong></mat-label><br>
+      <ul class="large-font-style">
+        <li *ngFor="let message of bulletedMessages">
+          {{message}}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

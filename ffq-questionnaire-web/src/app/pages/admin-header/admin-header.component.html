@@ -1,0 +1,15 @@
+<title> Admin Portal </title>
+
+<div class="header">
+    <h2 matDialogTitle>Admin Portal</h2>
+    <div class="login-button">
+        <button mat-raised-button (click)="logout()">Log out <i class="fa fa-sign-out" aria-hidden="true"></i></button>
+    </div>
+    <div align="center"><i style="color: white" class="fa fa-cog fa-3x" aria-hidden="true"></i></div>
+    <a class="tab-link" routerLink="/admin/home" routerLinkActive="active">Food Items</a>   
+    <a class="tab-link" routerLink="/admin/users" routerLinkActive="active">Clinic/Users</a>  
+    <a class="tab-link" routerLink="/admin/research/users" routerLinkActive="active">Research/Users</a>
+    <a class="tab-link" routerLink="/admin/results" routerLinkActive="active">Questionnaire Results</a>
+    <a class="tab-link" routerLink="/admin/recommend" routerLinkActive="active">Recommendations</a>
+    <a class="tab-link" routerLink="/admin/tracker-history" routerLinkActive="active">Tracking History</a>
+</div>

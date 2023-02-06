@@ -1,0 +1,63 @@
+.title {
+  padding: 10px;
+  /* needed styles below */
+  display: flex;
+  justify-content: space-between;
+}
+
+#qb-container {
+  width: 100%;
+}
+
+#chart-line {
+  height: 100%;
+  width: 100%;
+  margin: auto;
+}
+
+.ngx-charts {
+  height: 100%;
+  width: 100%;
+}
+.chart-options {
+  width: 75%;
+}
+
+#child-personal-information-form {
+  min-width: 150px;
+  max-width: 160px;
+
+  padding: auto;
+}
+
+#child-body-measurements-form {
+  min-width: 20%;
+  max-width: 30%;
+}
+
+:host {
+  height: 100%;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.chart-container {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 5% auto;
+}
+
+.chart-title {
+  text-align: center;
+}
+
+.example-margin {
+  margin: 0 10px;
+}
+.spinner {
+  width: 100%;
+  margin: auto;
+}

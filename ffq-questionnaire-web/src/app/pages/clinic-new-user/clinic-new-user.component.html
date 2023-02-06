@@ -1,0 +1,64 @@
+<clinical-header></clinical-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" >
+      <div class="container" style="margin-top: 15px;"><a routerLink="/clinic/home" style="color:#7E1608">
+        <span class="fa fa-chevron-circle-left"></span> Back to Home </a>
+      </div>
+
+      <div class="container mt-3">
+        <div align="right">
+          <button type="submit" mat-raised-button (click)="addUser()" [hidden]="noMoreRoom" [disabled]="!myForm.form.valid || dissabled || intialLoad" >
+            Add User(s)
+          </button>
+        </div>
+
+        <div class="container frame-fooditem" >
+          <h6> New parent(s) will be added to:</h6>
+          <div class="form-group col-12">
+          <p style="font-weight: bold">{{ loggedInUser[0].username }}</p>
+          </div>
+          <h6>New parent(s) will be assigned to clinic:</h6>
+          <div class="form-group col-12">
+            <p style="font-weight: bold">{{ selectedClinic?.clinicname }}</p></div>
+          <hr>
+          <table class="table table-bordered table-inverse" [hidden]="!clicked">
+            <tr>
+              <th width="16.66%"> No. of Parents in Clinic </th>
+              <th width="16.66%"> Can add this many more </th>
+              <th width="16.66%"> Total Parent Limit for Clinic</th>
+            </tr>
+            <tr >
+              <td>{{ numParents }}</td>
+              <td>{{ limit - numParents}}</td>
+              <td>{{ limit }}</td>
+
+            </tr>
+          </table>
+          <div [hidden]="clicked" class="form-group col-12">
+            <label style="font-weight: bold"> Account Type </label>
+            <br>
+            <mat-radio-group  aria-label="Select an option" [(ngModel)]="userType" name="userType">
+              <mat-radio-button (click)="countParents(); clicked = true; intialLoad = false;" color="primary" >Parent</mat-radio-button>
+              <br>
+              <mat-radio-button [hidden]="true" [value]="userTypes.clinician" color="primary" >Clinician</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="optional_container" >
+            <div class="form-group col-12" [hidden]="!clicked">
+              <label style="font-weight: bold" [hidden]="noMoreRoom">Select Quantity:</label>
+              <br>
+              <input [(ngModel)]="usersQuantity" [hidden]="noMoreRoom" type="number" id="parent_quantity" name="quantity" min="1" max={{newLimit}} style="margin-bottom: 10px">
+              <h5 align="center" class="container frame-fooditem" [hidden]="!noMoreRoom"> No room to add more parents, contact admin to request increase</h5>
+              <br>
+              <hr>
+            </div>
+          </div>
+        </div>
+        <angular2csv [hidden]="!dissabled" class="btn btn-danger" [data]="data" filename="ParentsLoginInfo" [options]="options"></angular2csv>
+      </div>
+    </div>
+  </div>
+</form>
+

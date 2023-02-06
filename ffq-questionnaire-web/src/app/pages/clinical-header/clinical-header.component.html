@@ -1,0 +1,35 @@
+<title>Clinician Portal</title>
+
+<div class="header">
+  <h2 matDialogTitle>Clinician Portal</h2>
+  <div align="center">
+    <i> <img src="assets/images/logo.png" alt="" height="80" width="80" /> </i>
+  </div>
+  <div class="login-button">
+    <button mat-raised-button (click)="logout()">
+      Log out <i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div align="center"><i></i></div>
+  <a class="tab-link" routerLink="/clinic/home" routerLinkActive="active"
+    >Home</a
+  >
+  <a class="tab-link" routerLink="/clinic/results" routerLinkActive="active"
+    >Questionnaire Results</a
+  >
+  <a class="tab-link" routerLink="/clinic/recommend" routerLinkActive="active"
+    >Recommendations</a
+  >
+  <a
+    class="tab-link"
+    routerLink="/clinic/tracker-history"
+    routerLinkActive="active"
+    >Tracking History</a
+  >
+  <a
+    class="tab-link"
+    routerLink="/clinic/questionnaire"
+    routerLinkActive="active"
+    >Sample Questionnaire</a
+  >
+</div>

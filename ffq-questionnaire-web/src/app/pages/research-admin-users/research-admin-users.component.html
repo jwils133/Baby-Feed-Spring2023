@@ -1,0 +1,114 @@
+<admin-header></admin-header>
+
+<div class="container_page">
+    <div class="container mt-3" align="center">
+      <div class="row">
+        <button routerLink='/admin/research/institution/' type="submit" mat-raised-button>
+          New Research Institution...
+        </button>
+        <span style="margin: 10px"></span>
+        <button routerLink='/admin/researcher' type="submit" mat-raised-button>New Researcher User(s)...</button>
+        <span style="margin: 10px"></span>
+        <button routerLink='/admin/participant' type="submit" mat-raised-button>New Participant(s)...</button>
+      </div>
+    </div>
+
+    <div class="container mt-3">
+      <span> {{ researchInstitutionLength }} research institution(s) </span>
+      <div style="margin-bottom: 15px">
+        <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text"
+               class="form-control"
+               name="search" [(ngModel)]="searchResearchInstitution"/>
+      </div>
+
+      <table class="table table-bordered table-inverse">
+        <tr>
+          <th width="20"> Research Institution Id</th>
+
+          <th width="20"> Research Institution Name</th>
+          <th width="34%"> Location</th>
+          <th width="34%"> Participants limit for Research Institution </th>
+
+        </tr>
+        <tr *ngFor="let c of researchInstitutionList | searchFilter: searchResearchInstitution; index as i">
+          <td> {{ c.researchInstitutionId }} </td>
+          <td><a [routerLink]="['/admin/research/institution/', c.researchInstitutionId]">{{ c.institutionName }}</a>
+          </td>
+          <td> {{ c.address }} </td>
+          <td> {{ c.participantsLimit }} </td>
+
+        </tr>
+      </table>
+
+      <br>
+      <span>{{ researcherList.length }} researcher user(s)</span>
+      <div>
+        <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text"
+               class="form-control"
+               name="search" [(ngModel)]="searchResearcher"/>
+        <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+        <mat-form-field>
+          <mat-label appearance="fill">Filter by Research Institution...</mat-label>
+          <mat-select matNativeControl multiple>
+            <mat-option *ngFor="let c of researchInstitutionList" [value]="c.institutionName"
+                        (click)="filterByResearchInstitution(c.institutionName, filteredResearchInstForResearchersList)">{{ c.institutionName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <table class="table table-bordered table-inverse">
+        <tr>
+          <th width="25%"> Username</th>
+          <th width="15%"> First Name</th>
+          <th width="15%"> Last Name</th>
+          <th width="20%"> Research Institution</th>
+
+        </tr>
+        <tr *ngFor="let u of researcherList | searchFilter: searchResearcher; index as i"
+            [hidden]="!showResearchers || (filteredResearchInstForResearchersList.length > 0 && filteredResearchInstForResearchersList.indexOf(ResearchInstNames[u.assignedResearchInstitutionId -1]) === -1)">
+          <td><a [routerLink]="['/admin/researcher/user/', u.userId]"> {{ u.username }} </a></td>
+          <td> {{ u.firstname}} </td>
+          <td> {{ u.lastname }} </td>
+          <td> {{ ResearchInstNames[u.assignedResearchInstitutionId - 1] }} </td>
+        </tr>
+      </table>
+
+    <div id="participantsList">
+      <br>
+      <span>{{ participantsList.length }} participant user(s)</span>
+      <div>
+        <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text"
+               class="form-control"
+               name="search"
+               [(ngModel)]="searchParticipant"/>
+        <span style="color:gray; margin-left: 20px; margin-right: 20px; font-size: x-large;"> | </span>
+        <mat-form-field>
+          <mat-label appearance="fill">Filter by Research Institution...</mat-label>
+          <mat-select matNativeControl multiple>
+            <mat-option *ngFor="let c of researchInstitutionList" [value]="c.institutionName"
+                        (click)="filterByResearchInstitution(c.institutionName, filteredResearchInstForParticipantsList)">{{ c.institutionName }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <table class="table table-bordered table-inverse">
+        <tr>
+          <th width="20%"> Username </th>
+          <th width="40%"> Assigned Researcher </th>
+          <th width="20%"> Account Type </th>
+          <th width="20%"> Institution </th>
+
+        </tr>
+        <tr *ngFor="let participant of participantsList | searchFilter: searchParticipant; index as i"
+            [hidden]="(filteredResearchInstForParticipantsList.length > 0 &&
+             filteredResearchInstForParticipantsList.indexOf(
+             ResearchInstNames[participant?.assignedResearcherInst - 1]) === -1)">
+          <td> <a [routerLink]="['/admin/user/' + usertype.participant, participant.userId]"> {{ participant.username}} </a></td>
+          <td> {{ findAssignedResearcherForParticipant(participant)?.username }} </td>
+          <td> {{ participant.usertype }} </td>
+          <td> {{ ResearchInstNames[participant?.assignedResearcherInst - 1] }} </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

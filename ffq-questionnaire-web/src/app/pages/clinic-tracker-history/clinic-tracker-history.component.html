@@ -1,0 +1,98 @@
+<clinical-header></clinical-header>
+
+<div class="tracker-button-container">
+  <button
+    [hidden]="resultInfo.length === 0"
+    type="button"
+    (click)="export()"
+    class="btn btn-danger"
+  >
+    Export Data
+  </button>
+</div>
+
+<div class="tracker-container">
+  <div class="trackeritem-container">
+    <mat-card class="tracker-card">
+      <h2 matDialogTitle class="GoalTitle">Goal Setting</h2>
+      <ul>
+        <li class="GoalList">
+          If your baby consumed above or below the recommended amount, pick 1
+          food group to improve this week.
+        </li>
+        <li class="GoalList">
+          After age 6 months, your baby should eat a variety of healthy foods
+          because good eating habits start early.
+        </li>
+        <li class="GoalList">
+          If your baby does not like a food, try again another day. It can take
+          up to 15 times before they accept a new food.
+        </li>
+        <li class="GoalList">
+          Review the food groups in the "Recommendations" tab to help you plan
+          your baby's menu for this week.
+        </li>
+      </ul>
+    </mat-card>
+  </div>
+
+  <div class="trackeritem-container" *ngIf="resultInfo.length === 0">
+    <mat-card class="tracker-card">
+      <h2 matDialogTitle>No responses have been submitted yet.</h2>
+    </mat-card>
+  </div>
+
+  <div class="container mt-3" *ngIf="resultInfo.length != 0">
+    <div style="margin-left: 250px; margin-bottom: 10px;">
+      <label style="font-weight:bold"> Tracking History </label>
+      <input
+        style="width: 25%"
+        placeholder="Search by userName..."
+        type="text"
+        class="form-control"
+        name="search"
+        [(ngModel)]="search"
+      />
+    </div>
+    <div
+      *ngFor="
+        let result of resultInfo | trackerFilter: resultMap:search;
+        let i = index
+      "
+      class="trackeritem-container"
+    >
+      <mat-card class="tracker-card">
+        <div>
+          <label
+            ><strong
+              >{{ result.parentName }} - {{ result.ffqtracker.date }} -
+              {{ result.ffqtracker.age }} Months Old</strong
+            ></label
+          >
+        </div>
+        <div style="float: left">
+          <tr *ngFor="let item of result.ffqtracker.responses">
+            {{
+              item.food
+            }}
+          </tr>
+        </div>
+
+        <div style="float: right">
+          <tr
+            *ngFor="let item of result.ffqtracker.responses"
+            [ngClass]="{
+              top: item.response == 'Above',
+              med: item.response == 'Adequate',
+              bot: item.response == 'Below'
+            }"
+          >
+            {{
+              item.response
+            }}
+          </tr>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h4 class="modal-title">Create participants(s)</h4>
+</div>
+<div class="modal-body">
+  <div>Maximun number of participants assigned: {{ currentUser.limitNumberOfParticipants }} </div>
+  <div>Remaining number of participants: {{ remainingParticipants }} </div>
+
+
+  <form (submit)="onCreateParticipants(postForm)" #postForm="ngForm">
+    <div>
+      <label for="numberOfParents">Number of participants</label>
+      <div>
+        <input matInput ngModel required #numberOfParticipants="ngModel" type="text" name="numberOfParents">
+      </div>
+    </div>
+    <div>
+      <label for="parentsPrefix">Participants's prefix</label>
+      <div>
+        <input matInput ngModel required #parentsPrefix="ngModel" type="text" name="parentsPrefix">
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-secondary" type="button" (click)="onDismiss('Close click')">Cancel</button>
+      <button mat-raised-button color="primary" type="submit">Auto Create Participants</button>
+    </div>
+
+  </form>
+</div>

@@ -1,0 +1,12 @@
+.text-card-container {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+.text-card-content {
+  white-space: pre-wrap;
+  color: #5f6368;
+}
+.large-font-style{
+  font-size: 1.4rem!important;
+}

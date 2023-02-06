@@ -1,0 +1,32 @@
+h2 {
+  text-align: center;
+  color: aliceblue;
+}
+
+.container_page{
+  padding-top: 200px;
+  margin-bottom: 40px;
+}
+
+.header1{
+  background-color: #3f51b5;
+  width: 100%;
+  height: 100px;
+  padding-top: 20px;
+  position: fixed;
+}
+
+
+a:hover {
+  color: blue;
+  cursor: pointer;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-accent .mat-pseudo-checkbox-checked, .mat-accent .mat-pseudo-checkbox-indeterminate, .mat-pseudo-checkbox-checked, .mat-pseudo-checkbox-indeterminate{
+  background-color: #B64D3E;
+}
+
+.mat-raised-button{
+  background-color: #B64D3E;
+  color: white;
+}

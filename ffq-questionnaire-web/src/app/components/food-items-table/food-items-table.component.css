@@ -1,0 +1,51 @@
+.dialog-button {
+    width: 20%;
+}
+
+.container {
+    padding: 20px;
+    background-position: fixed;
+    z-index: 99999999999999;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 7px;
+    margin-right: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.tableDiv {
+    padding: 1px;
+}
+
+.cover {
+    text-indent: -9999px;
+    line-height: 0;
+}
+
+.cover::after {
+    text-indent: 0;
+    content: "--";
+    display: block;
+    line-height: initial;
+}
+
+.concat::before {
+    content: '>= ';
+}
+
+.tableDiv {
+    padding: 35px;
+}

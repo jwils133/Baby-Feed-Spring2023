@@ -1,0 +1,76 @@
+<login-header></login-header>
+
+<div class="container_page">
+    <mat-card class="card">
+        <h1 matDialogTitle>User Login</h1>
+        <mat-card-content class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group" >
+                    <mat-error *ngIf="submitted && loginForm.get('username').hasError('required')" translate>Username is required</mat-error>
+                    <input type="text" formControlName="username" placeholder="{{'userNamePlaceHolder' | translate}}" class="form-control" [(ngModel)]="username" translate/>
+                </div>
+                <div class="form-group">
+                    <mat-error *ngIf="submitted && loginForm.get('password').hasError('required')" translate>Password is required</mat-error>
+                    <input type="password" formControlName="password" placeholder="{{'passwordPlaceHolder' | translate}}" class="form-control" [(ngModel)]="password" translate/>
+                </div>
+                <div class="form-group">
+                  <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+                  <mat-error *ngIf="error">{{error}}</mat-error>
+                </div>
+                <!--
+                    <div class="form-group">
+                    <input type="userType" formControlName="userType" placeholder="Type of User" class="form-control" [(ngModel)]="userType"/>
+                </div>
+                -->
+                <!--
+                <mat-form-field>
+                    <mat-label appearance="fill">Choose Account Type</mat-label>
+                    <mat-select matNativeControl [(value)]="userType" formControlName="userType" required>
+                      <mat-option *ngFor="let c of accountList; index as i " [value]="c">{{ dropDownName[i] }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  -->
+                <button mat-raised-button class="login-button">{{'Login' | translate}}</button>
+              <!--  <mat-checkbox>Keep me signed in</mat-checkbox> -->
+
+
+            </form>
+
+            <a (click)="toggleLanguage()" mat-raised-button class="button1">{{'For English' | translate}}</a>
+            <a href="https://fiu.qualtrics.com/jfe/form/SV_37TFBlMfAzbBPPU" mat-raised-button class="need-help">{{'Need Help?'| translate}}</a>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!--
+
+    <div class="col-md-6 offset-md-3 mt-5">
+  <mat-card class="card">
+      <h1 matDialogTitle>Parental Portal Login</h1>
+      <mat-card-content class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <input type="text" formControlName="username" placeholder="Username" class="form-control"/>
+              </div>
+              <div class="form-group">
+                  <input type="password" formControlName="password" placeholder="Password" class="form-control"/>
+              </div>
+              <button mat-raised-button class="login-button">Login</button>
+          </form>
+      </mat-card-content>
+  </mat-card>
+</div>
+
+-->
+
+<!--
+<div class="container">
+    <div>
+      User Name : <input type="text" name="username" [(ngModel)]="username">
+      Password : <input type="password" name="password" [(ngModel)]="password">
+    </div>
+    <button (click)=checkLogin() class="btn btn-success">
+      Login
+    </button>
+  </div>
+-->

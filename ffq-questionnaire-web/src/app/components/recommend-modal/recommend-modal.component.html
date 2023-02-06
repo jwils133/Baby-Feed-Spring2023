@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 matDialogTitle>{{'Nutrient Result' | translate}}</h2>
+  <mat-dialog-content>
+    <div class="tableDiv">
+      <table *ngFor="let result of recommendedNutrients">
+        <tr>
+          <th>{{'Nutrient name' | translate}}</th>
+          <th>{{'User input calculations' | translate}}</th>
+          <th>{{'Recommended value' | translate}}</th>
+          <th style="text-align: center">{{'Indicator' | translate}}</th>
+        </tr>
+        <tr *ngFor="let nutrient of result.recommendationsList; let i = index">
+          <td>{{nutrient.nutrientName | translate}}</td>
+          <td style="text-align: center">{{nutrient.calculatedAmount| resultRound}}</td>
+          <td style="text-align: center">{{nutrient.recommendedAmount| resultRound}}</td>
+          <td [ngClass]="color(nutrient.status)"
+              style="text-align: center">{{ nutrient.status.split(" ",1)[0] | translate}} {{nutrient.status.split(" ")[1]}}</td>
+        </tr>
+      </table>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button class="dialog-button" mat-raised-button matDialogClose="cancel" color="primary">Ok</button>
+  </mat-dialog-actions>
+</div>

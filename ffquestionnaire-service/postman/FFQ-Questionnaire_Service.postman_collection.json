@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "927d354b-79ef-416c-83eb-7095505cf36d",
+		"name": "FFQR - Questionnaire Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Questionnaires",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9080/ffq/",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"ffq",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Questionnaire",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:9080/ffq/validate/valid-001",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"ffq",
+						"validate",
+						"valid-001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Questionnaire",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"questionnaireID\": \"valid-001\",\n\t\"issuerID\": \"issuer-001\"\n}"
+				},
+				"url": {
+					"raw": "localhost:9080/ffq/create",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"ffq",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Questionnaire",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"questionnaireID\": \"valid-001\",\n\t\"issuerID\": \"issuer-001\"\n}"
+				},
+				"url": {
+					"raw": "localhost:9080/ffq/create",
+					"host": [
+						"localhost"
+					],
+					"port": "9080",
+					"path": [
+						"ffq",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

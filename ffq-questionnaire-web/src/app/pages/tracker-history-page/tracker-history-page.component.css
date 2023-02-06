@@ -1,0 +1,66 @@
+.tracker-container {
+    padding-top: 200px;
+    margin-bottom: 50px;
+}
+
+.trackeritem-container {
+    display: flex;
+    justify-content: center;
+
+  }
+
+.tracker-card {
+  width: 50%;
+  justify-content: center;
+  margin-bottom: 10px;
+  background-color: yellow;
+}
+
+.tracker-card2 {
+  width: 50%;
+  justify-content: center;
+  margin-bottom: 10px;
+  background-color: white;
+}
+
+.top{
+    color: #ff6f69;
+}
+.med{
+    color: #96ceb4;
+}
+.bot{
+    color: #ffcc5c;
+}
+
+li.GoalList{
+    font-size: 25px;
+}
+
+h2.GoalTitle{
+    font-size: 28px;
+}
+
+textarea[name=goal] {
+  resize: none;
+}
+
+@media (max-width: 500px) {
+  .tracker-card {
+     width: 90%;
+  }
+  .tracker-card2 {
+    width: 90%;
+  }
+}
+
+.flex-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.box {
+  width: 100%;
+}

@@ -1,0 +1,73 @@
+<admin-header></admin-header>
+
+<form #myForm="ngForm">
+  <div class="form-group">
+    <div class="container_page" *ngIf="dataLoaded">
+      <div class="container" style="margin-top: 15px;"><a routerLink="/admin/research/users"><span
+        class="fa fa-chevron-circle-left"></span> Back to Research/Users </a></div>
+
+      <!-- Update Researcher starts here -->
+
+      <div class="container mt-3">
+        <div align="right">
+           <!-- Remove comments below if you want the option to delete researcher user (feature is completely functional)
+               Reminder:Researcher users have participants under them. If a researcher user is deleted, all participants
+                under will be without a researcher, this can have errors in the UI.
+               If this option is to be available, ensure that participants are assigned to a different researcher or deleted
+               as well-->
+           <button mat-raised-button class="delete" style="margin-right: 20px;" (click)="deleteResearcher()"> Delete </button>
+          <button mat-raised-button class="update" (click)="updateResearchInstitution()"
+                  [disabled]="!myForm.form.valid"> Update</button>
+        </div>
+        <div class="container frame-fooditem">
+          <h6> Update Researcher </h6>
+          <div class="form-group col-12">
+            <br>
+            <label style="font-weight: bold"> Researcher ID </label>
+            <input style="border-color: gray; border-width: 0.05cm" type="text"
+                   class="form-control" readonly name="userId" [(ngModel)]="researchAttributes.userId">
+
+             <br>
+             <label style="font-weight: bold"> Researcher UserName </label>
+            <input style="border-color: gray; border-width: 0.05cm" type="text"
+                   class="form-control" readonly name="username" [(ngModel)]="researchAttributes.username">
+            <br>
+            <label style="font-weight: bold"> Password Reset </label>
+            <div style="display: flex; align-items: stretch; justify-content: space-between">
+              <input style="border-color: gray; border-width: 0.05cm; width:68%" type="text"
+                     class="form-control" name="newPassword" [(ngModel)]="researchAttributes.userpassword" required>
+              <button mat-raised-button style="width:30%" class="update" (click)="generatePassword()">
+                Generate new password
+              </button>
+            </div>
+            <br>
+            <label style="font-weight: bold"> First Name </label>
+            <input placeholder="First Name" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+                   class="form-control" name="firstname" [(ngModel)]="researchAttributes.firstname" required/>
+            <br>
+            <label style="font-weight: bold"> Last Name </label>
+            <input placeholder="Last Name" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="text"
+            class="form-control" name="lastname" [(ngModel)]="researchAttributes.lastname" required/>
+            <br>
+            <label style="font-weight: bold"> Change Assigned Research Institution </label><br>
+            <mat-form-field>
+              <mat-label appearance="fill">Choose Research Institution...</mat-label>
+              <mat-select matNativeControl id="AssignedResearchInstitutionName" name="AssignedResearchInstitutionName" [(ngModel)]="AssignedResearchInstitutionName" required>
+                <mat-option *ngFor="let c of researchInstitutionList" [value]="c.institutionName">{{ c.institutionName }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <br>
+<!--            <label for="limitNumberOfParticipants" style="font-weight: bold"> limit Number Of Participants </label>-->
+
+<!--            <input placeholder="limitNumberOfParticipants" width="25" style="border-color: mediumblue; border-width: 0.05cm" type="number"-->
+<!--                class="form-control" id="limitNumberOfParticipants" name="limitNumberOfParticipants" [(ngModel)]="researchAttributes.limitNumberOfParticipants" required/>-->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Update Researcher ends here -->
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,54 @@
+[
+    {
+        "userId": "1",
+        "username": "Borinquen_1",
+        "userpassword": "parent1",
+        "usertype": "parent",
+        "firstname": "John",
+        "lastname": "Doe",
+        "assignedclinic": "1",
+        "assignedclinician": "1",
+        "childrennames": ["Sarah", "Tom"],
+        "isactive": true,
+        "prefix": "Borinquen"
+    },
+    {
+        "userId": "2",
+        "username": "Borinquen_2",
+        "userpassword": "parent1",
+        "usertype": "parent",
+        "firstname": "",
+        "lastname": "",
+        "assignedclinic": "1",
+        "assignedclinician": "1",
+        "childrennames": ["jacob"],
+        "isactive": true,
+        "prefix": "Borinquen"
+    },
+    {
+        "userId": "3",
+        "username": "FIU_1",
+        "userpassword": "parent1",
+        "usertype": "parent",
+        "firstname": "",
+        "lastname": "",
+        "assignedclinic": "2",
+        "assignedclinician": "2",
+        "childrennames": ["Abagail"],
+        "isactive": true,
+        "prefix": "FIU"
+    },
+    {
+        "userId": "4",
+        "username": "FIU_2",
+        "userpassword": "parent1",
+        "usertype": "parent",
+        "firstname": "Melissa",
+        "lastname": "James",
+        "assignedclinic": "2",
+        "assignedclinician": "2",
+        "childrennames": ["William", "Caroll"],
+        "isactive": true,
+        "prefix": "FIU"
+    }
+]

@@ -1,0 +1,1 @@
+export * from './clinic-quest-results.component';

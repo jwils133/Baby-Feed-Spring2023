@@ -1,0 +1,74 @@
+<research-header></research-header>
+<div class="container_page">
+    <div class="container mt-3">
+      <h4>{{this.currentInstituteName}}</h4>
+        <div class="buttons">
+            <mat-checkbox [checked]="true" (change)="toggleResearchers($event)" style="margin-right: 20px;"> Researchers </mat-checkbox>
+            <mat-checkbox [checked]="true" (change)="toggleParticipants($event)"> Particiapants </mat-checkbox>
+        </div>
+        <br>
+
+        <!-- Researchers starts here -->
+
+        <div *ngIf="showResearchers">
+          <label style="font-weight:bold"> Researcher </label>
+         <h5> </h5>
+            <table class="table table-bordered table-inverse">
+              <tr>
+                <th width="20%"> Researcher UserName </th>
+                <th width="20%"> Researcher UserId </th>
+                <th width="20%"> Prefix </th>
+                <th width="20%"> Total Particiapant Limit </th>
+                <th width="20%"> Current number of Participants </th>
+              </tr>
+              <tr>
+                <td> <!-- <a [routerLink]="['/admin/research/users', loggedInUser[0].userId]"> -->{{loggedInUser[0].username}} <!-- </a> --> </td>
+                <td>{{ loggedInUser[0].userId }}</td>
+                <td>{{ loggedInUser[0].prefix }}</td>
+                <td>{{ loggedInUser[0].limitNumberOfParticipants }}</td>
+                <td>{{ count }}</td>
+              </tr>
+            </table>
+         </div>
+        <!-- Researchers ends here -->
+
+        <div *ngIf="showResearchers && showParticipants"><hr></div>
+
+        <!-- Participants starts here -->
+
+        <div *ngIf="showParticipants">
+            <label style="font-weight:bold"> Participants </label>
+
+            <div style="width: 100%; white-space:nowrap; overflow-x: auto">
+                <input style="width: 25%; display: inline-block;  margin-left: 5px;" placeholder="Search..." type="text" class="form-control"
+                    name="p_search" [(ngModel)]="p_search"/>
+
+            </div>
+
+            <table class="table table-bordered table-inverse">
+                <tr>
+                  <th width="20%"> Participant Username </th>
+                  <th width="15%"> Participant UserId </th>
+                  <th width="20%"> Assigned Researcher </th>
+                  <th width="25%"> Assigned Researcher UserName</th>
+                  <th width="25%"> Assigned Researcher UserId</th>
+
+                </tr>
+                <tr *ngFor="let u of participantList | searchFilter: p_search; index as i"
+                    [hidden]="hideUnassignedParticipants && !researcherNames[u.assignedResearcherUsers] ||
+                     (filtered && filtered_researcher.indexOf(researcherNames[u.assignedResearcherUsers]) === -1)"
+                >
+                    <td> <!-- <a [routerLink]="['/admin/research/users', u.userId]"> -->{{ u.username }} <!--</a>--></td>
+                    <td> {{ u.userId }}</td>
+                    <td> {{ researcherNames[u.assignedResearcherUsers] }}</td>
+                    <td> {{ researcherUserNames[u.assignedResearcherUsers] }}</td>
+                    <td> {{ u.assignedResearcherUsers }} </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <!-- Participants ends here -->
+
+	</div>
+</div>

@@ -1,0 +1,19 @@
+<title>{{'PARTICIPANTPORTAL.TITLE' | translate}}</title>
+
+<div class="header">
+  <h2 matDialogTitle>{{'PARTICIPANTPORTAL.TITLE' | translate}}</h2>
+  <div align="center"><i> <img src="assets/images/logo.png" alt="" height="80" width="80"> </i></div>
+  <div class="login-button">
+    <button mat-raised-button (click)="logout()">{{'Log out' | translate}}<i class="fa fa-sign-out" aria-hidden="true"></i></button>
+  </div>
+
+  <div align="center"><i></i></div>
+  <a class="tab-link" routerLink="participants/home" routerLinkActive="active">{{'Questionnaire' | translate}}
+    <br>
+    <img class="center" src="assets/images/Questionnaire_Icon.png" height="40" width="40">
+  </a>
+  <!-- uncomment history if neccessary
+    <a class="tab-link" routerLink="/researcher_parents/history" routerLinkActive="active">FFQ History</a>
+   -->
+
+</div>

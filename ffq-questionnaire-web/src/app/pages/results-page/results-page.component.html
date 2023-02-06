@@ -1,0 +1,31 @@
+<div class="tableDiv">
+  <h3>Nutrient Breakdown</h3>
+  <table>
+    <tr>
+      <th>Nutrient</th>
+      <th>Daily Average</th>
+      <th>Weekly Total</th>
+    </tr>
+    <tr *ngFor="let nutRow of getNutrientRowsList()">
+      <td>{{nutRow.name}}</td>
+      <td>{{nutRow.daily | resultRound}}</td>
+      <td>{{nutRow.weekly | resultRound}}</td>
+    </tr>
+  </table>
+  <br>
+  <h3>Weekly Caloric Summary</h3>
+  <table>
+    <tr>
+      <th>Total Calories</th>
+      <th>% of Fat</th>
+      <th>% of Carbs</th>
+      <th>% of Protein</th>
+    </tr>
+    <tr>
+      <td>{{getCaloricRow().total | resultRound}}</td>
+      <td>{{getCaloricRow().fat | resultRound}}</td>
+      <td>{{getCaloricRow().carb | resultRound}}</td>
+      <td>{{getCaloricRow().protein | resultRound}}</td>
+    </tr>
+  </table>
+</div>

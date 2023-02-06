@@ -1,0 +1,50 @@
+.mat-typography {
+  margin: auto;
+}
+
+#table {
+  width: 75%;
+  margin: auto;
+  align-content: center;
+  align-self: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+p {
+  text-align: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+pre {
+  text-align: center;
+  margin: auto;
+}
+
+.pictures {
+  margin: auto;
+  width: 100%;
+}
+
+div {
+  width: 75%;
+
+  margin: auto;
+}
+
+pre {
+  text-align: center;
+  margin: auto;
+}
+
+.title {
+  text-align: center;
+  margin: auto;
+}
+
+.section {
+  text-align: center;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}

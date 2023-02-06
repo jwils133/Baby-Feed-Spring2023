@@ -1,0 +1,23 @@
+.research-quest-id-container {
+    display: flex;
+    justify-content: center;
+    /* padding-top: 10%; */
+    padding-top: 200px;
+}
+
+.research-quest-id-card {
+    width: 60%;
+    display: block;
+    text-align:center;
+    padding-top: 50px;
+    height: 250px;
+}
+
+.language-button {
+  background-color: #35a2a6;
+  color: white;
+}
+
+.language-padding {
+  padding-top: 20px;
+}
