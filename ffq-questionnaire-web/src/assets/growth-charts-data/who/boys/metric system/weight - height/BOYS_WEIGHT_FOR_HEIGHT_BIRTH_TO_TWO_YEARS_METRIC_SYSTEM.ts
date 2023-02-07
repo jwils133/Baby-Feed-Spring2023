@@ -1062,443 +1062,443 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 			series: [
 				{
 					name: "45",
-					value: "2.107"
+					value: "2.106981"
 				},
 				{
 					name: "45.5",
-					value: "2.18"
+					value: "2.179956"
 				},
 				{
 					name: "46",
-					value: "2.253"
+					value: "2.252911"
 				},
 				{
 					name: "46.5",
-					value: "2.326"
+					value: "2.326226"
 				},
 				{
 					name: "47",
-					value: "2.4"
+					value: "2.400092"
 				},
 				{
 					name: "47.5",
-					value: "2.475"
+					value: "2.475063"
 				},
 				{
 					name: "48",
-					value: "2.552"
+					value: "2.551572"
 				},
 				{
 					name: "48.5",
-					value: "2.63"
+					value: "2.630444"
 				},
 				{
 					name: "49",
-					value: "2.712"
+					value: "2.712292"
 				},
 				{
 					name: "49.5",
-					value: "2.797"
+					value: "2.79742"
 				},
 				{
 					name: "50",
-					value: "2.886"
+					value: "2.885574"
 				},
 				{
 					name: "50.5",
-					value: "2.976"
+					value: "2.976497"
 				},
 				{
 					name: "51",
-					value: "3.07"
+					value: "3.070327"
 				},
 				{
 					name: "51.5",
-					value: "3.167"
+					value: "3.167371"
 				},
 				{
 					name: "52",
-					value: "3.268"
+					value: "3.268154"
 				},
 				{
 					name: "52.5",
-					value: "3.373"
+					value: "3.373464"
 				},
 				{
 					name: "53",
-					value: "3.483"
+					value: "3.483394"
 				},
 				{
 					name: "53.5",
-					value: "3.598"
+					value: "3.597603"
 				},
 				{
 					name: "54",
-					value: "3.716"
+					value: "3.715835"
 				},
 				{
 					name: "54.5",
-					value: "3.837"
+					value: "3.837139"
 				},
 				{
 					name: "55",
-					value: "3.961"
+					value: "3.960933"
 				},
 				{
 					name: "55.5",
-					value: "4.087"
+					value: "4.086931"
 				},
 				{
 					name: "56",
-					value: "4.215"
+					value: "4.214808"
 				},
 				{
 					name: "56.5",
-					value: "4.344"
+					value: "4.343844"
 				},
 				{
 					name: "57",
-					value: "4.473"
+					value: "4.473289"
 				},
 				{
 					name: "57.5",
-					value: "4.603"
+					value: "4.602751"
 				},
 				{
 					name: "58",
-					value: "4.732"
+					value: "4.731982"
 				},
 				{
 					name: "58.5",
-					value: "4.861"
+					value: "4.860627"
 				},
 				{
 					name: "59",
-					value: "4.988"
+					value: "4.988415"
 				},
 				{
 					name: "59.5",
-					value: "5.115"
+					value: "5.114823"
 				},
 				{
 					name: "60",
-					value: "5.239"
+					value: "5.239396"
 				},
 				{
 					name: "60.5",
-					value: "5.361"
+					value: "5.36134"
 				},
 				{
 					name: "61",
-					value: "5.481"
+					value: "5.480644"
 				},
 				{
 					name: "61.5",
-					value: "5.598"
+					value: "5.597732"
 				},
 				{
 					name: "62",
-					value: "5.712"
+					value: "5.71242"
 				},
 				{
 					name: "62.5",
-					value: "5.825"
+					value: "5.825317"
 				},
 				{
 					name: "63",
-					value: "5.937"
+					value: "5.936584"
 				},
 				{
 					name: "63.5",
-					value: "6.046"
+					value: "6.046305"
 				},
 				{
 					name: "64",
-					value: "6.155"
+					value: "6.15465"
 				},
 				{
 					name: "64.5",
-					value: "6.262"
+					value: "6.261515"
 				},
 				{
 					name: "65",
-					value: "6.367"
+					value: "6.367164"
 				},
 				{
 					name: "65.5",
-					value: "6.472"
+					value: "6.471767"
 				},
 				{
 					name: "66",
-					value: "6.575"
+					value: "6.57548"
 				},
 				{
 					name: "66.5",
-					value: "6.678"
+					value: "6.678396"
 				},
 				{
 					name: "67",
-					value: "6.781"
+					value: "6.78051"
 				},
 				{
 					name: "67.5",
-					value: "6.882"
+					value: "6.881819"
 				},
 				{
 					name: "68",
-					value: "6.982"
+					value: "6.982208"
 				},
 				{
 					name: "68.5",
-					value: "7.082"
+					value: "7.082064"
 				},
 				{
 					name: "69",
-					value: "7.182"
+					value: "7.181539"
 				},
 				{
 					name: "69.5",
-					value: "7.281"
+					value: "7.2806"
 				},
 				{
 					name: "70",
-					value: "7.379"
+					value: "7.379471"
 				},
 				{
 					name: "70.5",
-					value: "7.478"
+					value: "7.477858"
 				},
 				{
 					name: "71",
-					value: "7.575"
+					value: "7.575438"
 				},
 				{
 					name: "71.5",
-					value: "7.672"
+					value: "7.672178"
 				},
 				{
 					name: "72",
-					value: "7.768"
+					value: "7.768056"
 				},
 				{
 					name: "72.5",
-					value: "7.863"
+					value: "7.862618"
 				},
 				{
 					name: "73",
-					value: "7.956"
+					value: "7.956055"
 				},
 				{
 					name: "73.5",
-					value: "8.048"
+					value: "8.048159"
 				},
 				{
 					name: "74",
-					value: "8.139"
+					value: "8.138929"
 				},
 				{
 					name: "74.5",
-					value: "8.229"
+					value: "8.228845"
 				},
 				{
 					name: "75",
-					value: "8.318"
+					value: "8.317519"
 				},
 				{
 					name: "75.5",
-					value: "8.405"
+					value: "8.405039"
 				},
 				{
 					name: "76",
-					value: "8.491"
+					value: "8.491054"
 				},
 				{
 					name: "76.5",
-					value: "8.576"
+					value: "8.575747"
 				},
 				{
 					name: "77",
-					value: "8.659"
+					value: "8.658991"
 				},
 				{
 					name: "77.5",
-					value: "8.741"
+					value: "8.740739"
 				},
 				{
 					name: "78",
-					value: "8.822"
+					value: "8.821532"
 				},
 				{
 					name: "78.5",
-					value: "8.901"
+					value: "8.9015"
 				},
 				{
 					name: "79",
-					value: "8.981"
+					value: "8.981224"
 				},
 				{
 					name: "79.5",
-					value: "9.061"
+					value: "9.061183"
 				},
 				{
 					name: "80",
-					value: "9.142"
+					value: "9.142137"
 				},
 				{
 					name: "80.5",
-					value: "9.225"
+					value: "9.22453"
 				},
 				{
 					name: "81",
-					value: "9.309"
+					value: "9.308575"
 				},
 				{
 					name: "81.5",
-					value: "9.395"
+					value: "9.394803"
 				},
 				{
 					name: "82",
-					value: "9.484"
+					value: "9.483891"
 				},
 				{
 					name: "82.5",
-					value: "9.576"
+					value: "9.575937"
 				},
 				{
 					name: "83",
-					value: "9.671"
+					value: "9.671326"
 				},
 				{
 					name: "83.5",
-					value: "9.77"
+					value: "9.770064"
 				},
 				{
 					name: "84",
-					value: "9.872"
+					value: "9.871983"
 				},
 				{
 					name: "84.5",
-					value: "9.977"
+					value: "9.976826"
 				},
 				{
 					name: "85",
-					value: "10.084"
+					value: "10.08383"
 				},
 				{
 					name: "85.5",
-					value: "10.193"
+					value: "10.19289"
 				},
 				{
 					name: "86",
-					value: "10.303"
+					value: "10.30333"
 				},
 				{
 					name: "86.5",
-					value: "10.414"
+					value: "10.41437"
 				},
 				{
 					name: "87",
-					value: "10.526"
+					value: "10.52582"
 				},
 				{
 					name: "87.5",
-					value: "10.637"
+					value: "10.63682"
 				},
 				{
 					name: "88",
-					value: "10.747"
+					value: "10.74717"
 				},
 				{
 					name: "88.5",
-					value: "10.857"
+					value: "10.85661"
 				},
 				{
 					name: "89",
-					value: "10.965"
+					value: "10.96496"
 				},
 				{
 					name: "89.5",
-					value: "11.072"
+					value: "11.0723"
 				},
 				{
 					name: "90",
-					value: "11.178"
+					value: "11.17826"
 				},
 				{
 					name: "90.5",
-					value: "11.283"
+					value: "11.28346"
 				},
 				{
 					name: "91",
-					value: "11.388"
+					value: "11.38761"
 				},
 				{
 					name: "91.5",
-					value: "11.491"
+					value: "11.49143"
 				},
 				{
 					name: "92",
-					value: "11.594"
+					value: "11.59427"
 				},
 				{
 					name: "92.5",
-					value: "11.697"
+					value: "11.69667"
 				},
 				{
 					name: "93",
-					value: "11.799"
+					value: "11.79879"
 				},
 				{
 					name: "93.5",
-					value: "11.901"
+					value: "11.90063"
 				},
 				{
 					name: "94",
-					value: "12.002"
+					value: "12.00234"
 				},
 				{
 					name: "94.5",
-					value: "12.104"
+					value: "12.10437"
 				},
 				{
 					name: "95",
-					value: "12.207"
+					value: "12.2069"
 				},
 				{
 					name: "95.5",
-					value: "12.31"
+					value: "12.30989"
 				},
 				{
 					name: "96",
-					value: "12.414"
+					value: "12.41361"
 				},
 				{
 					name: "96.5",
-					value: "12.519"
+					value: "12.51852"
 				},
 				{
 					name: "97",
-					value: "12.624"
+					value: "12.62446"
 				},
 				{
 					name: "97.5",
-					value: "12.732"
+					value: "12.73194"
 				},
 				{
 					name: "98",
-					value: "12.841"
+					value: "12.8409"
 				},
 				{
 					name: "98.5",
-					value: "12.951"
+					value: "12.95136"
 				},
 				{
 					name: "99",
-					value: "13.063"
+					value: "13.06348"
 				},
 				{
 					name: "99.5",
-					value: "13.177"
+					value: "13.17696"
 				},
 				{
 					name: "100",
@@ -1506,83 +1506,83 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "100.5",
-					value: "13.408"
+					value: "13.40842"
 				},
 				{
 					name: "101",
-					value: "13.526"
+					value: "13.5263"
 				},
 				{
 					name: "101.5",
-					value: "13.645"
+					value: "13.64546"
 				},
 				{
 					name: "102",
-					value: "13.766"
+					value: "13.76597"
 				},
 				{
 					name: "102.5",
-					value: "13.888"
+					value: "13.88796"
 				},
 				{
 					name: "103",
-					value: "14.011"
+					value: "14.01121"
 				},
 				{
 					name: "103.5",
-					value: "14.136"
+					value: "14.13562"
 				},
 				{
 					name: "104",
-					value: "14.261"
+					value: "14.26132"
 				},
 				{
 					name: "104.5",
-					value: "14.388"
+					value: "14.38817"
 				},
 				{
 					name: "105",
-					value: "14.516"
+					value: "14.51631"
 				},
 				{
 					name: "105.5",
-					value: "14.646"
+					value: "14.6459"
 				},
 				{
 					name: "106",
-					value: "14.777"
+					value: "14.77663"
 				},
 				{
 					name: "106.5",
-					value: "14.909"
+					value: "14.90889"
 				},
 				{
 					name: "107",
-					value: "15.043"
+					value: "15.0426"
 				},
 				{
 					name: "107.5",
-					value: "15.177"
+					value: "15.17728"
 				},
 				{
 					name: "108",
-					value: "15.314"
+					value: "15.31363"
 				},
 				{
 					name: "108.5",
-					value: "15.451"
+					value: "15.45136"
 				},
 				{
 					name: "109",
-					value: "15.591"
+					value: "15.59077"
 				},
 				{
 					name: "109.5",
-					value: "15.732"
+					value: "15.7318"
 				},
 				{
 					name: "110",
-					value: "15.875"
+					value: "15.87468"
 				}
 			]
 		},
@@ -1591,187 +1591,187 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 			series: [
 				{
 					name: "45",
-					value: "2.175"
+					value: "2.175173"
 				},
 				{
 					name: "45.5",
-					value: "2.25"
+					value: "2.250293"
 				},
 				{
 					name: "46",
-					value: "2.325"
+					value: "2.325378"
 				},
 				{
 					name: "46.5",
-					value: "2.401"
+					value: "2.400814"
 				},
 				{
 					name: "47",
-					value: "2.477"
+					value: "2.47681"
 				},
 				{
 					name: "47.5",
-					value: "2.554"
+					value: "2.553931"
 				},
 				{
 					name: "48",
-					value: "2.633"
+					value: "2.632625"
 				},
 				{
 					name: "48.5",
-					value: "2.714"
+					value: "2.713732"
 				},
 				{
 					name: "49",
-					value: "2.798"
+					value: "2.797902"
 				},
 				{
 					name: "49.5",
-					value: "2.885"
+					value: "2.88544"
 				},
 				{
 					name: "50",
-					value: "2.976"
+					value: "2.976081"
 				},
 				{
 					name: "50.5",
-					value: "3.07"
+					value: "3.06956"
 				},
 				{
 					name: "51",
-					value: "3.166"
+					value: "3.166008"
 				},
 				{
 					name: "51.5",
-					value: "3.266"
+					value: "3.26575"
 				},
 				{
 					name: "52",
-					value: "3.369"
+					value: "3.369328"
 				},
 				{
 					name: "52.5",
-					value: "3.478"
+					value: "3.477551"
 				},
 				{
 					name: "53",
-					value: "3.591"
+					value: "3.590514"
 				},
 				{
 					name: "53.5",
-					value: "3.708"
+					value: "3.707865"
 				},
 				{
 					name: "54",
-					value: "3.829"
+					value: "3.829338"
 				},
 				{
 					name: "54.5",
-					value: "3.954"
+					value: "3.953952"
 				},
 				{
 					name: "55",
-					value: "4.081"
+					value: "4.081121"
 				},
 				{
 					name: "55.5",
-					value: "4.211"
+					value: "4.210535"
 				},
 				{
 					name: "56",
-					value: "4.342"
+					value: "4.341875"
 				},
 				{
 					name: "56.5",
-					value: "4.474"
+					value: "4.474383"
 				},
 				{
 					name: "57",
-					value: "4.607"
+					value: "4.607318"
 				},
 				{
 					name: "57.5",
-					value: "4.74"
+					value: "4.740248"
 				},
 				{
 					name: "58",
-					value: "4.873"
+					value: "4.872933"
 				},
 				{
 					name: "58.5",
-					value: "5.005"
+					value: "5.005008"
 				},
 				{
 					name: "59",
-					value: "5.136"
+					value: "5.136198"
 				},
 				{
 					name: "59.5",
-					value: "5.266"
+					value: "5.265982"
 				},
 				{
 					name: "60",
-					value: "5.394"
+					value: "5.393876"
 				},
 				{
 					name: "60.5",
-					value: "5.519"
+					value: "5.519084"
 				},
 				{
 					name: "61",
-					value: "5.642"
+					value: "5.641597"
 				},
 				{
 					name: "61.5",
-					value: "5.762"
+					value: "5.761815"
 				},
 				{
 					name: "62",
-					value: "5.88"
+					value: "5.87961"
 				},
 				{
 					name: "62.5",
-					value: "5.996"
+					value: "5.99555"
 				},
 				{
 					name: "63",
-					value: "6.11"
+					value: "6.109844"
 				},
 				{
 					name: "63.5",
-					value: "6.223"
+					value: "6.22256"
 				},
 				{
 					name: "64",
-					value: "6.334"
+					value: "6.333872"
 				},
 				{
 					name: "64.5",
-					value: "6.444"
+					value: "6.443698"
 				},
 				{
 					name: "65",
-					value: "6.552"
+					value: "6.55229"
 				},
 				{
 					name: "65.5",
-					value: "6.66"
+					value: "6.659823"
 				},
 				{
 					name: "66",
-					value: "6.766"
+					value: "6.766481"
 				},
 				{
 					name: "66.5",
-					value: "6.872"
+					value: "6.872341"
 				},
 				{
 					name: "67",
-					value: "6.977"
+					value: "6.977398"
 				},
 				{
 					name: "67.5",
-					value: "7.082"
+					value: "7.081648"
 				},
 				{
 					name: "68",
@@ -1779,235 +1779,235 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "68.5",
-					value: "7.288"
+					value: "7.287805"
 				},
 				{
 					name: "69",
-					value: "7.39"
+					value: "7.390244"
 				},
 				{
 					name: "69.5",
-					value: "7.492"
+					value: "7.492309"
 				},
 				{
 					name: "70",
-					value: "7.594"
+					value: "7.594181"
 				},
 				{
 					name: "70.5",
-					value: "7.696"
+					value: "7.695586"
 				},
 				{
 					name: "71",
-					value: "7.796"
+					value: "7.796163"
 				},
 				{
 					name: "71.5",
-					value: "7.896"
+					value: "7.895907"
 				},
 				{
 					name: "72",
-					value: "7.995"
+					value: "7.994741"
 				},
 				{
 					name: "72.5",
-					value: "8.092"
+					value: "8.092279"
 				},
 				{
 					name: "73",
-					value: "8.189"
+					value: "8.188637"
 				},
 				{
 					name: "73.5",
-					value: "8.284"
+					value: "8.283627"
 				},
 				{
 					name: "74",
-					value: "8.377"
+					value: "8.377249"
 				},
 				{
 					name: "74.5",
-					value: "8.47"
+					value: "8.469968"
 				},
 				{
 					name: "75",
-					value: "8.561"
+					value: "8.561412"
 				},
 				{
 					name: "75.5",
-					value: "8.652"
+					value: "8.651671"
 				},
 				{
 					name: "76",
-					value: "8.74"
+					value: "8.740385"
 				},
 				{
 					name: "76.5",
-					value: "8.828"
+					value: "8.827684"
 				},
 				{
 					name: "77",
-					value: "8.913"
+					value: "8.913462"
 				},
 				{
 					name: "77.5",
-					value: "8.998"
+					value: "8.997703"
 				},
 				{
 					name: "78",
-					value: "9.081"
+					value: "9.080901"
 				},
 				{
 					name: "78.5",
-					value: "9.163"
+					value: "9.16322"
 				},
 				{
 					name: "79",
-					value: "9.245"
+					value: "9.245227"
 				},
 				{
 					name: "79.5",
-					value: "9.327"
+					value: "9.327443"
 				},
 				{
 					name: "80",
-					value: "9.411"
+					value: "9.410618"
 				},
 				{
 					name: "80.5",
-					value: "9.495"
+					value: "9.495209"
 				},
 				{
 					name: "81",
-					value: "9.581"
+					value: "9.581465"
 				},
 				{
 					name: "81.5",
-					value: "9.67"
+					value: "9.669929"
 				},
 				{
 					name: "82",
-					value: "9.761"
+					value: "9.761267"
 				},
 				{
 					name: "82.5",
-					value: "9.856"
+					value: "9.855578"
 				},
 				{
 					name: "83",
-					value: "9.953"
+					value: "9.953286"
 				},
 				{
 					name: "83.5",
-					value: "10.054"
+					value: "10.0544"
 				},
 				{
 					name: "84",
-					value: "10.159"
+					value: "10.15874"
 				},
 				{
 					name: "84.5",
-					value: "10.266"
+					value: "10.26604"
 				},
 				{
 					name: "85",
-					value: "10.376"
+					value: "10.37556"
 				},
 				{
 					name: "85.5",
-					value: "10.487"
+					value: "10.48714"
 				},
 				{
 					name: "86",
-					value: "10.6"
+					value: "10.60013"
 				},
 				{
 					name: "86.5",
-					value: "10.714"
+					value: "10.71376"
 				},
 				{
 					name: "87",
-					value: "10.828"
+					value: "10.8278"
 				},
 				{
 					name: "87.5",
-					value: "10.941"
+					value: "10.94143"
 				},
 				{
 					name: "88",
-					value: "11.054"
+					value: "11.05443"
 				},
 				{
 					name: "88.5",
-					value: "11.167"
+					value: "11.16651"
 				},
 				{
 					name: "89",
-					value: "11.278"
+					value: "11.27754"
 				},
 				{
 					name: "89.5",
-					value: "11.388"
+					value: "11.38755"
 				},
 				{
 					name: "90",
-					value: "11.496"
+					value: "11.49627"
 				},
 				{
 					name: "90.5",
-					value: "11.604"
+					value: "11.60418"
 				},
 				{
 					name: "91",
-					value: "11.711"
+					value: "11.71114"
 				},
 				{
 					name: "91.5",
-					value: "11.818"
+					value: "11.81775"
 				},
 				{
 					name: "92",
-					value: "11.923"
+					value: "11.92347"
 				},
 				{
 					name: "92.5",
-					value: "12.029"
+					value: "12.02877"
 				},
 				{
 					name: "93",
-					value: "12.134"
+					value: "12.13384"
 				},
 				{
 					name: "93.5",
-					value: "12.239"
+					value: "12.23869"
 				},
 				{
 					name: "94",
-					value: "12.343"
+					value: "12.3435"
 				},
 				{
 					name: "94.5",
-					value: "12.449"
+					value: "12.44868"
 				},
 				{
 					name: "95",
-					value: "12.554"
+					value: "12.55442"
 				},
 				{
 					name: "95.5",
-					value: "12.661"
+					value: "12.66072"
 				},
 				{
 					name: "96",
-					value: "12.768"
+					value: "12.76787"
 				},
 				{
 					name: "96.5",
-					value: "12.876"
+					value: "12.87624"
 				},
 				{
 					name: "97",
-					value: "12.986"
+					value: "12.98583"
 				},
 				{
 					name: "97.5",
@@ -2015,103 +2015,103 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "98",
-					value: "13.21"
+					value: "13.20979"
 				},
 				{
 					name: "98.5",
-					value: "13.324"
+					value: "13.32417"
 				},
 				{
 					name: "99",
-					value: "13.44"
+					value: "13.44033"
 				},
 				{
 					name: "99.5",
-					value: "13.558"
+					value: "13.55799"
 				},
 				{
 					name: "100",
-					value: "13.677"
+					value: "13.67733"
 				},
 				{
 					name: "100.5",
-					value: "13.798"
+					value: "13.79814"
 				},
 				{
 					name: "101",
-					value: "13.921"
+					value: "13.92051"
 				},
 				{
 					name: "101.5",
-					value: "14.044"
+					value: "14.04427"
 				},
 				{
 					name: "102",
-					value: "14.169"
+					value: "14.16948"
 				},
 				{
 					name: "102.5",
-					value: "14.296"
+					value: "14.29624"
 				},
 				{
 					name: "103",
-					value: "14.424"
+					value: "14.42437"
 				},
 				{
 					name: "103.5",
-					value: "14.554"
+					value: "14.55376"
 				},
 				{
 					name: "104",
-					value: "14.685"
+					value: "14.6845"
 				},
 				{
 					name: "104.5",
-					value: "14.817"
+					value: "14.8165"
 				},
 				{
 					name: "105",
-					value: "14.95"
+					value: "14.94985"
 				},
 				{
 					name: "105.5",
-					value: "15.085"
+					value: "15.08472"
 				},
 				{
 					name: "106",
-					value: "15.221"
+					value: "15.22084"
 				},
 				{
 					name: "106.5",
-					value: "15.359"
+					value: "15.35856"
 				},
 				{
 					name: "107",
-					value: "15.498"
+					value: "15.4978"
 				},
 				{
 					name: "107.5",
-					value: "15.638"
+					value: "15.63817"
 				},
 				{
 					name: "108",
-					value: "15.78"
+					value: "15.78024"
 				},
 				{
 					name: "108.5",
-					value: "15.924"
+					value: "15.92381"
 				},
 				{
 					name: "109",
-					value: "16.069"
+					value: "16.06914"
 				},
 				{
 					name: "109.5",
-					value: "16.216"
+					value: "16.21622"
 				},
 				{
 					name: "110",
-					value: "16.365"
+					value: "16.36525"
 				}
 			]
 		},
@@ -2120,387 +2120,387 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 			series: [
 				{
 					name: "45",
-					value: "2.296"
+					value: "2.295939"
 				},
 				{
 					name: "45.5",
-					value: "2.375"
+					value: "2.374837"
 				},
 				{
 					name: "46",
-					value: "2.454"
+					value: "2.453671"
 				},
 				{
 					name: "46.5",
-					value: "2.533"
+					value: "2.532835"
 				},
 				{
 					name: "47",
-					value: "2.613"
+					value: "2.612577"
 				},
 				{
 					name: "47.5",
-					value: "2.693"
+					value: "2.69348"
 				},
 				{
 					name: "48",
-					value: "2.776"
+					value: "2.776015"
 				},
 				{
 					name: "48.5",
-					value: "2.861"
+					value: "2.861048"
 				},
 				{
 					name: "49",
-					value: "2.949"
+					value: "2.949299"
 				},
 				{
 					name: "49.5",
-					value: "3.041"
+					value: "3.04107"
 				},
 				{
 					name: "50",
-					value: "3.136"
+					value: "3.13608"
 				},
 				{
 					name: "50.5",
-					value: "3.234"
+					value: "3.234048"
 				},
 				{
 					name: "51",
-					value: "3.335"
+					value: "3.335092"
 				},
 				{
 					name: "51.5",
-					value: "3.44"
+					value: "3.439571"
 				},
 				{
 					name: "52",
-					value: "3.548"
+					value: "3.548053"
 				},
 				{
 					name: "52.5",
-					value: "3.661"
+					value: "3.661388"
 				},
 				{
 					name: "53",
-					value: "3.78"
+					value: "3.779675"
 				},
 				{
 					name: "53.5",
-					value: "3.903"
+					value: "3.902538"
 				},
 				{
 					name: "54",
-					value: "4.03"
+					value: "4.0296973"
 				},
 				{
 					name: "54.5",
-					value: "4.16"
+					value: "4.160116"
 				},
 				{
 					name: "55",
-					value: "4.293"
+					value: "4.293202"
 				},
 				{
 					name: "55.5",
-					value: "4.429"
+					value: "4.428606"
 				},
 				{
 					name: "56",
-					value: "4.566"
+					value: "4.566015"
 				},
 				{
 					name: "56.5",
-					value: "4.705"
+					value: "4.704609"
 				},
 				{
 					name: "57",
-					value: "4.844"
+					value: "4.843662"
 				},
 				{
 					name: "57.5",
-					value: "4.983"
+					value: "4.982669"
 				},
 				{
 					name: "58",
-					value: "5.121"
+					value: "5.121406"
 				},
 				{
 					name: "58.5",
-					value: "5.259"
+					value: "5.259492"
 				},
 				{
 					name: "59",
-					value: "5.397"
+					value: "5.39664"
 				},
 				{
 					name: "59.5",
-					value: "5.532"
+					value: "5.532339"
 				},
 				{
 					name: "60",
-					value: "5.666"
+					value: "5.666051"
 				},
 				{
 					name: "60.5",
-					value: "5.797"
+					value: "5.796979"
 				},
 				{
 					name: "61",
-					value: "5.925"
+					value: "5.925116"
 				},
 				{
 					name: "61.5",
-					value: "6.051"
+					value: "6.05082"
 				},
 				{
 					name: "62",
-					value: "6.174"
+					value: "6.174063"
 				},
 				{
 					name: "62.5",
-					value: "6.295"
+					value: "6.29534"
 				},
 				{
 					name: "63",
-					value: "6.415"
+					value: "6.414944"
 				},
 				{
 					name: "63.5",
-					value: "6.533"
+					value: "6.532913"
 				},
 				{
 					name: "64",
-					value: "6.649"
+					value: "6.649434"
 				},
 				{
 					name: "64.5",
-					value: "6.764"
+					value: "6.764459"
 				},
 				{
 					name: "65",
-					value: "6.878"
+					value: "6.87822"
 				},
 				{
 					name: "65.5",
-					value: "6.991"
+					value: "6.990901"
 				},
 				{
 					name: "66",
-					value: "7.103"
+					value: "7.102739"
 				},
 				{
 					name: "66.5",
-					value: "7.214"
+					value: "7.213776"
 				},
 				{
 					name: "67",
-					value: "7.324"
+					value: "7.324011"
 				},
 				{
 					name: "67.5",
-					value: "7.433"
+					value: "7.43344"
 				},
 				{
 					name: "68",
-					value: "7.542"
+					value: "7.542013"
 				},
 				{
 					name: "68.5",
-					value: "7.65"
+					value: "7.650014"
 				},
 				{
 					name: "69",
-					value: "7.758"
+					value: "7.757678"
 				},
 				{
 					name: "69.5",
-					value: "7.865"
+					value: "7.865043"
 				},
 				{
 					name: "70",
-					value: "7.972"
+					value: "7.972213"
 				},
 				{
 					name: "70.5",
-					value: "8.079"
+					value: "8.078943"
 				},
 				{
 					name: "71",
-					value: "8.185"
+					value: "8.184813"
 				},
 				{
 					name: "71.5",
-					value: "8.29"
+					value: "8.289862"
 				},
 				{
 					name: "72",
-					value: "8.394"
+					value: "8.393916"
 				},
 				{
 					name: "72.5",
-					value: "8.497"
+					value: "8.496715"
 				},
 				{
 					name: "73",
-					value: "8.598"
+					value: "8.598234"
 				},
 				{
 					name: "73.5",
-					value: "8.698"
+					value: "8.698324"
 				},
 				{
 					name: "74",
-					value: "8.797"
+					value: "8.796986"
 				},
 				{
 					name: "74.5",
-					value: "8.895"
+					value: "8.894657"
 				},
 				{
 					name: "75",
-					value: "8.991"
+					value: "8.990996"
 				},
 				{
 					name: "75.5",
-					value: "9.086"
+					value: "9.086097"
 				},
 				{
 					name: "76",
-					value: "9.18"
+					value: "9.179582"
 				},
 				{
 					name: "76.5",
-					value: "9.271"
+					value: "9.27148"
 				},
 				{
 					name: "77",
-					value: "9.362"
+					value: "9.361732"
 				},
 				{
 					name: "77.5",
-					value: "9.45"
+					value: "9.450372"
 				},
 				{
 					name: "78",
-					value: "9.538"
+					value: "9.537811"
 				},
 				{
 					name: "78.5",
-					value: "9.624"
+					value: "9.624271"
 				},
 				{
 					name: "79",
-					value: "9.71"
+					value: "9.710293"
 				},
 				{
 					name: "79.5",
-					value: "9.796"
+					value: "9.796476"
 				},
 				{
 					name: "80",
-					value: "9.884"
+					value: "9.88355"
 				},
 				{
 					name: "80.5",
-					value: "9.972"
+					value: "9.971992"
 				},
 				{
 					name: "81",
-					value: "10.062"
+					value: "10.06212"
 				},
 				{
 					name: "81.5",
-					value: "10.154"
+					value: "10.15449"
 				},
 				{
 					name: "82",
-					value: "10.25"
+					value: "10.24976"
 				},
 				{
 					name: "82.5",
-					value: "10.348"
+					value: "10.34802"
 				},
 				{
 					name: "83",
-					value: "10.45"
+					value: "10.44977"
 				},
 				{
 					name: "83.5",
-					value: "10.555"
+					value: "10.55502"
 				},
 				{
 					name: "84",
-					value: "10.664"
+					value: "10.66357"
 				},
 				{
 					name: "84.5",
-					value: "10.775"
+					value: "10.77516"
 				},
 				{
 					name: "85",
-					value: "10.889"
+					value: "10.88904"
 				},
 				{
 					name: "85.5",
-					value: "11.005"
+					value: "11.00501"
 				},
 				{
 					name: "86",
-					value: "11.122"
+					value: "11.12243"
 				},
 				{
 					name: "86.5",
-					value: "11.241"
+					value: "11.24056"
 				},
 				{
 					name: "87",
-					value: "11.359"
+					value: "11.3591"
 				},
 				{
 					name: "87.5",
-					value: "11.477"
+					value: "11.47732"
 				},
 				{
 					name: "88",
-					value: "11.595"
+					value: "11.59491"
 				},
 				{
 					name: "88.5",
-					value: "11.712"
+					value: "11.7116"
 				},
 				{
 					name: "89",
-					value: "11.827"
+					value: "11.8273"
 				},
 				{
 					name: "89.5",
-					value: "11.942"
+					value: "11.94199"
 				},
 				{
 					name: "90",
-					value: "12.056"
+					value: "12.05551"
 				},
 				{
 					name: "90.5",
-					value: "12.168"
+					value: "12.16819"
 				},
 				{
 					name: "91",
-					value: "12.28"
+					value: "12.28006"
 				},
 				{
 					name: "91.5",
-					value: "12.392"
+					value: "12.39156"
 				},
 				{
 					name: "92",
-					value: "12.502"
+					value: "12.50235"
 				},
 				{
 					name: "92.5",
-					value: "12.613"
+					value: "12.61276"
 				},
 				{
 					name: "93",
@@ -2508,139 +2508,139 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "93.5",
-					value: "12.833"
+					value: "12.83317"
 				},
 				{
 					name: "94",
-					value: "12.943"
+					value: "12.94344"
 				},
 				{
 					name: "94.5",
-					value: "13.054"
+					value: "13.05418"
 				},
 				{
 					name: "95",
-					value: "13.166"
+					value: "13.16559"
 				},
 				{
 					name: "95.5",
-					value: "13.278"
+					value: "13.27776"
 				},
 				{
 					name: "96",
-					value: "13.391"
+					value: "13.39097"
 				},
 				{
 					name: "96.5",
-					value: "13.505"
+					value: "13.50549"
 				},
 				{
 					name: "97",
-					value: "13.622"
+					value: "13.62153"
 				},
 				{
 					name: "97.5",
-					value: "13.739"
+					value: "13.73924"
 				},
 				{
 					name: "98",
-					value: "13.859"
+					value: "13.85884"
 				},
 				{
 					name: "98.5",
-					value: "13.98"
+					value: "13.98021"
 				},
 				{
 					name: "99",
-					value: "14.104"
+					value: "14.10354"
 				},
 				{
 					name: "99.5",
-					value: "14.229"
+					value: "14.22865"
 				},
 				{
 					name: "100",
-					value: "14.356"
+					value: "14.35561"
 				},
 				{
 					name: "100.5",
-					value: "14.484"
+					value: "14.48425"
 				},
 				{
 					name: "101",
-					value: "14.615"
+					value: "14.61464"
 				},
 				{
 					name: "101.5",
-					value: "14.747"
+					value: "14.74659"
 				},
 				{
 					name: "102",
-					value: "14.88"
+					value: "14.88021"
 				},
 				{
 					name: "102.5",
-					value: "15.015"
+					value: "15.01548"
 				},
 				{
 					name: "103",
-					value: "15.152"
+					value: "15.15231"
 				},
 				{
 					name: "103.5",
-					value: "15.291"
+					value: "15.2906"
 				},
 				{
 					name: "104",
-					value: "15.43"
+					value: "15.43035"
 				},
 				{
 					name: "104.5",
-					value: "15.572"
+					value: "15.57155"
 				},
 				{
 					name: "105",
-					value: "15.714"
+					value: "15.71422"
 				},
 				{
 					name: "105.5",
-					value: "15.859"
+					value: "15.85853"
 				},
 				{
 					name: "106",
-					value: "16.004"
+					value: "16.00429"
 				},
 				{
 					name: "106.5",
-					value: "16.152"
+					value: "16.15179"
 				},
 				{
 					name: "107",
-					value: "16.301"
+					value: "16.30093"
 				},
 				{
 					name: "107.5",
-					value: "16.451"
+					value: "16.45149"
 				},
 				{
 					name: "108",
-					value: "16.604"
+					value: "16.60381"
 				},
 				{
 					name: "108.5",
-					value: "16.758"
+					value: "16.75783"
 				},
 				{
 					name: "109",
-					value: "16.914"
+					value: "16.91378"
 				},
 				{
 					name: "109.5",
-					value: "17.072"
+					value: "17.07172"
 				},
 				{
 					name: "110",
-					value: "17.232"
+					value: "17.23176"
 				}
 			]
 		},
@@ -2653,23 +2653,23 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "45.5",
-					value: "2.524"
+					value: "2.5244"
 				},
 				{
 					name: "46",
-					value: "2.608"
+					value: "2.6077"
 				},
 				{
 					name: "46.5",
-					value: "2.691"
+					value: "2.6913"
 				},
 				{
 					name: "47",
-					value: "2.776"
+					value: "2.7755"
 				},
 				{
 					name: "47.5",
-					value: "2.861"
+					value: "2.8609"
 				},
 				{
 					name: "48",
@@ -2677,31 +2677,31 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "48.5",
-					value: "3.038"
+					value: "3.0377"
 				},
 				{
 					name: "49",
-					value: "3.131"
+					value: "3.1308"
 				},
 				{
 					name: "49.5",
-					value: "3.228"
+					value: "3.2276"
 				},
 				{
 					name: "50",
-					value: "3.328"
+					value: "3.3278"
 				},
 				{
 					name: "50.5",
-					value: "3.431"
+					value: "3.4311"
 				},
 				{
 					name: "51",
-					value: "3.538"
+					value: "3.5376"
 				},
 				{
 					name: "51.5",
-					value: "3.648"
+					value: "3.6477"
 				},
 				{
 					name: "52",
@@ -2709,7 +2709,7 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "52.5",
-					value: "3.881"
+					value: "3.8814"
 				},
 				{
 					name: "53",
@@ -2717,39 +2717,39 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "53.5",
-					value: "4.135"
+					value: "4.1354"
 				},
 				{
 					name: "54",
-					value: "4.269"
+					value: "4.2693"
 				},
 				{
 					name: "54.5",
-					value: "4.407"
+					value: "4.4066"
 				},
 				{
 					name: "55",
-					value: "4.547"
+					value: "4.5467"
 				},
 				{
 					name: "55.5",
-					value: "4.689"
+					value: "4.6892"
 				},
 				{
 					name: "56",
-					value: "4.834"
+					value: "4.8338"
 				},
 				{
 					name: "56.5",
-					value: "4.98"
+					value: "4.9796"
 				},
 				{
 					name: "57",
-					value: "5.126"
+					value: "5.1259"
 				},
 				{
 					name: "57.5",
-					value: "5.272"
+					value: "5.2721"
 				},
 				{
 					name: "58",
@@ -2757,71 +2757,71 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "58.5",
-					value: "5.563"
+					value: "5.5632"
 				},
 				{
 					name: "59",
-					value: "5.707"
+					value: "5.7074"
 				},
 				{
 					name: "59.5",
-					value: "5.85"
+					value: "5.8501"
 				},
 				{
 					name: "60",
-					value: "5.991"
+					value: "5.9907"
 				},
 				{
 					name: "60.5",
-					value: "6.128"
+					value: "6.1284"
 				},
 				{
 					name: "61",
-					value: "6.263"
+					value: "6.2632"
 				},
 				{
 					name: "61.5",
-					value: "6.395"
+					value: "6.3954"
 				},
 				{
 					name: "62",
-					value: "6.525"
+					value: "6.5251"
 				},
 				{
 					name: "62.5",
-					value: "6.653"
+					value: "6.6527"
 				},
 				{
 					name: "63",
-					value: "6.779"
+					value: "6.7786"
 				},
 				{
 					name: "63.5",
-					value: "6.903"
+					value: "6.9028"
 				},
 				{
 					name: "64",
-					value: "7.026"
+					value: "7.0255"
 				},
 				{
 					name: "64.5",
-					value: "7.147"
+					value: "7.1467"
 				},
 				{
 					name: "65",
-					value: "7.267"
+					value: "7.2666"
 				},
 				{
 					name: "65.5",
-					value: "7.385"
+					value: "7.3854"
 				},
 				{
 					name: "66",
-					value: "7.503"
+					value: "7.5034"
 				},
 				{
 					name: "66.5",
-					value: "7.621"
+					value: "7.6206"
 				},
 				{
 					name: "67",
@@ -2829,31 +2829,31 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "67.5",
-					value: "7.853"
+					value: "7.8526"
 				},
 				{
 					name: "68",
-					value: "7.967"
+					value: "7.9674"
 				},
 				{
 					name: "68.5",
-					value: "8.082"
+					value: "8.0816"
 				},
 				{
 					name: "69",
-					value: "8.196"
+					value: "8.1955"
 				},
 				{
 					name: "69.5",
-					value: "8.309"
+					value: "8.3092"
 				},
 				{
 					name: "70",
-					value: "8.423"
+					value: "8.4227"
 				},
 				{
 					name: "70.5",
-					value: "8.536"
+					value: "8.5358"
 				},
 				{
 					name: "71",
@@ -2861,27 +2861,27 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "71.5",
-					value: "8.759"
+					value: "8.7594"
 				},
 				{
 					name: "72",
-					value: "8.87"
+					value: "8.8697"
 				},
 				{
 					name: "72.5",
-					value: "8.979"
+					value: "8.9788"
 				},
 				{
 					name: "73",
-					value: "9.087"
+					value: "9.0865"
 				},
 				{
 					name: "73.5",
-					value: "9.193"
+					value: "9.1927"
 				},
 				{
 					name: "74",
-					value: "9.297"
+					value: "9.2974"
 				},
 				{
 					name: "74.5",
@@ -2889,63 +2889,63 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "75",
-					value: "9.503"
+					value: "9.5032"
 				},
 				{
 					name: "75.5",
-					value: "9.604"
+					value: "9.6041"
 				},
 				{
 					name: "76",
-					value: "9.703"
+					value: "9.7033"
 				},
 				{
 					name: "76.5",
-					value: "9.801"
+					value: "9.8007"
 				},
 				{
 					name: "77",
-					value: "9.896"
+					value: "9.8963"
 				},
 				{
 					name: "77.5",
-					value: "9.99"
+					value: "9.9902"
 				},
 				{
 					name: "78",
-					value: "10.083"
+					value: "10.0827"
 				},
 				{
 					name: "78.5",
-					value: "10.174"
+					value: "10.1741"
 				},
 				{
 					name: "79",
-					value: "10.265"
+					value: "10.2649"
 				},
 				{
 					name: "79.5",
-					value: "10.356"
+					value: "10.3558"
 				},
 				{
 					name: "80",
-					value: "10.448"
+					value: "10.4475"
 				},
 				{
 					name: "80.5",
-					value: "10.541"
+					value: "10.5405"
 				},
 				{
 					name: "81",
-					value: "10.635"
+					value: "10.6352"
 				},
 				{
 					name: "81.5",
-					value: "10.732"
+					value: "10.7322"
 				},
 				{
 					name: "82",
-					value: "10.832"
+					value: "10.8321"
 				},
 				{
 					name: "82.5",
@@ -2953,75 +2953,75 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "83",
-					value: "11.042"
+					value: "11.0415"
 				},
 				{
 					name: "83.5",
-					value: "11.152"
+					value: "11.1516"
 				},
 				{
 					name: "84",
-					value: "11.265"
+					value: "11.2651"
 				},
 				{
 					name: "84.5",
-					value: "11.382"
+					value: "11.3817"
 				},
 				{
 					name: "85",
-					value: "11.501"
+					value: "11.5007"
 				},
 				{
 					name: "85.5",
-					value: "11.622"
+					value: "11.6218"
 				},
 				{
 					name: "86",
-					value: "11.744"
+					value: "11.7444"
 				},
 				{
 					name: "86.5",
-					value: "11.868"
+					value: "11.8678"
 				},
 				{
 					name: "87",
-					value: "11.992"
+					value: "11.9916"
 				},
 				{
 					name: "87.5",
-					value: "12.115"
+					value: "12.1152"
 				},
 				{
 					name: "88",
-					value: "12.238"
+					value: "12.2382"
 				},
 				{
 					name: "88.5",
-					value: "12.36"
+					value: "12.3603"
 				},
 				{
 					name: "89",
-					value: "12.482"
+					value: "12.4815"
 				},
 				{
 					name: "89.5",
-					value: "12.602"
+					value: "12.6017"
 				},
 				{
 					name: "90",
-					value: "12.721"
+					value: "12.7209"
 				},
 				{
 					name: "90.5",
-					value: "12.839"
+					value: "12.8392"
 				},
 				{
 					name: "91",
-					value: "12.957"
+					value: "12.9569"
 				},
 				{
 					name: "91.5",
-					value: "13.074"
+					value: "13.0742"
 				},
 				{
 					name: "92",
@@ -3029,27 +3029,27 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "92.5",
-					value: "13.308"
+					value: "13.3075"
 				},
 				{
 					name: "93",
-					value: "13.424"
+					value: "13.4239"
 				},
 				{
 					name: "93.5",
-					value: "13.54"
+					value: "13.5404"
 				},
 				{
 					name: "94",
-					value: "13.657"
+					value: "13.6572"
 				},
 				{
 					name: "94.5",
-					value: "13.775"
+					value: "13.7746"
 				},
 				{
 					name: "95",
-					value: "13.893"
+					value: "13.8928"
 				},
 				{
 					name: "95.5",
@@ -3057,119 +3057,119 @@ export var BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM = [
 				},
 				{
 					name: "96",
-					value: "14.133"
+					value: "14.1325"
 				},
 				{
 					name: "96.5",
-					value: "14.254"
+					value: "14.2544"
 				},
 				{
 					name: "97",
-					value: "14.378"
+					value: "14.3782"
 				},
 				{
 					name: "97.5",
-					value: "14.504"
+					value: "14.5038"
 				},
 				{
 					name: "98",
-					value: "14.632"
+					value: "14.6316"
 				},
 				{
 					name: "98.5",
-					value: "14.761"
+					value: "14.7614"
 				},
 				{
 					name: "99",
-					value: "14.893"
+					value: "14.8934"
 				},
 				{
 					name: "99.5",
-					value: "15.028"
+					value: "15.0275"
 				},
 				{
 					name: "100",
-					value: "15.164"
+					value: "15.1637"
 				},
 				{
 					name: "100.5",
-					value: "15.302"
+					value: "15.3018"
 				},
 				{
 					name: "101",
-					value: "15.442"
+					value: "15.4419"
 				},
 				{
 					name: "101.5",
-					value: "15.584"
+					value: "15.5838"
 				},
 				{
 					name: "102",
-					value: "15.728"
+					value: "15.7276"
 				},
 				{
 					name: "102.5",
-					value: "15.873"
+					value: "15.8732"
 				},
 				{
 					name: "103",
-					value: "16.021"
+					value: "16.0206"
 				},
 				{
 					name: "103.5",
-					value: "16.17"
+					value: "16.1697"
 				},
 				{
 					name: "104",
-					value: "16.32"
+					value: "16.3204"
 				},
 				{
 					name: "104.5",
-					value: "16.473"
+					value: "16.4728"
 				},
 				{
 					name: "105",
-					value: "16.627"
+					value: "16.6268"
 				},
 				{
 					name: "105.5",
-					value: "16.783"
+					value: "16.7826"
 				},
 				{
 					name: "106",
-					value: "16.94"
+					value: "16.9401"
 				},
 				{
 					name: "106.5",
-					value: "17.1"
+					value: "17.0995"
 				},
 				{
 					name: "107",
-					value: "17.261"
+					value: "17.2607"
 				},
 				{
 					name: "107.5",
-					value: "17.424"
+					value: "17.4237"
 				},
 				{
 					name: "108",
-					value: "17.589"
+					value: "17.5885"
 				},
 				{
 					name: "108.5",
-					value: "17.755"
+					value: "17.7553"
 				},
 				{
 					name: "109",
-					value: "17.924"
+					value: "17.9242"
 				},
 				{
 					name: "109.5",
-					value: "18.095"
+					value: "18.0954"
 				},
 				{
 					name: "110",
-					value: "18.269"
+					value: "18.2689"
 				}
 			]
 		},
