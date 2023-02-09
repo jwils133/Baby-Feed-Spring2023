@@ -103,6 +103,26 @@ import {
   GrowthChartData,
 } from "src/app/models/Enums";
 
+/* CHART UPDATE 5: Add imports to access Apex Charts library using the code below
+
+                import { Component, ViewChild } from "@angular/core";
+
+                import {
+                  ChartComponent,
+                  ApexAxisChartSeries,
+                  ApexChart,
+                  ApexFill,
+                  ApexStroke,
+                  ApexYAxis,
+                  ApexTooltip,
+                  ApexMarkers,
+                  ApexXAxis
+                } from "ng-apexcharts";
+
+*/
+
+
+
 /* 
   The information needed to plot the charts are imported from the following directory:
   assets/growth-charts-data/who 
@@ -199,6 +219,30 @@ class DataManipulation {
   styleUrls: ["./growth-charts-page.component.css"],
 })
 export class GrowthChartsPageComponent implements OnInit {
+  /* CHART UPDATE 6: Add the following code
+
+              export type ChartOptions = {
+                series: ApexAxisChartSeries;
+                chart: ApexChart;
+                xaxis: ApexXAxis;
+                yaxis: ApexYAxis | ApexYAxis[];
+                labels: string[];
+                stroke: ApexStroke;
+                markers: ApexMarkers;
+                fill: ApexFill;
+                tooltip: ApexTooltip;
+              };  
+  */
+
+
+  /* CHART UPDATE 7: Instantiate the variables related to the chart using the code below
+  
+  
+                  @ViewChild("chart") chart: ChartComponent;
+                  public chartOptions: Partial<ChartOptions>;
+  */ 
+
+
   //who
 
   //boys
@@ -277,6 +321,18 @@ export class GrowthChartsPageComponent implements OnInit {
   mode: ProgressSpinnerMode = "indeterminate";
   value = 65;
 
+
+  /* CHART UPDATE 8: Delete the following chart resources comment and replace it with the following comment 
+  providing resources about the new chart library 
+
+
+  charts options
+  example: https://apexcharts.com/angular-chart-demos/
+  documentation: https://apexcharts.com/docs/chart-types/area-chart/#
+  
+  */
+
+
   /* 
   charts options
   example: https://swimlane.github.io/ngx-charts/#/ngx-charts/bar-vertical
@@ -324,6 +380,18 @@ export class GrowthChartsPageComponent implements OnInit {
   };
 
   dataWasAdded: boolean = true;
+
+  /* CHART UPDATE 9: Add the chart options to create the combo-area-line chart as done in Jada's dummy graph
+  
+        Things to figure out related to this:
+
+              - Will this code need to be in the constructor or outside of the constructor?
+
+              - How will we need to change the dummy example code to be able accept the values for the x-axis and 
+                y-axis chosen based on the units (kg & cm, kg & in, lbs & cm, or lbs & in) selected by the user
+                rather than using the hard-coded values for the x-axis and y-axis that appear in the dummy example
+                code (ex:   data: [44, 55, 31, 47, 31, 43, 26, 41, 31, 47, 33]  as in series with name Team A)?
+  */
 
   constructor(
     private parentService: ParentService,
