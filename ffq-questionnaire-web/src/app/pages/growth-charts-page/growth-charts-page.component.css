@@ -9,16 +9,21 @@
   width: 100%;
 }
 
+/* CHART UPDATE 3 (STARTS HERE): Change #chart-line to #combo-line-area to match CHART UPDATE 1 in html file */
 #chart-line {
   height: 100%;
   width: 100%;
   margin: auto;
 }
+/* CHART UPDATE 3 (ENDS HERE) */
 
+/* CHART UPDATE 4 (STARTS HERE): Change .ngx-charts to .apx-chart to match CHART UPDATE 2 in html file */
 .ngx-charts {
   height: 100%;
   width: 100%;
 }
+/* CHART UPDATE 4 (ENDS HERE) */
+
 .chart-options {
   width: 75%;
 }

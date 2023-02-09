@@ -319,7 +319,22 @@
   >
     {{ currentChildGender + " " + chosenChartOption + " Chart" | translate }}
   </h3>
-  <div #containerRef id="chart-line">
+  <div #containerRef id="chart-line"> <!---- CHART UPDATE 1: Change "chart-line" to "combo-line-area"---->
+    <!---- CHART UPDATE 2 (STARTS HERE): 
+                  Delete ngx-charts-line-chart section and replace it with:
+                  
+                              <apx-chart
+                              [series]="chartOptions.series"
+                              [chart]="chartOptions.chart"
+                              [yaxis]="chartOptions.yaxis"
+                              [xaxis]="chartOptions.xaxis"
+                              [labels]="chartOptions.labels"
+                              [stroke]="chartOptions.stroke"
+                              [markers]="chartOptions.markers"
+                              [fill]="chartOptions.fill"
+                              [tooltip]="chartOptions.tooltip"
+                              ></apx-chart>
+    ---->
     <ngx-charts-line-chart
       *ngIf="
         !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
@@ -342,5 +357,6 @@
       (deactivate)="onDeactivate($event)"
     >
     </ngx-charts-line-chart>
+    <!---- CHART UPDATE 2 (ENDS HERE) ---->
   </div>
 </div>
