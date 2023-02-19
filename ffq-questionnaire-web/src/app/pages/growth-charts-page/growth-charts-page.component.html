@@ -335,6 +335,19 @@
                               [tooltip]="chartOptions.tooltip"
                               ></apx-chart>
     ---->
+
+    <!-- <apx-chart
+                              [series]="chartOptions.series"
+                              [chart]="chartOptions.chart"
+                              [yaxis]="chartOptions.yaxis"
+                              [xaxis]="chartOptions.xaxis"
+                              [labels]="chartOptions.labels"
+                              [stroke]="chartOptions.stroke"
+                              [markers]="chartOptions.markers"
+                              [fill]="chartOptions.fill"
+                              [tooltip]="chartOptions.tooltip"
+                              ></apx-chart> -->
+
     <ngx-charts-line-chart
       *ngIf="
         !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
@@ -359,4 +372,26 @@
     </ngx-charts-line-chart>
     <!---- CHART UPDATE 2 (ENDS HERE) ---->
   </div>
+</div>
+
+<!-- <div style="text-align:center">
+  <apx-chart #chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [title]="chartOptions.title"
+  ></apx-chart>
+</div> -->
+
+<div style="text-align:center">
+  <apx-chart #chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [labels]="chartOptions.labels"
+    [stroke]="chartOptions.stroke"
+    [markers]="chartOptions.markers"
+    [fill]="chartOptions.fill"
+    [tooltip]="chartOptions.tooltip"
+  ></apx-chart>
 </div>

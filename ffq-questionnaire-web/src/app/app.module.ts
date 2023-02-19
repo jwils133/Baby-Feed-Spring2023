@@ -113,6 +113,8 @@ import { GrowthChartsHelpComponent } from "./components/growth-charts-help/growt
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 
+import { NgApexchartsModule } from "ng-apexcharts";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -187,13 +189,17 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
     HomePageComponent
   ],
   imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgApexchartsModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatNativeDateModule,
     MatDatepickerModule,
     NgxChartsModule,
     MatTableModule,
-    BrowserModule,
+    //BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -207,10 +213,10 @@ import { HomePageComponent } from "./pages/home-page/home-page.component";
     MatOptionModule,
     MatRadioModule,
     MatIconModule,
-    FormsModule,
+    //FormsModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule,
+    //ReactiveFormsModule,
     MatCheckboxModule,
     FlashMessagesModule.forRoot(),
     MatProgressBarModule,

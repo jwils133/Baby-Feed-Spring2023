@@ -81,7 +81,7 @@ the names will be taken from childrennames and the data from the children arrayl
 
 */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild} from "@angular/core";
 import { MatDialog } from "@angular/material/dialog";
 import { Observable } from "rxjs";
 import { TranslateService } from "@ngx-translate/core";
@@ -103,24 +103,20 @@ import {
   GrowthChartData,
 } from "src/app/models/Enums";
 
-/* CHART UPDATE 5: Add imports to access Apex Charts library using the code below
+import 'apexcharts';
 
-                import { Component, ViewChild } from "@angular/core";
-
-                import {
-                  ChartComponent,
-                  ApexAxisChartSeries,
-                  ApexChart,
-                  ApexFill,
-                  ApexStroke,
-                  ApexYAxis,
-                  ApexTooltip,
-                  ApexMarkers,
-                  ApexXAxis
-                } from "ng-apexcharts";
-
-*/
-
+import {
+  ChartComponent,
+  ApexAxisChartSeries,
+  ApexChart,
+  ApexFill,
+  ApexStroke,
+  ApexYAxis,
+  ApexGrid,
+  ApexTooltip,
+  ApexMarkers,
+  ApexXAxis
+} from "ng-apexcharts";
 
 
 /* 
@@ -213,34 +209,27 @@ class DataManipulation {
   }
 }
 
+export type ChartOptions = {
+  series: ApexAxisChartSeries;
+  chart: ApexChart;
+  xaxis: ApexXAxis;
+  yaxis: ApexYAxis | ApexYAxis[];
+  grid: ApexGrid;
+  labels: string[];
+  stroke: ApexStroke;
+  markers: ApexMarkers;
+  fill: ApexFill;
+  tooltip: ApexTooltip;
+};  
+
 @Component({
   selector: "app-growth-charts-page",
   templateUrl: "./growth-charts-page.component.html",
   styleUrls: ["./growth-charts-page.component.css"],
 })
 export class GrowthChartsPageComponent implements OnInit {
-  /* CHART UPDATE 6: Add the following code
-
-              export type ChartOptions = {
-                series: ApexAxisChartSeries;
-                chart: ApexChart;
-                xaxis: ApexXAxis;
-                yaxis: ApexYAxis | ApexYAxis[];
-                labels: string[];
-                stroke: ApexStroke;
-                markers: ApexMarkers;
-                fill: ApexFill;
-                tooltip: ApexTooltip;
-              };  
-  */
-
-
-  /* CHART UPDATE 7: Instantiate the variables related to the chart using the code below
-  
-  
-                  @ViewChild("chart") chart: ChartComponent;
-                  public chartOptions: Partial<ChartOptions>;
-  */ 
+  @ViewChild("chart") chart: ChartComponent;
+  public chartOptions: Partial<ChartOptions>;
 
 
   //who
@@ -448,7 +437,177 @@ export class GrowthChartsPageComponent implements OnInit {
     );
 
     this.currentChild = new FFQChildren("", [] as FFQChildData[]);
+
+    this.chartOptions = {
+      series: [
+        {
+          name: "Baby",
+          type: "line",
+          data: [2.050, 2.280, 2.500, 2.720, 2.990, 3.100, 3.120, 3.560, 3.800, 4.000, 4.100]
+        },
+        {
+          name: ">98th",
+          type: "area",
+          data: [3.951, 4.050, 4.149, 4.248, 4.347, 4.448, 4.551, 4.657, 4.766, 4.881, 4.999]
+        },
+        {
+          name: "98th",
+          type: "area",
+          data: [2.951, 3.050, 3.149, 3.248, 3.347, 3.448, 3.551, 3.657, 3.766, 3.881, 3.999]
+        },
+        {
+          name: "95th",
+          type: "area",
+          data: [2.851, 2.947, 3.042, 3.138, 3.235, 3.333, 3.432, 3.535, 3.642, 3.752, 3.867]
+        },
+        {
+          name: "90th",
+          type: "area",
+          data: [2.753, 2.846, 2.938, 3.031, 3.125, 3.220, 3.317, 3.416, 3.520, 3.627, 3.738]
+        },
+        {
+          name: "75th",
+          type: "area",
+          data: [2.599, 2.687, 2.775, 2.863, 2.952, 3.043, 3.135, 3.229, 3.328, 3.430, 3.536]
+        },
+        {
+          name: "50th",
+          type: "area",
+          data: [2.441, 2.524, 2.608, 2.691, 2.776, 2.861, 2.948, 3.038, 3.131, 3.228, 3.328]
+        },
+        {
+          name: "25th",
+          type: "area",
+          data: [2.296, 2.375, 2.454, 2.533, 2.613, 2.693, 2.776, 2.861, 2.949, 3.041, 3.136]
+        },
+        {
+          name: "10th",
+          type: "area",
+          data: [2.175, 2.250, 2.325, 2.401, 2.477, 2.554, 2.633, 2.714, 2.798, 2.885, 2.976]
+        },
+        {
+          name: "5th",
+          type: "area",
+          data: [2.107, 2.180, 2.253, 2.326, 2.400, 2.475, 2.552, 2.630, 2.712, 2.797, 2.886]
+        },
+        {
+          name: "2nd",
+          type: "area",
+          data: [2.043, 2.114, 2.185, 2.256, 2.328, 2.401, 2.478, 2.552, 2.632, 2.715, 2.801]
+        },
+        {
+          name: "<2nd",
+          type: "area",
+          data: [1.043, 1.114, 1.185, 1.256, 1.328, 1.401, 1.478, 1.552, 1.632, 1.715, 1.801]
+        }
+
+      ],
+      chart: {
+        height: 500,
+        width: 800,
+        type: "line"
+      },
+      grid: {
+        show: false
+      },
+      stroke: {
+        show: true,
+        curve: "straight",
+        colors: ["#000000"],
+        width: [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      fill: {
+        type: "solid",
+        opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        // white, red, yellow, yellow, green, green, green, green, green, yellow, yellow, red, white
+        colors: ["#ffffff", "#cc0404", "#fae102", "#fae102", "#1da302", "#1da302", "#1da302", "#1da302", "#fae102", "#fae102", "#cc0404", "#ffffff"]
+        
+      },
+      labels: [
+        "45",
+        "45.5",
+        "46",
+        "46.5",
+        "47",
+        "47.5",
+        "48",
+        "48.5",
+        "49",
+        "49.5",
+        "50"
+      ],
+      markers: {
+       size: [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+       colors: ['#000', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
+       strokeColors: '#000',
+       strokeWidth: 2,
+       strokeOpacity: 0.9,
+       strokeDashArray: 0,
+       fillOpacity: 1,
+       discrete: [],
+       shape: "circle",
+       radius: 2,
+       offsetX: 0,
+       offsetY: 0,
+       onClick: undefined,
+       onDblClick: undefined,
+       showNullDataPoints: true,
+       hover: {
+         size: undefined,
+         sizeOffset: 3
+       }
+   },
+      yaxis: [
+        {
+          title: {
+            text: "Weight"
+          },
+          tickAmount: 9,
+          forceNiceScale: true
+        }
+      ],
+      xaxis: {
+        title: {
+          text: "Length"
+        },
+        labels: {
+          trim: false
+        }
+      },
+      tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+          formatter: function(y) {
+            if (typeof y !== "undefined") {
+              return y.toFixed(0) + " points";
+            }
+            return y;
+          }
+        }
+      }
+    };    
+
   }
+
+  public generateData(count, yrange) {
+    var i = 0;
+    var series = [];
+    while (i < count) {
+      var x = "w" + (i + 1).toString();
+      var y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+
+      series.push({
+        x: x,
+        y: y
+      });
+      i++;
+    }
+    return series;
+  }
+
+  
 
   onSubmitChildPersonalInformationForm() {
     console.log("Working in progress submitting  Child Personal Information");
