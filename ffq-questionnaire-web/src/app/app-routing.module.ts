@@ -41,6 +41,7 @@ import { UpdateResearcherComponent } from './pages/modify-researcher/modify-rese
 import { ClinicQuestionnaireComponent } from './pages/clinic-questionnaire/clinic-questionnaire.component';
 import { GrowthChartsPageComponent } from './pages/growth-charts-page/growth-charts-page.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
+import { OtherComponent } from './pages/other/other.component';
 const routes: Routes = [
   {
     path: '',
@@ -269,11 +270,18 @@ const routes: Routes = [
   {
     path: 'participant/questionnaire/:id',
     component: QuestionnairePageComponent
+  },
+  {
+    path: 'parent/other',
+    component: OtherComponent,
+    canActivate: [AuthGuard]
   }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: 'reload' })],
   exports: [RouterModule]
+
+  
 })
 export class AppRoutingModule {}
