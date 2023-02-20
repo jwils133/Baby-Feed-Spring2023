@@ -1,1 +1,73 @@
 <p>other works!</p>
+<!-- <app-parental-header></app-parental-header> -->
+<title>{{ "PARENTPORTAL.TITLE" | translate }}</title>
+<div class="header">
+  <a routerLink="/parent/home">
+  <div class="homeitem-container">
+    <div class="homeitem-content">
+      <div class="homeitem-svg-title">
+        <img
+          class="header-logo"
+          src="assets/images/logo.png"
+          alt=""
+          height="120"
+          width="120"
+          routerLink="/parent/home"
+        />
+      </div>
+
+      <div class="homeitem-title">
+        <h1>{{"Parental Portal" | translate}}</h1>
+        <h2>{{"Welcome to Parent Portal" | translate}}</h2>
+        <p>
+          {{"Each tab has a different tool, please see the descriptions below" | translate}}
+        </p>
+      </div>
+    </div>
+  </div>
+</a>
+  <!-- <h2 matDialogTitle><a routerLink="/parent/home">{{ "PARENTPORTAL.TITLE" | translate }}</a></h2> -->
+  <div align="center">
+    <!-- <i> <img class="header-logo" src="assets/images/logo.png" alt="" height="80" width="80" routerLink="/parent/home"/> </i> -->
+  </div>
+  <div class="login-button">
+    <button mat-raised-button (click)="logout()" translate>
+      {{ "Log out" | translate
+      }}<i class="fa fa-sign-out" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div align="center"><i></i></div>
+</div>
+<div class="homeitem-container">
+    <a routerLink="video3">
+    <h1>{{"Recommendations" | translate}}</h1>
+    <div class="homeitem-content">
+      <p>
+        {{"Click here for a video on Nutrition." | translate}}
+      </p>
+    </div>
+  </a>
+</div>
+
+<div class="homeitem-container">
+    <a routerLink="video2">
+    <h1>{{"Recommendations" | translate}}</h1>
+    <div class="homeitem-content">
+      <p>
+        {{"Click here for a video on Growth." | translate}}
+      </p>
+    </div>
+  </a>
+</div>
+
+<div class="homeitem-container">
+    <a routerLink="video1">
+    <h1>{{"Recommendations" | translate}}</h1>
+    <div class="homeitem-content">
+      <p>
+        {{"Click here for a video on Nutrition." | translate}}
+      </p>
+    </div>
+  </a>
+</div>
