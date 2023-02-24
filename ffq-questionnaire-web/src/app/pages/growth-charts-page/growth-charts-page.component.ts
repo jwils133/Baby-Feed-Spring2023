@@ -201,6 +201,7 @@ import { NgForm, NgModel } from "@angular/forms";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { stringify } from "querystring";
+import { ChildDetailsTableComponent } from "src/app/child-details-table/child-details-table.component";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class DataManipulation {
