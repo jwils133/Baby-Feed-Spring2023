@@ -1,6 +1,7 @@
 <table>
     <thead>
       <tr>
+        <th>History (By Visit)</th>
         <th>Name</th>
         <th>Length</th>
         <th>Weight</th>
@@ -9,6 +10,7 @@
     </thead>
     <tbody>
       <tr *ngFor="let person of people">
+        <td>{{ person.history | date:'yyyy-MM-dd'}}</td>
         <td>{{ person.name }}</td>
         <td>{{ person.length }}</td>
         <td>{{ person.weight }}</td>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-child-details-table',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChildDetailsTableComponent implements OnInit {
   
-  people: { name: string; length: string; weight: string; age: number; }[];
+  people: {name: string; length: string; weight: string; age: number; }[];
 
   constructor() { }
 
