@@ -1,0 +1,131 @@
+.home-component-container {
+    padding-top: 200px;
+
+    color: aliceblue;
+
+    align-items: center;
+}
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 80vw;
+    align-items: center;
+    margin: auto;
+}
+
+.home-component-container .homeitem-container {
+    background-color: #4d79ff;
+}
+
+.home-component-container .homeitem-container:hover {
+    background-color: #ebecf2;
+    color: #edeef3;
+}
+
+.homeitem-container {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background-color: #0039E6;
+
+    margin: .3em;
+    padding: 1em;
+
+    align-items: center;
+
+    width: 100%;
+}
+
+.homeitem-container h1 {
+    font-size: 1.5em;
+    text-align: center;
+    color: #f3f3f3;
+}
+
+.homeitem-container p {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 1em;
+    color: #fffcfc;
+}
+
+.homeitem-2-container {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 1;
+}
+
+.homeitem-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex-direction: row;
+}
+
+.homeitem-title h1, .homeitem-title h2, .homeitem-title p {
+    text-align: left;
+    color: rgb(243, 246, 248);
+}
+
+.homeitem-title {
+    padding-left: 20px;
+}
+
+.homeitem-title h1 {
+    font-size: 2em;
+    margin-top: 20px;
+}
+
+.homeitem-title h2 {
+    font-size: 1.5em;
+    line-height: .75em;
+}
+
+.homeitem-title p {
+    font-size: 1em;
+}
+
+.homeitem-svg-title {
+    align-items: center;
+    margin: auto;
+}
+
+.homeitem-svg-title img {
+    align-items: center;
+}
+
+.homeitem-svg {
+    align-items: center;
+    padding: 1em;
+}
+
+.homeitem-svg img {
+    align-items: center;
+}
+
+.my-button {
+    margin: 0 10px;
+    background-color: #4CAF50; /* Green background color */
+    border: none; /* Remove border */
+    color: white; /* White text color */
+    padding: 14px 24px; /* Add padding */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Make button inline */
+    font-size: 16px; /* Set font size */
+    font-weight: bold; /* Set font weight */
+    border-radius: 25px; /* Round edges */
+    transition: all 0.3s ease-in-out; /* Add hover effect */
+  }
+
+  .my-button:hover {
+    background-color: #3e8e41; /* Darker green background color */
+  }
