@@ -114,7 +114,6 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 
 import { NgApexchartsModule } from "ng-apexcharts";
-import { ChildDetailsTableComponent } from './child-details-table/child-details-table.component';
 
 @NgModule({
   declarations: [
@@ -188,7 +187,6 @@ import { ChildDetailsTableComponent } from './child-details-table/child-details-
     InterpretationGrowthChartsDialogComponent,
     GrowthChartsHelpComponent,
     HomePageComponent,
-    ChildDetailsTableComponent
   ],
   imports: [
     BrowserModule,
