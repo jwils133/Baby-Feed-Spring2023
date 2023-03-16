@@ -201,7 +201,6 @@ import { NgForm, NgModel } from "@angular/forms";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { stringify } from "querystring";
-import { ChildDetailsTableComponent } from "src/app/child-details-table/child-details-table.component";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class DataManipulation {
@@ -1573,5 +1572,10 @@ export class GrowthChartsPageComponent implements OnInit {
     if (parseFloat(pointX) < parseFloat(dataChart[0].name)) return 0;
     if (parseFloat(pointX) > parseFloat(dataChart[dataChart.length - 1].name))
       return dataChart.length - 1;
+  }
+
+  //temporary solution for getting the data of the children to the table
+  getChildData(child: FFQChildren): FFQChildData[] {
+    return child.childData;
   }
 }

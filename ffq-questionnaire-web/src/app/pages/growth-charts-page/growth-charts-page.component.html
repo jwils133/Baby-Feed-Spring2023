@@ -396,6 +396,25 @@
   ></apx-chart>
 </div>
 
-<app-child-details-table>
-  
-</app-child-details-table>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Height</th>
+      <th>Weight</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let child of childrenList">
+      <ng-container *ngFor="let childData of getChildData(child)">
+        <tr>
+          <td>{{ child.name }}</td>
+          <td>{{ childData.age }}</td>
+          <td>{{ childData.height }}</td>
+          <td>{{ childData.weight }}</td>
+        </tr>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>
