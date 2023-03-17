@@ -1,3 +1,4 @@
+
 <!-- <app-parental-header></app-parental-header> -->
 <title>{{ "PARENTPORTAL.TITLE" | translate }}</title>
 <div class="header">
@@ -39,34 +40,75 @@
   <div align="center"><i></i></div>
 </div>
 <div class="homeitem-container">
-    <a routerLink="video3">
-    <h1>{{"Recommendations" | translate}}</h1>
-    <div class="homeitem-content">
-      <p>
-        {{"Click here for a video on Nutrition." | translate}}
-      </p>
-    </div>
-  </a>
+  <a routerLink="video1">
+  <h1>{{"Feeding Babies Introduction Video" | translate}}</h1>
+  <div class="homeitem-content">
+    <button (click)="introduction1()" class="my-button">Introduction English</button>
+    <button (click)="introduction2()" class="my-button">Introduction Spanish</button>
+  </div>
+</a>
 </div>
 
 <div class="homeitem-container">
     <a routerLink="video2">
-    <h1>{{"Recommendations" | translate}}</h1>
+    <h1>{{"What is a good first food for your baby?" | translate}}</h1>
     <div class="homeitem-content">
-      <p>
-        {{"Click here for a video on Growth." | translate}}
-      </p>
+      <button (click)="firstFood()" class="my-button">First food</button>
     </div>
   </a>
 </div>
 
 <div class="homeitem-container">
-    <a routerLink="video1">
-    <h1>{{"Recommendations" | translate}}</h1>
+    <a routerLink="video3">
+    <h1>{{"No-cook first foods" | translate}}</h1>
     <div class="homeitem-content">
-      <p>
-        {{"Click here for a video on Nutrition." | translate}}
-      </p>
+      <button (click)="firstFoodNC()" class="my-button">No-cook first food</button>
     </div>
   </a>
 </div>
+
+<div class="homeitem-container">
+    <a routerLink="video4">
+    <h1>{{"How to cook sweet potato" | translate}}</h1>
+    <div class="homeitem-content">
+      <button (click)="sweetPot()" class="my-button">Sweet potato</button>
+    </div>
+  </a>
+</div>
+
+<div class="homeitem-container">
+  <a routerLink="video5">
+  <h1>{{"Encontras papillas para bebes" | translate}}</h1>
+  <div class="homeitem-content">
+    <p>
+      <button (click)="papillas1()" class="my-button">Papillas faciles</button>
+      <button (click)="papillas2()" class="my-button">Preparar 9 papillas</button>
+
+    </p>
+  </div>
+</a>
+</div>
+
+<div class="homeitem-container">
+  <a routerLink="video7">
+  <h1>{{"How much should I feed my baby?" | translate}}</h1>
+  <div class="homeitem-content">
+    <p>
+      <button (click)="howMuchE()" class="my-button">How much to feed</button>
+      <button (click)="howMuchS()" class="my-button">Cantidad adecuada</button>
+    </p>
+  </div>
+</a>
+</div>
+
+<div class="homeitem-container">
+  <a routerLink="video7">
+  <h1>{{"Food to AVOID?" | translate}}</h1>
+  <div class="homeitem-content">
+    <button (click)="foodToAvoidE()" class="my-button">Food to avoid</button>
+    <button (click)="foodToAvoidS()" class="my-button">Evita estos alimentos</button>
+  </div>
+</a>
+</div>
+
+
