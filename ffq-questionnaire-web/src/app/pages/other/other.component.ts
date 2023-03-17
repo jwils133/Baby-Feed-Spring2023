@@ -18,7 +18,8 @@ import { User } from 'src/app/services/authentication/temp-user';
 @Component({
   selector: 'app-other',
   templateUrl: './other.component.html',
-  styleUrls: ['./other.component.css', ]
+  styleUrls: ['./other.component.css']
+
 })
 export class OtherComponent {
   TITLE = this.translate.instant('Parent Portal');
@@ -77,7 +78,6 @@ export class OtherComponent {
     foodToAvoidS(){
       window.open('https://www.youtube.com/watch?v=I9hBvb2dIlI', '_blank');
     }
-
 
 
 

@@ -114,6 +114,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { HomePageComponent } from "./pages/home-page/home-page.component";
 import { OtherComponent } from './pages/other/other.component';
 
+import { NgApexchartsModule } from "ng-apexcharts";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -189,13 +191,17 @@ import { OtherComponent } from './pages/other/other.component';
     OtherComponent
   ],
   imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgApexchartsModule,
     MatProgressSpinnerModule,
     MatExpansionModule,
     MatNativeDateModule,
     MatDatepickerModule,
     NgxChartsModule,
     MatTableModule,
-    BrowserModule,
+    //BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
@@ -209,10 +215,10 @@ import { OtherComponent } from './pages/other/other.component';
     MatOptionModule,
     MatRadioModule,
     MatIconModule,
-    FormsModule,
+    //FormsModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule,
+    //ReactiveFormsModule,
     MatCheckboxModule,
     FlashMessagesModule.forRoot(),
     MatProgressBarModule,
