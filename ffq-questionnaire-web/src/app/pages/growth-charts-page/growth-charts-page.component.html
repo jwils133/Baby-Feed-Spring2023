@@ -406,7 +406,7 @@
     </tr>
   </thead>
   <tbody>
-    <ng-container *ngFor="let child of childrenList">
+    <ng-container *ngFor="let child of currentParent.children">
       <ng-container *ngFor="let childData of getChildData(child)">
         <tr>
           <td>{{ child.name }}</td>
