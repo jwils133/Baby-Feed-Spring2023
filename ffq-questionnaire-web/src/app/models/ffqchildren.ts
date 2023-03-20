@@ -84,6 +84,68 @@ export class FFQChildren {
     return { name: this.name, series: weightbyHeight };
   }
 
+  // getWeightHeightChartDataNew(
+  //   heightMeasurementUnit: UnitsOfMeasurement,
+  //   weightMeasurementUnit: UnitsOfMeasurement
+  // ): [number, number][] {
+  //   let multiplier: number = 1;
+  //   if (weightMeasurementUnit === UnitsOfMeasurement.lb)
+  //     multiplier = FFQChildren.KG_TO_LB;
+
+  //   let divider: number = 1;
+  //   if (heightMeasurementUnit === UnitsOfMeasurement.in)
+  //     divider = FFQChildren.IN_TO_CM;
+
+  //   let i: number = 0;
+  //   let babyLength: number;
+  //   let babyWeight: number;
+  //   let babyDataPoint: [number, number];
+  //   let weightbyHeight: [number, number][];
+  //   for (let data of this.childData) {
+  //     babyLength = Math.round(parseFloat(data.height) / divider);
+  //     babyWeight = Math.round(parseFloat(data.weight) / divider);
+  //     babyDataPoint = [babyLength, babyWeight];
+  //     weightbyHeight.push(babyDataPoint);
+  //     i += 1;
+  //   }
+
+  //   return weightbyHeight;
+  // }
+
+  getWeightHeightChartDataNew(
+    heightMeasurementUnit: UnitsOfMeasurement,
+    weightMeasurementUnit: UnitsOfMeasurement
+  ): any {
+    let multiplier: number = 1;
+    if (weightMeasurementUnit === UnitsOfMeasurement.lb)
+      multiplier = FFQChildren.KG_TO_LB;
+
+    let divider: number = 1;
+    if (heightMeasurementUnit === UnitsOfMeasurement.in)
+      divider = FFQChildren.IN_TO_CM;
+
+    let weightbyHeight: { height: number; weight: number }[] = [];
+    for (let data of this.childData) {
+      weightbyHeight.push({
+        height: Math.round(parseFloat(data.height) / divider),
+        weight: Math.round(parseFloat(data.weight) * multiplier),
+      });
+    }
+
+    return weightbyHeight;
+  }
+
+  extractBabyData(babyData) {
+    let result = [];
+    for (let i = 0; i < babyData.length; i++) {
+      let dataPoint = babyData[i];
+      result.push([dataPoint.height, dataPoint.weight]);
+    }
+    return result;
+  }
+
+  
+
   getBMIChartData(): any {
     let bmiByMonth: { name: string; value: string }[] = [];
     for (let data of this.childData) {
