@@ -310,7 +310,7 @@
     >></mat-progress-spinner
   >
 </div>
-<div class="chart-container">
+<div layout="row" layout-align="center center" class="chart-container">
   <h3
     *ngIf="
       !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
@@ -319,7 +319,7 @@
   >
     {{ currentChildGender + " " + chosenChartOption + " Chart" | translate }}
   </h3>
-  <div #containerRef id="chart-line"> <!---- CHART UPDATE 1: Change "chart-line" to "combo-line-area"---->
+  <div layout="row" layout-align="center center" #containerRef id="chart-line"> <!---- CHART UPDATE 1: Change "chart-line" to "combo-line-area"---->
     <!---- CHART UPDATE 2 (STARTS HERE): 
                   Delete ngx-charts-line-chart section and replace it with:
                   

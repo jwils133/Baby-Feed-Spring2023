@@ -115,7 +115,8 @@ import {
   ApexGrid,
   ApexTooltip,
   ApexMarkers,
-  ApexXAxis
+  ApexXAxis,
+  ChartHorizontalAlign
 } from "ng-apexcharts";
 
 
@@ -210,6 +211,7 @@ class DataManipulation {
 }
 
 export type ChartOptions = {
+  center: ChartHorizontalAlign;
   series: ApexAxisChartSeries;
   chart: ApexChart;
   xaxis: ApexXAxis;
