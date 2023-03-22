@@ -426,7 +426,7 @@ export class GrowthChartsPageComponent implements OnInit {
 
     this.currentChild = new FFQChildren("", [] as FFQChildData[]);
 
-    this.chartOptions = {
+    this.chartOptions = {//empty chart
       series: [],
       chart: {
         height: 0,
@@ -460,32 +460,62 @@ export class GrowthChartsPageComponent implements OnInit {
     return series;
   }
 
-  extractFemaleMetricSeries(babyWeightHeightData, nameBaby) {
+  extractFemaleMetricSeries(babyWeightHeightData, nameBaby) {//function for female metric series
     let babyDataSeries = {
       name: nameBaby,
       type: "line",
-      data: babyWeightHeightData
+      data: babyWeightHeightData//baby weight height data is passed into function
     };
 
-    let seriesResult = [babyDataSeries];
+    let seriesResult = [babyDataSeries];//series results starts with baby data
 
-    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
-      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {//for every element in the girl's metric data array
+      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);//push into the series result
     }
     return seriesResult;
   }
 
-  extractMaleMetricSeries(babyWeightHeightData, nameBaby) {
+  extractFemaleCustomarySeries(babyWeightHeightData, nameBaby) {//function for female metric series
     let babyDataSeries = {
       name: nameBaby,
       type: "line",
-      data: babyWeightHeightData
+      data: babyWeightHeightData//baby weight height data is passed into function
     };
 
-    let seriesResult = [babyDataSeries];
+    let seriesResult = [babyDataSeries];//series results starts with baby data
 
-    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
-      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM.length; i++) {//for every element in the girl's metric data array
+      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM[i]);//push into the series result
+    }
+    return seriesResult;
+  }
+
+  extractMaleMetricSeries(babyWeightHeightData, nameBaby) {//function for male metric series
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData//baby weight data is passed
+    };
+
+    let seriesResult = [babyDataSeries];//series results starts with baby data
+
+    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {//for every element in boy's metric data array
+      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);//push into the series result
+    }
+    return seriesResult;
+  }
+
+  extractMaleCustomarySeries(babyWeightHeightData, nameBaby) {//function for male metric series
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData//baby weight data is passed
+    };
+
+    let seriesResult = [babyDataSeries];//series results starts with baby data
+
+    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM.length; i++) {//for every element in boy's metric data array
+      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM[i]);//push into the series result
     }
     return seriesResult;
   }
@@ -940,18 +970,28 @@ export class GrowthChartsPageComponent implements OnInit {
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
-      case (Gender.Female):
-        seriesData = this.extractFemaleMetricSeries(babyData, babyName);
-        babyChartTitle = "Female Weight-Length Chart";
+      case (Gender.Female)://if gender is female
+      
+        if(this.weightUnitOptions === UnitsOfMeasurement.kg){
+          seriesData = this.extractFemaleMetricSeries(babyData, babyName);//use female metric data for percentiles
+        }else{
+          seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
+        }
+        babyChartTitle = "Female Weight-Length Chart";//change the title of chart
         break;
 
-      case (Gender.Male):
-        seriesData = this.extractMaleMetricSeries(babyData, babyName);
-        babyChartTitle = "Male Weight-Length Chart";
+      case (Gender.Male)://if gender is male
+
+        if(this.weightUnitOptions === UnitsOfMeasurement.kg){
+          seriesData = this.extractMaleMetricSeries(babyData, babyName);//use male metric data for percentiles
+        }else{
+          seriesData = this.extractMaleCustomarySeries(babyData, babyName);//use male customary data for percentiles
+        }
+        babyChartTitle = "Male Weight-Length Chart";//change the title of the chart
         break;
     }
 
-    this.chartOptions = {
+    this.chartOptions = {//new chart options
       series: seriesData,
       chart: {
         height: 800,
