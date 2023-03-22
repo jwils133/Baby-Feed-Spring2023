@@ -115,7 +115,10 @@ import {
   ApexGrid,
   ApexTooltip,
   ApexMarkers,
-  ApexXAxis
+  ApexXAxis,
+  ApexLegend,
+  ApexTitleSubtitle,
+  ApexAnnotations
 } from "ng-apexcharts";
 
 
@@ -220,6 +223,9 @@ export type ChartOptions = {
   markers: ApexMarkers;
   fill: ApexFill;
   tooltip: ApexTooltip;
+  legend: ApexLegend;
+  title: ApexTitleSubtitle;
+  annotations: ApexAnnotations;
 };  
 
 @Component({
@@ -328,19 +334,19 @@ export class GrowthChartsPageComponent implements OnInit {
   documentation: https://swimlane.gitbook.io/ngx-charts/
   */
 
-  legend: boolean = true;
-  showLabels: boolean = true;
-  animations: boolean = true;
-  xAxis: boolean = true;
-  yAxis: boolean = true;
-  showYAxisLabel: boolean = true;
-  showXAxisLabel: boolean = true;
-  xAxisLabel: string = "";
-  yAxisLabel: string = "";
-  timeline: boolean = true;
-  view: any[] = [1400, 1400];
-  results: any[] = [];
-  position: string = "right";
+  // legend: boolean = true;
+  // showLabels: boolean = true;
+  // animations: boolean = true;
+  // xAxis: boolean = true;
+  // yAxis: boolean = true;
+  // showYAxisLabel: boolean = true;
+  // showXAxisLabel: boolean = true;
+  // xAxisLabel: string = "";
+  // yAxisLabel: string = "";
+  // timeline: boolean = true;
+  // view: any[] = [1400, 1400];
+  // results: any[] = [];
+  // position: string = "right";
 
   // to determine the chart selected by the user
   chosenChartOption: ChartOption = ChartOption.NotAssigned;
@@ -349,24 +355,6 @@ export class GrowthChartsPageComponent implements OnInit {
   currentGrowthChartData: GrowthChartData = GrowthChartData.NONE;
 
   lang: boolean = true;
-
-  // colors used to plot the diferent graphs
-  colorScheme = {
-    domain: [
-      "#C20000",
-      "#DB9600",
-      "#DB9600",
-      "#518675",
-      "#518675",
-      "#518675",
-      "#518675",
-      "#518675",
-      "#DB9600",
-      "#DB9600",
-      "#C20000",
-      "#000000",
-    ],
-  };
 
   dataWasAdded: boolean = true;
 
@@ -439,152 +427,17 @@ export class GrowthChartsPageComponent implements OnInit {
     this.currentChild = new FFQChildren("", [] as FFQChildData[]);
 
     this.chartOptions = {
-      series: [
-        {
-          name: "Baby",
-          type: "line",
-          data: [2.050, 2.280, 2.500, 2.720, 2.990, 3.100, 3.120, 3.560, 3.800, 4.000, 4.100]
-        },
-        {
-          name: ">98th",
-          type: "area",
-          data: [3.951, 4.050, 4.149, 4.248, 4.347, 4.448, 4.551, 4.657, 4.766, 4.881, 4.999]
-        },
-        {
-          name: "98th",
-          type: "area",
-          data: [2.951, 3.050, 3.149, 3.248, 3.347, 3.448, 3.551, 3.657, 3.766, 3.881, 3.999]
-        },
-        {
-          name: "95th",
-          type: "area",
-          data: [2.851, 2.947, 3.042, 3.138, 3.235, 3.333, 3.432, 3.535, 3.642, 3.752, 3.867]
-        },
-        {
-          name: "90th",
-          type: "area",
-          data: [2.753, 2.846, 2.938, 3.031, 3.125, 3.220, 3.317, 3.416, 3.520, 3.627, 3.738]
-        },
-        {
-          name: "75th",
-          type: "area",
-          data: [2.599, 2.687, 2.775, 2.863, 2.952, 3.043, 3.135, 3.229, 3.328, 3.430, 3.536]
-        },
-        {
-          name: "50th",
-          type: "area",
-          data: [2.441, 2.524, 2.608, 2.691, 2.776, 2.861, 2.948, 3.038, 3.131, 3.228, 3.328]
-        },
-        {
-          name: "25th",
-          type: "area",
-          data: [2.296, 2.375, 2.454, 2.533, 2.613, 2.693, 2.776, 2.861, 2.949, 3.041, 3.136]
-        },
-        {
-          name: "10th",
-          type: "area",
-          data: [2.175, 2.250, 2.325, 2.401, 2.477, 2.554, 2.633, 2.714, 2.798, 2.885, 2.976]
-        },
-        {
-          name: "5th",
-          type: "area",
-          data: [2.107, 2.180, 2.253, 2.326, 2.400, 2.475, 2.552, 2.630, 2.712, 2.797, 2.886]
-        },
-        {
-          name: "2nd",
-          type: "area",
-          data: [2.043, 2.114, 2.185, 2.256, 2.328, 2.401, 2.478, 2.552, 2.632, 2.715, 2.801]
-        },
-        {
-          name: "<2nd",
-          type: "area",
-          data: [1.043, 1.114, 1.185, 1.256, 1.328, 1.401, 1.478, 1.552, 1.632, 1.715, 1.801]
-        }
-
-      ],
+      series: [],
       chart: {
-        height: 500,
-        width: 800,
+        height: 0,
+        width: 0,
         type: "line"
       },
       grid: {
         show: false
       },
       stroke: {
-        show: true,
-        curve: "straight",
-        colors: ["#000000"],
-        width: [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-      },
-      fill: {
-        type: "solid",
-        opacity: [0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        // white, red, yellow, yellow, green, green, green, green, green, yellow, yellow, red, white
-        colors: ["#ffffff", "#cc0404", "#fae102", "#fae102", "#1da302", "#1da302", "#1da302", "#1da302", "#fae102", "#fae102", "#cc0404", "#ffffff"]
-        
-      },
-      labels: [
-        "45",
-        "45.5",
-        "46",
-        "46.5",
-        "47",
-        "47.5",
-        "48",
-        "48.5",
-        "49",
-        "49.5",
-        "50"
-      ],
-      markers: {
-       size: [5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-       colors: ['#000', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
-       strokeColors: '#000',
-       strokeWidth: 2,
-       strokeOpacity: 0.9,
-       strokeDashArray: 0,
-       fillOpacity: 1,
-       discrete: [],
-       shape: "circle",
-       radius: 2,
-       offsetX: 0,
-       offsetY: 0,
-       onClick: undefined,
-       onDblClick: undefined,
-       showNullDataPoints: true,
-       hover: {
-         size: undefined,
-         sizeOffset: 3
-       }
-   },
-      yaxis: [
-        {
-          title: {
-            text: "Weight"
-          },
-          tickAmount: 9,
-          forceNiceScale: true
-        }
-      ],
-      xaxis: {
-        title: {
-          text: "Length"
-        },
-        labels: {
-          trim: false
-        }
-      },
-      tooltip: {
-        shared: true,
-        intersect: false,
-        y: {
-          formatter: function(y) {
-            if (typeof y !== "undefined") {
-              return y.toFixed(0) + " points";
-            }
-            return y;
-          }
-        }
+        show: false
       }
     };    
 
@@ -607,7 +460,35 @@ export class GrowthChartsPageComponent implements OnInit {
     return series;
   }
 
-  
+  extractFemaleMetricSeries(babyWeightHeightData, nameBaby) {
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData
+    };
+
+    let seriesResult = [babyDataSeries];
+
+    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
+      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    }
+    return seriesResult;
+  }
+
+  extractMaleMetricSeries(babyWeightHeightData, nameBaby) {
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData
+    };
+
+    let seriesResult = [babyDataSeries];
+
+    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
+      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    }
+    return seriesResult;
+  }
 
   onSubmitChildPersonalInformationForm() {
     console.log("Working in progress submitting  Child Personal Information");
@@ -771,275 +652,450 @@ export class GrowthChartsPageComponent implements OnInit {
   the presented magnitud. However, an improvement can be avoid an intensive use of
   ram copying constantly the same data.
   */
+  // plottingData() {
+  //   let newResult = [];
+
+  //   /* depending on the type of charts we will choose the correct chart taking into 
+  //   account unit of measurements and gender */
+  //   switch (this.currentGrowthChartData) {
+  //     case GrowthChartData.BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         /* 
+  //         the data needs to be copy using a deep copy method to avoid a reference
+  //         modification of the data by mistake 
+  //         */
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(this.currentChild.getBMIChartData());
+  //       } else newResult = BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getHeightChartData(this.heightUnitOptions)
+  //         );
+  //       } else newResult = BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getHeightChartData(this.heightUnitOptions)
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+
+  //         newResult.push(
+  //           this.currentChild.getWeightChartData(this.weightUnitOptions)
+  //         );
+  //       } else newResult = BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightChartData(this.weightUnitOptions)
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult = BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM;
+  //       break;
+  //     case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(this.currentChild.getBMIChartData());
+  //       } else newResult = GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getHeightChartData(this.heightUnitOptions)
+  //         );
+  //       } else
+  //         newResult = GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getHeightChartData(this.heightUnitOptions)
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightChartData(this.weightUnitOptions)
+  //         );
+  //       } else
+  //         newResult = GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightChartData(this.weightUnitOptions)
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult = GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM;
+  //       break;
+  //     case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
+  //       if (this.currentChild.childData.length !== 0) {
+  //         newResult = DataManipulation.getDeepCopy(
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+  //         );
+  //         newResult.push(
+  //           this.currentChild.getWeightHeightChartData(
+  //             this.heightUnitOptions,
+  //             this.weightUnitOptions
+  //           )
+  //         );
+  //       } else
+  //         newResult =
+  //           GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+  //       break;
+  //   }
+
+  //   this.results = newResult;
+  // }
+
   plottingData() {
-    let newResult = [];
+    let babyData: [number, number][];
+    let babyName = this.currentChild.name;
 
-    /* depending on the type of charts we will choose the correct chart taking into 
-    account unit of measurements and gender */
-    switch (this.currentGrowthChartData) {
-      case GrowthChartData.BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          /* 
-          the data needs to be copy using a deep copy method to avoid a reference
-          modification of the data by mistake 
-          */
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(this.currentChild.getBMIChartData());
-        } else newResult = BOYS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getHeightChartData(this.heightUnitOptions)
-          );
-        } else newResult = BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getHeightChartData(this.heightUnitOptions)
-          );
-        } else
-          newResult =
-            BOYS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
 
-          newResult.push(
-            this.currentChild.getWeightChartData(this.weightUnitOptions)
-          );
-        } else newResult = BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightChartData(this.weightUnitOptions)
-          );
-        } else
-          newResult =
-            BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult = BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM;
-        break;
-      case GrowthChartData.BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(this.currentChild.getBMIChartData());
-        } else newResult = GIRLS_BMI_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getHeightChartData(this.heightUnitOptions)
-          );
-        } else
-          newResult = GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getHeightChartData(this.heightUnitOptions)
-          );
-        } else
-          newResult =
-            GIRLS_HEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightChartData(this.weightUnitOptions)
-          );
-        } else
-          newResult = GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+    let rawBabyData: [number, number][];
+    rawBabyData = this.currentChild.getWeightHeightChartData(
+      this.heightUnitOptions,
+      this.weightUnitOptions
+    );
+
+    babyData = this.currentChild.extractBabyData(rawBabyData);
+    let seriesData = [];
+    let babyChartTitle = "";
+   if(this.currentChildGender != Gender.NotAssigned) {
+    switch (this.currentChildGender) 
+    {
+      case (Gender.Female):
+        seriesData = this.extractFemaleMetricSeries(babyData, babyName);
+        babyChartTitle = "Female Weight-Length Chart";
         break;
 
-      case GrowthChartData.GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightChartData(this.weightUnitOptions)
-          );
-        } else
-          newResult =
-            GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult = GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM;
-        break;
-      case GrowthChartData.GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM:
-        if (this.currentChild.childData.length !== 0) {
-          newResult = DataManipulation.getDeepCopy(
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
-          );
-          newResult.push(
-            this.currentChild.getWeightHeightChartData(
-              this.heightUnitOptions,
-              this.weightUnitOptions
-            )
-          );
-        } else
-          newResult =
-            GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+      case (Gender.Male):
+        seriesData = this.extractMaleMetricSeries(babyData, babyName);
+        babyChartTitle = "Male Weight-Length Chart";
         break;
     }
 
-    this.results = newResult;
+    this.chartOptions = {
+      series: seriesData,
+      chart: {
+        height: 800,
+        width: 1100,
+        type: "line"
+      },
+      grid: {
+        show: false
+      },
+      stroke: {
+        // curve: "straight",
+        // colors: ["#000"],
+        // width: [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        curve: "straight",
+        colors: ["#000000"],
+        width: [3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      },
+      legend: {
+        show: true,
+        position: "right",
+        markers: {
+          width: 9,
+          height: 9,
+          strokeWidth: 0,
+          strokeColor: '#fff',
+          fillColors: ["#000000", "#cc0404", , "#fae102", "#fae102", "#1da302", "#1da302", "#1da302", "#1da302", "#fae102", "#fae102", "#cc0404", "#ffffff"]
+      },
+      },
+      fill: {
+        type: "solid",
+        opacity: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        // white, red, yellow, yellow, green, green, green, green, green, yellow, yellow, red, white
+        colors: ["#ffffff", "#cc0404", "#fae102", "#fae102", "#1da302", "#1da302", "#1da302", "#1da302", "#fae102", "#fae102", "#cc0404", "#ffffff"]
+
+      },
+      markers: {
+        size: [3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        colors: ['#000', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff'],
+        strokeColors: '#000',
+        strokeWidth: 2,
+        strokeOpacity: 0.5,
+        strokeDashArray: 0,
+        fillOpacity: 1,
+        discrete: [],
+        shape: "circle",
+        radius: 2,
+        onClick: undefined,
+        onDblClick: undefined,
+        showNullDataPoints: true,
+        hover: {
+          size: undefined,
+          sizeOffset: 3
+        }
+      },
+      yaxis: [
+        {
+          show: true,
+          tickAmount: 10,
+          labels: {
+            show: true,
+            align: 'right',
+            minWidth: 0,
+            maxWidth: 4,
+            style: {
+              colors: [],
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 400,
+              cssClass: 'apexcharts-yaxis-label',
+            }
+          },
+          title: {
+            text: "Weight",
+            style: {
+              color: "000",
+              fontSize: '12px',
+              fontFamily: 'Helvetica, Arial, sans-serif',
+              fontWeight: 400,
+              cssClass: 'apexcharts-yaxis-title',
+            }
+            // forceNiceScale: true
+          }
+        }
+      ],
+      xaxis: {
+        labels: {
+          show: true,
+          style: {
+            colors: [],
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 400,
+            cssClass: 'apexcharts-yaxis-label',
+          },
+          rotate: 0
+        },
+        title: {
+          text: "Length",
+          style: {
+            color: "000",
+            fontSize: '12px',
+            fontFamily: 'Helvetica, Arial, sans-serif',
+            fontWeight: 600,
+            cssClass: 'apexcharts-yaxis-title',
+          }
+        },
+        type: 'numeric',
+        tickAmount: 10,
+      },
+      title: {
+        text: babyChartTitle,
+        align: "center",
+        style: {
+          fontSize:  '16px',
+          fontWeight:  'bold',
+          fontFamily:  undefined
+        }
+    },
+  
+      tooltip: {
+        shared: true,
+        intersect: false,
+        x: {
+          formatter: function (x) {
+            if (typeof x !== "undefined") {
+              return x.toFixed(0) + " cm";
+            }
+            return x;
+          }
+        },
+        y: {
+          formatter: function (y) {
+            if (typeof y !== "undefined") {
+              return y.toFixed(0) + " kg";
+            }
+            return y;
+          }
+        }
+      }
+    };
+   }
+   
+
+    
   }
 
   /*
@@ -1089,34 +1145,34 @@ export class GrowthChartsPageComponent implements OnInit {
     switch (typeOfChart) {
       case ChartOption.BMI: {
         this.getMBIChart(this.currentChildGender);
-        this.yAxisLabel = this.translate.instant(
+        this.yaxis.title.text = this.translate.instant(
           `${this.currentChildGender} BMI - Metric System`
         );
-        this.xAxisLabel = this.translate.instant("Age (month)");
+        this.xaxis.title.text = this.translate.instant("Age (month)");
         break;
       }
       case ChartOption.HeightAge: {
         this.getHeightAgeChart(this.currentChildGender);
-        this.xAxisLabel = this.translate.instant("Age (month)");
-        this.yAxisLabel =
+        this.xaxis.title.text = this.translate.instant("Age (month)");
+        this.yaxis.title.text =
           this.translate.instant(`${this.currentChildGender} Height`) +
           ` (${this.heightUnitOptions})`;
         break;
       }
       case ChartOption.WeightAge: {
         this.getWeightAgeChart(this.currentChildGender);
-        this.xAxisLabel = this.translate.instant("Age (month)");
-        this.yAxisLabel =
+        this.xaxis.title.text = this.translate.instant("Age (month)");
+        this.yaxis.title.text =
           this.translate.instant(`${this.currentChildGender} Weight`) +
           ` (${this.weightUnitOptions})`;
         break;
       }
       case ChartOption.WeightHeight: {
         this.getWeightHeightChart(this.currentChildGender);
-        this.xAxisLabel =
+        this.xaxis.title.text =
           this.translate.instant(`${this.currentChildGender} Height`) +
           ` (${this.heightUnitOptions})`;
-        this.yAxisLabel =
+        this.yaxis.title.text =
           this.translate.instant(`${this.currentChildGender} Weight`) +
           ` (${this.weightUnitOptions})`;
         break;
@@ -1269,7 +1325,7 @@ export class GrowthChartsPageComponent implements OnInit {
 
       let counter = 0;
       let graphData: string[] = [] as string[];
-      graphData.push(`x: ${this.xAxisLabel}, y: ${this.yAxisLabel}\n`);
+      graphData.push(`x: ${this.xaxis.title.text}, y: ${this.yaxis.title.text}\n`);
       for (let pointData of this.currentChild.childData) {
         switch (this.chosenChartOption) {
           case ChartOption.BMI:

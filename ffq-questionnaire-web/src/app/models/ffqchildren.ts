@@ -61,6 +61,29 @@ export class FFQChildren {
     return { name: this.name, series: weightbyMonth };
   }
 
+  // getWeightHeightChartData(
+  //   heightMeasurementUnit: UnitsOfMeasurement,
+  //   weightMeasurementUnit: UnitsOfMeasurement
+  // ): any {
+  //   let multiplier: number = 1;
+  //   if (weightMeasurementUnit === UnitsOfMeasurement.lb)
+  //     multiplier = FFQChildren.KG_TO_LB;
+
+  //   let divider: number = 1;
+  //   if (heightMeasurementUnit === UnitsOfMeasurement.in)
+  //     divider = FFQChildren.IN_TO_CM;
+
+  //   let weightbyHeight: { name: string; value: string }[] = [];
+  //   for (let data of this.childData) {
+  //     weightbyHeight.push({
+  //       name: Math.round(parseFloat(data.height) / divider).toString(),
+  //       value: Math.round(parseFloat(data.weight) * multiplier).toString(),
+  //     });
+  //   }
+
+  //   return { name: this.name, series: weightbyHeight };
+  // }
+
   getWeightHeightChartData(
     heightMeasurementUnit: UnitsOfMeasurement,
     weightMeasurementUnit: UnitsOfMeasurement
@@ -73,16 +96,26 @@ export class FFQChildren {
     if (heightMeasurementUnit === UnitsOfMeasurement.in)
       divider = FFQChildren.IN_TO_CM;
 
-    let weightbyHeight: { name: string; value: string }[] = [];
+    let weightbyHeight: { height: number; weight: number }[] = [];
     for (let data of this.childData) {
       weightbyHeight.push({
-        name: Math.round(parseFloat(data.height) / divider).toString(),
-        value: Math.round(parseFloat(data.weight) * multiplier).toString(),
+        height: Math.round(parseFloat(data.height) / divider),
+        weight: Math.round(parseFloat(data.weight) * multiplier),
       });
     }
 
-    return { name: this.name, series: weightbyHeight };
+    return weightbyHeight;
   }
+
+  extractBabyData(babyData) {
+    let result = [];
+    for (let i = 0; i < babyData.length; i++) {
+      let dataPoint = babyData[i];
+      result.push([dataPoint.height, dataPoint.weight]);
+    }
+    return result;
+  }
+
 
   getBMIChartData(): any {
     let bmiByMonth: { name: string; value: string }[] = [];
