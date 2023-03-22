@@ -317,7 +317,7 @@
     "
     class="chart-title"
   >
-    {{ currentChildGender + " " + chosenChartOption + " Chart" | translate }}
+    <!-- {{ currentChildGender + " " + chosenChartOption + " Chart" | translate }} -->
   </h3>
   <div #containerRef id="chart-line"> <!---- CHART UPDATE 1: Change "chart-line" to "combo-line-area"---->
     <!---- CHART UPDATE 2 (STARTS HERE): 
@@ -348,7 +348,7 @@
                               [tooltip]="chartOptions.tooltip"
                               ></apx-chart> -->
 
-    <ngx-charts-line-chart
+    <!-- <ngx-charts-line-chart
       *ngIf="
         !childPersonalInformationForm.invalid && chosenChartOption !== 'none'
       "
@@ -369,7 +369,7 @@
       (activate)="onActivate($event)"
       (deactivate)="onDeactivate($event)"
     >
-    </ngx-charts-line-chart>
+    </ngx-charts-line-chart> -->
     <!---- CHART UPDATE 2 (ENDS HERE) ---->
   </div>
 </div>
@@ -383,16 +383,26 @@
   ></apx-chart>
 </div> -->
 
+
+
 <div style="text-align:center">
   <apx-chart #chart
+  *ngIf="
+        !childPersonalInformationForm.invalid 
+      "
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
     [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [legend]="chartOptions.legend"
+    [grid]="chartOptions.grid"
     [labels]="chartOptions.labels"
     [stroke]="chartOptions.stroke"
     [markers]="chartOptions.markers"
     [fill]="chartOptions.fill"
     [tooltip]="chartOptions.tooltip"
+    [title]="chartOptions.title"
+    [annotations]="chartOptions.annotations"
   ></apx-chart>
 </div>
 
