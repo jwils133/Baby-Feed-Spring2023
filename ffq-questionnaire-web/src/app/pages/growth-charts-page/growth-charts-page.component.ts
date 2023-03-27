@@ -357,6 +357,8 @@ export class GrowthChartsPageComponent implements OnInit {
   lang: boolean = true;
 
   dataWasAdded: boolean = true;
+  xaxis: any;
+  yaxis: any;
 
   /* CHART UPDATE 9: Add the chart options to create the combo-area-line chart as done in Jada's dummy graph
   
@@ -967,6 +969,8 @@ export class GrowthChartsPageComponent implements OnInit {
     babyData = this.currentChild.extractBabyData(rawBabyData);
     let seriesData = [];
     let babyChartTitle = "";
+    let babyChartYAxisTitle = "";
+    let babyChartXAxisTitle = "";
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
@@ -974,8 +978,12 @@ export class GrowthChartsPageComponent implements OnInit {
       
         if(this.weightUnitOptions === UnitsOfMeasurement.kg){
           seriesData = this.extractFemaleMetricSeries(babyData, babyName);//use female metric data for percentiles
+          babyChartYAxisTitle = "Weight (Kg)";
+          babyChartXAxisTitle = "Length (Cm)";
         }else{
           seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
+          babyChartYAxisTitle = "Weight (Lb)";
+          babyChartXAxisTitle = "Length (In)";
         }
         babyChartTitle = "Female Weight-Length Chart";//change the title of chart
         break;
@@ -984,8 +992,12 @@ export class GrowthChartsPageComponent implements OnInit {
 
         if(this.weightUnitOptions === UnitsOfMeasurement.kg){
           seriesData = this.extractMaleMetricSeries(babyData, babyName);//use male metric data for percentiles
+          babyChartYAxisTitle = "Weight (Kg)";
+          babyChartXAxisTitle = "Length (Cm)";
         }else{
           seriesData = this.extractMaleCustomarySeries(babyData, babyName);//use male customary data for percentiles
+          babyChartYAxisTitle = "Weight (Lb)";
+          babyChartXAxisTitle = "Length (In)";
         }
         babyChartTitle = "Male Weight-Length Chart";//change the title of the chart
         break;
@@ -1179,6 +1191,7 @@ export class GrowthChartsPageComponent implements OnInit {
     }
     this.onTypeChartChange(this.chosenChartOption);
   }
+
 
   // the event is triggered when the type of chart is changed
   onTypeChartChange(typeOfChart: string) {
