@@ -1076,7 +1076,7 @@ export class GrowthChartsPageComponent implements OnInit {
             }
           },
           title: {
-            text: "Weight",
+            text: babyChartYAxisTitle,
             style: {
               color: "000",
               fontSize: '12px',
@@ -1101,7 +1101,7 @@ export class GrowthChartsPageComponent implements OnInit {
           rotate: 0
         },
         title: {
-          text: "Length",
+          text: babyChartXAxisTitle,
           style: {
             color: "000",
             fontSize: '12px',
