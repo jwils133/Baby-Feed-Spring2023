@@ -172,7 +172,7 @@
               />
               <ng-container *ngIf="ageControl.invalid && ageControl.touched">
                 <mat-label *ngIf="ageControl.errors.required">
-                  {{ "You must enter an age in month" | translate }}.</mat-label
+                  {{ "You must enter an age in (mos)" | translate }}.</mat-label
                 >
               </ng-container>
             </mat-form-field>
@@ -199,8 +199,9 @@
               >
                 <mat-label *ngIf="weightControl.errors.required">
                   {{
-                    "You must enter a weight in kilograms" | translate
-                  }}.</mat-label
+                    "You must enter a weight in" | translate }} ({{
+                      weightUnitOptions | translate
+                    }})</mat-label
                 >
               </ng-container>
             </mat-form-field>
@@ -227,8 +228,9 @@
               >
                 <mat-label *ngIf="heightControl.errors.required">
                   {{
-                    "You must enter a length in centimeters" | translate
-                  }}.</mat-label
+                    "You must enter a length in " | translate}} ({{
+                      heightUnitOptions
+                    }})</mat-label
                 >
               </ng-container>
             </mat-form-field>
