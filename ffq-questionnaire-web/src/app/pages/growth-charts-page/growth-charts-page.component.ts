@@ -1068,6 +1068,36 @@ export class GrowthChartsPageComponent implements OnInit {
           sizeOffset: 3
         }
       },
+      // yaxis: [
+      //   {
+      //     show: true,
+      //     tickAmount: 10,
+      //     labels: {
+      //       show: true,
+      //       align: 'right',
+      //       minWidth: 0,
+      //       maxWidth: 4,
+      //       style: {
+      //         colors: [],
+      //         fontSize: '12px',
+      //         fontFamily: 'Helvetica, Arial, sans-serif',
+      //         fontWeight: 400,
+      //         cssClass: 'apexcharts-yaxis-label',
+      //       }
+      //     },
+      //     title: {
+      //       text: babyChartYAxisTitle,
+      //       style: {
+      //         color: "000",
+      //         fontSize: '12px',
+      //         fontFamily: 'Helvetica, Arial, sans-serif',
+      //         fontWeight: 400,
+      //         cssClass: 'apexcharts-yaxis-title',
+      //       }
+      //       // forceNiceScale: true
+      //     }
+      //   }
+      // ],
       yaxis: [
         {
           title: {
