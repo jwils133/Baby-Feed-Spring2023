@@ -357,6 +357,8 @@ export class GrowthChartsPageComponent implements OnInit {
   lang: boolean = true;
 
   dataWasAdded: boolean = true;
+  xaxis: any;
+  yaxis: any;
 
   /* CHART UPDATE 9: Add the chart options to create the combo-area-line chart as done in Jada's dummy graph
   
@@ -386,8 +388,8 @@ export class GrowthChartsPageComponent implements OnInit {
       BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM,
       */
       BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM,
-      /*
       BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM,
+       /*
       BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN,
       BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM,
       */
@@ -400,8 +402,8 @@ export class GrowthChartsPageComponent implements OnInit {
       GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM,
       */
       GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM,
-      /*
       GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM,
+      /*
       GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_KG_VS_IN,
       GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_MIXED_SYSTEM_LB_VS_CM,
       */
@@ -426,7 +428,7 @@ export class GrowthChartsPageComponent implements OnInit {
 
     this.currentChild = new FFQChildren("", [] as FFQChildData[]);
 
-    this.chartOptions = {
+    this.chartOptions = {//empty chart
       series: [],
       chart: {
         height: 0,
@@ -460,32 +462,62 @@ export class GrowthChartsPageComponent implements OnInit {
     return series;
   }
 
-  extractFemaleMetricSeries(babyWeightHeightData, nameBaby) {
+  extractFemaleMetricSeries(babyWeightHeightData, nameBaby) {//function for female metric series
     let babyDataSeries = {
       name: nameBaby,
       type: "line",
-      data: babyWeightHeightData
+      data: babyWeightHeightData//baby weight height data is passed into function
     };
 
-    let seriesResult = [babyDataSeries];
+    let seriesResult = [babyDataSeries];//series results starts with baby data
 
-    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
-      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {//for every element in the girl's metric data array
+      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);//push into the series result
     }
     return seriesResult;
   }
 
-  extractMaleMetricSeries(babyWeightHeightData, nameBaby) {
+  extractFemaleCustomarySeries(babyWeightHeightData, nameBaby) {//function for female metric series
     let babyDataSeries = {
       name: nameBaby,
       type: "line",
-      data: babyWeightHeightData
+      data: babyWeightHeightData//baby weight height data is passed into function
     };
 
-    let seriesResult = [babyDataSeries];
+    let seriesResult = [babyDataSeries];//series results starts with baby data
 
-    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {
-      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);
+    for (let i = 0; i < GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM.length; i++) {//for every element in the girl's metric data array
+      seriesResult.push(GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM[i]);//push into the series result
+    }
+    return seriesResult;
+  }
+
+  extractMaleMetricSeries(babyWeightHeightData, nameBaby) {//function for male metric series
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData//baby weight data is passed
+    };
+
+    let seriesResult = [babyDataSeries];//series results starts with baby data
+
+    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) {//for every element in boy's metric data array
+      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM[i]);//push into the series result
+    }
+    return seriesResult;
+  }
+
+  extractMaleCustomarySeries(babyWeightHeightData, nameBaby) {//function for male metric series
+    let babyDataSeries = {
+      name: nameBaby,
+      type: "line",
+      data: babyWeightHeightData//baby weight data is passed
+    };
+
+    let seriesResult = [babyDataSeries];//series results starts with baby data
+
+    for (let i = 0; i < BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM.length; i++) {//for every element in boy's metric data array
+      seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM[i]);//push into the series result
     }
     return seriesResult;
   }
@@ -937,21 +969,51 @@ export class GrowthChartsPageComponent implements OnInit {
     babyData = this.currentChild.extractBabyData(rawBabyData);
     let seriesData = [];
     let babyChartTitle = "";
+    let babyChartYAxisTitle = "";
+    let babyChartXAxisTitle = "";
+    let babyChartYAxisTooltip = "";
+    let babyChartXAxisTooltip = "";
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
-      case (Gender.Female):
-        seriesData = this.extractFemaleMetricSeries(babyData, babyName);
-        babyChartTitle = "Female Weight-Length Chart";
+      case (Gender.Female)://if gender is female
+      
+        if(this.weightUnitOptions === UnitsOfMeasurement.kg){
+          seriesData = this.extractFemaleMetricSeries(babyData, babyName);//use female metric data for percentiles
+          babyChartYAxisTitle = "Weight (Kg)";
+          babyChartXAxisTitle = "Length (Cm)";
+          babyChartYAxisTooltip = " kg";
+          babyChartXAxisTooltip = " cm";
+        }else{
+          seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
+          babyChartYAxisTitle = "Weight (Lb)";
+          babyChartXAxisTitle = "Length (In)";
+          babyChartYAxisTooltip = " lbs";
+          babyChartXAxisTooltip = " in";
+        }
+        babyChartTitle = "Female Weight-Length Chart";//change the title of chart
         break;
 
-      case (Gender.Male):
-        seriesData = this.extractMaleMetricSeries(babyData, babyName);
-        babyChartTitle = "Male Weight-Length Chart";
+      case (Gender.Male)://if gender is male
+
+        if(this.weightUnitOptions === UnitsOfMeasurement.kg){
+          seriesData = this.extractMaleMetricSeries(babyData, babyName);//use male metric data for percentiles
+          babyChartYAxisTitle = "Weight (Kg)";
+          babyChartXAxisTitle = "Length (Cm)";
+          babyChartYAxisTooltip = " kg";
+          babyChartXAxisTooltip = " cm";
+        }else{
+          seriesData = this.extractMaleCustomarySeries(babyData, babyName);//use male customary data for percentiles
+          babyChartYAxisTitle = "Weight (Lb)";
+          babyChartXAxisTitle = "Length (In)";
+          babyChartYAxisTooltip = " lbs";
+          babyChartXAxisTooltip = " in";
+        }
+        babyChartTitle = "Male Weight-Length Chart";//change the title of the chart
         break;
     }
 
-    this.chartOptions = {
+    this.chartOptions = {//new chart options
       series: seriesData,
       chart: {
         height: 800,
@@ -1024,7 +1086,7 @@ export class GrowthChartsPageComponent implements OnInit {
             }
           },
           title: {
-            text: "Weight",
+            text: babyChartYAxisTitle,
             style: {
               color: "000",
               fontSize: '12px',
@@ -1049,7 +1111,7 @@ export class GrowthChartsPageComponent implements OnInit {
           rotate: 0
         },
         title: {
-          text: "Length",
+          text: babyChartXAxisTitle,
           style: {
             color: "000",
             fontSize: '12px',
@@ -1077,7 +1139,7 @@ export class GrowthChartsPageComponent implements OnInit {
         x: {
           formatter: function (x) {
             if (typeof x !== "undefined") {
-              return x.toFixed(0) + " cm";
+              return x.toFixed(0) + babyChartXAxisTooltip;
             }
             return x;
           }
@@ -1085,7 +1147,7 @@ export class GrowthChartsPageComponent implements OnInit {
         y: {
           formatter: function (y) {
             if (typeof y !== "undefined") {
-              return y.toFixed(0) + " kg";
+              return y.toFixed(0) + babyChartYAxisTooltip;
             }
             return y;
           }
@@ -1139,6 +1201,7 @@ export class GrowthChartsPageComponent implements OnInit {
     }
     this.onTypeChartChange(this.chosenChartOption);
   }
+
 
   // the event is triggered when the type of chart is changed
   onTypeChartChange(typeOfChart: string) {
