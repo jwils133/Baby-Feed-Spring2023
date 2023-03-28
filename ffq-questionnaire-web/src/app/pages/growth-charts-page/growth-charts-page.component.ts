@@ -971,6 +971,8 @@ export class GrowthChartsPageComponent implements OnInit {
     let babyChartTitle = "";
     let babyChartYAxisTitle = "";
     let babyChartXAxisTitle = "";
+    let babyChartYAxisTooltip = "";
+    let babyChartXAxisTooltip = "";
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
@@ -980,10 +982,14 @@ export class GrowthChartsPageComponent implements OnInit {
           seriesData = this.extractFemaleMetricSeries(babyData, babyName);//use female metric data for percentiles
           babyChartYAxisTitle = "Weight (Kg)";
           babyChartXAxisTitle = "Length (Cm)";
+          babyChartYAxisTooltip = " kg";
+          babyChartXAxisTooltip = " cm";
         }else{
           seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
           babyChartYAxisTitle = "Weight (Lb)";
           babyChartXAxisTitle = "Length (In)";
+          babyChartYAxisTooltip = " lbs";
+          babyChartXAxisTooltip = " in";
         }
         babyChartTitle = "Female Weight-Length Chart";//change the title of chart
         break;
@@ -994,10 +1000,14 @@ export class GrowthChartsPageComponent implements OnInit {
           seriesData = this.extractMaleMetricSeries(babyData, babyName);//use male metric data for percentiles
           babyChartYAxisTitle = "Weight (Kg)";
           babyChartXAxisTitle = "Length (Cm)";
+          babyChartYAxisTooltip = " kg";
+          babyChartXAxisTooltip = " cm";
         }else{
           seriesData = this.extractMaleCustomarySeries(babyData, babyName);//use male customary data for percentiles
           babyChartYAxisTitle = "Weight (Lb)";
           babyChartXAxisTitle = "Length (In)";
+          babyChartYAxisTooltip = " lbs";
+          babyChartXAxisTooltip = " in";
         }
         babyChartTitle = "Male Weight-Length Chart";//change the title of the chart
         break;
@@ -1129,7 +1139,7 @@ export class GrowthChartsPageComponent implements OnInit {
         x: {
           formatter: function (x) {
             if (typeof x !== "undefined") {
-              return x.toFixed(0) + " cm";
+              return x.toFixed(0) + babyChartXAxisTooltip;
             }
             return x;
           }
@@ -1137,7 +1147,7 @@ export class GrowthChartsPageComponent implements OnInit {
         y: {
           formatter: function (y) {
             if (typeof y !== "undefined") {
-              return y.toFixed(0) + " kg";
+              return y.toFixed(0) + babyChartYAxisTooltip;
             }
             return y;
           }
