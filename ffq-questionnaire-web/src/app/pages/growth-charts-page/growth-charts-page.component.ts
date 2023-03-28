@@ -204,6 +204,7 @@ import { NgForm, NgModel } from "@angular/forms";
 import pdfMake from "pdfmake/build/pdfmake";
 import pdfFonts from "pdfmake/build/vfs_fonts";
 import { stringify } from "querystring";
+import { PercentPipe } from "@angular/common";
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 class DataManipulation {
@@ -520,6 +521,110 @@ export class GrowthChartsPageComponent implements OnInit {
       seriesResult.push(BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM[i]);//push into the series result
     }
     return seriesResult;
+  }
+
+
+  findXPointsOfQuadrilateral(babyX: number, percentileDataCode: number): [number, number]
+  {
+    // if percentileDataCode = 0, then use GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+    // if percentileDataCode = 1, then use GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+    // if percentileDataCode = 2, then use BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+    // if percentileDataCode = 3, then use BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+    
+    let percentileData: any;
+    if(percentileDataCode == 0) 
+    {
+      percentileData = GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+    }
+
+    else if(percentileDataCode == 1) 
+    {
+      percentileData = GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+    }
+
+    else if(percentileDataCode == 2) 
+    {
+      percentileData = BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+    }
+
+    else if(percentileDataCode == 3) 
+    {
+      percentileData = BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+    }
+
+    let i = 0;
+   
+    let xLeft: number;
+    let xRight: number;
+    
+    do
+    {
+      xLeft = percentileData[0].data[i][0];
+      xRight = percentileData[0].data[i+1][0];
+      i++;
+    } while((babyX < xLeft) || (babyX > xRight));
+
+    i--;
+
+    return [i, i+1];
+  }
+
+  checkIfPointInQuadrilateral(ptOfInterest: [number, number], upperLeftPt: [number, number], upperRightPt: [number, number],
+    lowerLeftPt: [number, number], lowerRightPt: [number, number]) : number
+  {
+    // prior to running this, ensure that the baby data point is within the x bounds of the 4 points of the quadrilateral passed to this function 
+
+    let baby_x = ptOfInterest[0];
+    let baby_y = ptOfInterest[1];
+    let left_x = upperLeftPt[0];
+    let upperLeftPt_y = upperLeftPt[1];
+    let right_x = upperRightPt[0];
+    let upperRightPt_y = upperRightPt[1];
+    let lowerLeftPt_y = lowerLeftPt[1];
+    let lowerRightPt_y = lowerRightPt[1];
+
+    if((baby_x >= left_x) && (baby_x <= right_x)) 
+    {
+      // in x range of the quadrilateral
+      let slopeUpperLine = (upperRightPt_y - upperLeftPt_y) / (right_x - left_x);
+      let yIntUpperLine = upperRightPt_y - (slopeUpperLine * right_x);
+      let yUpperBound = (slopeUpperLine * baby_x) + yIntUpperLine;
+
+
+      let slopeLowerLine = (lowerRightPt_y - lowerLeftPt_y) / (right_x - left_x);
+      let yIntLowerLine = lowerRightPt_y - (slopeLowerLine * right_x);
+      let yLowerBound = (slopeLowerLine * baby_x) + yIntLowerLine;
+
+      if((baby_y <= yUpperBound) && (baby_y >= yLowerBound)) 
+      {
+        // baby data point lies inside the quadrilateral
+        return 1;
+      }
+
+      else if(baby_y > yUpperBound) 
+      {
+        // baby data point lies above the quadrilateral
+        return 2;
+      }
+
+      else if(baby_y < yLowerBound) 
+      {
+        // baby data point lies below the quadrilateral
+        return 3;
+      }
+
+      else 
+      {
+        // unknown case
+        return 0;
+      }
+    }
+
+  }
+
+  checkAllQuadrilaterals(leftXIndex: number, rightXIndex: number)
+  {
+
   }
 
   onSubmitChildPersonalInformationForm() {
@@ -973,6 +1078,27 @@ export class GrowthChartsPageComponent implements OnInit {
     let babyChartXAxisTitle = "";
     let babyChartYAxisTooltip = "";
     let babyChartXAxisTooltip = "";
+    // let chartInterpretationDecision: [string, number];
+    // let xBounds : [number, number];
+    // let xLowerIndex : number;
+    // let xUpperIndex : number;
+    // let found = false;
+    // let interpretation = "";
+    // let left_xOver98: number;
+    // let right_xOver98: number;
+    // let left_xBelow2: number;
+    // let right_xBelow2: number;
+    // let left_yOver98: number;
+    // let right_yOver98: number;
+    // let left_yBelow2: number;
+    // let right_yBelow2: number;
+    // let slope_Over98: number;
+    // let slope_Below2: number;
+    // let yIntOver98: number;
+    // let yIntBelow2: number;
+    // let yBoundOver98: number;
+    // let yBoundBelow2: number;
+
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
@@ -984,6 +1110,56 @@ export class GrowthChartsPageComponent implements OnInit {
           babyChartXAxisTitle = "Length (Cm)";
           babyChartYAxisTooltip = " kg";
           babyChartXAxisTooltip = " cm";
+          console.log("Female with kg");
+
+          let ptOfInterest : [number, number];
+          let upperLeftPt : [number, number];
+          let upperRightPt : [number, number];
+          let lowerLeftPt : [number, number];
+          let lowerRightPt : [number, number];
+
+          ptOfInterest = [60, 6];
+          upperLeftPt = [60, 6.25];
+          upperRightPt = [60.5, 6.39];
+          lowerLeftPt = [60, 5.87];
+          lowerRightPt = [60.5, 6.00];
+
+          let result = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt);
+          console.log("Result of check pt in quad: " + result);
+
+
+          // xBounds = this.findXPointsOfQuadrilateral( babyData[babyData.length - 1][0] , 0);
+          // xLowerIndex = xBounds[0];
+          // xUpperIndex = xBounds[1];
+
+          // let slope_Over98 = (right_yOver98 - left_yOver98) / (right_xOver98 - left_xOver98);
+          // let yIntOver98 = right_yOver98 - (slope_Over98 * right_xOver98);
+          // let yBoundOver98 = (slope_Over98 * baby_x) + yIntLowerLine;
+
+          // if((baby_y <= yUpperBound) && (baby_y >= yLowerBound)) 
+          // {
+          //   // baby data point lies inside the quadrilateral
+          //   return true;
+          // }
+    
+
+
+
+          
+
+          // while(!found) 
+          // {
+          //   if()
+          //   for(let i = 0; i < GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM.length; i++) 
+          //   {
+
+              
+
+          //   }
+
+
+          // }
+          
         }else{
           seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
           babyChartYAxisTitle = "Weight (Lb)";
