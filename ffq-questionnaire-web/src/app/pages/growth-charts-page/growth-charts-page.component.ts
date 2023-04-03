@@ -522,6 +522,84 @@ export class GrowthChartsPageComponent implements OnInit {
     return seriesResult;
   }
 
+  findXPointsOfQuadrilateral(babyX: number, percentileData: any): [number, number]
+  {
+    // if percentileDataCode = 0, then use GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+    // if percentileDataCode = 1, then use GIRLS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+    // if percentileDataCode = 2, then use BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM
+    // if percentileDataCode = 3, then use BOYS_WEIGHT_FOR_AGE_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM
+
+    let i = 0;
+   
+    let xLeft: number;
+    let xRight: number;
+    
+    do
+    {
+      xLeft = percentileData[0].data[i][0];
+      xRight = percentileData[0].data[i+1][0];
+      i++;
+    } while((babyX < xLeft) || (babyX > xRight));
+
+    i--;
+
+    return [i, i+1];
+  }
+
+  checkIfPointInQuadrilateral(ptOfInterest: [number, number], upperLeftPt: [number, number], upperRightPt: [number, number],
+    lowerLeftPt: [number, number], lowerRightPt: [number, number]) : number
+  {
+    // prior to running this, ensure that the baby data point is within the x bounds of the 4 points of the quadrilateral passed to this function 
+
+    let baby_x = ptOfInterest[0];
+    let baby_y = ptOfInterest[1];
+    let left_x = upperLeftPt[0];
+    let upperLeftPt_y = upperLeftPt[1];
+    let right_x = upperRightPt[0];
+    let upperRightPt_y = upperRightPt[1];
+    let lowerLeftPt_y = lowerLeftPt[1];
+    let lowerRightPt_y = lowerRightPt[1];
+
+    if((baby_x >= left_x) && (baby_x <= right_x)) 
+    {
+      // in x range of the quadrilateral
+      let slopeUpperLine = (upperRightPt_y - upperLeftPt_y) / (right_x - left_x);
+      let yIntUpperLine = upperRightPt_y - (slopeUpperLine * right_x);
+      let yUpperBound = (slopeUpperLine * baby_x) + yIntUpperLine;
+
+
+      let slopeLowerLine = (lowerRightPt_y - lowerLeftPt_y) / (right_x - left_x);
+      let yIntLowerLine = lowerRightPt_y - (slopeLowerLine * right_x);
+      let yLowerBound = (slopeLowerLine * baby_x) + yIntLowerLine;
+
+      if((baby_y <= yUpperBound) && (baby_y >= yLowerBound)) 
+      {
+        // baby data point lies inside the quadrilateral
+        return 1;
+      }
+
+      else if(baby_y > yUpperBound) 
+      {
+        // baby data point lies above the quadrilateral
+        return 2;
+      }
+
+      else if(baby_y < yLowerBound) 
+      {
+        // baby data point lies below the quadrilateral
+        return 3;
+      }
+
+      else 
+      {
+        // unknown case
+        return 0;
+      }
+    }
+
+  }
+
+
   onSubmitChildPersonalInformationForm() {
     console.log("Working in progress submitting  Child Personal Information");
   }
@@ -973,6 +1051,13 @@ export class GrowthChartsPageComponent implements OnInit {
     let babyChartXAxisTitle = "";
     let babyChartYAxisTooltip = "";
     let babyChartXAxisTooltip = "";
+    let chartInterpretation = "";
+    let xBounds : [number, number];
+    let percentileData: any;
+    let yellowOverweightResult: number;
+    let greenResult: number;
+    let yellowUnderweightResult: number;
+
    if(this.currentChildGender != Gender.NotAssigned) {
     switch (this.currentChildGender) 
     {
@@ -984,12 +1069,182 @@ export class GrowthChartsPageComponent implements OnInit {
           babyChartXAxisTitle = "Length (Cm)";
           babyChartYAxisTooltip = " kg";
           babyChartXAxisTooltip = " cm";
+
+          percentileData = GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+          xBounds = this.findXPointsOfQuadrilateral( babyData[babyData.length - 1][0] , percentileData);
+
+          let ptOfInterest : [number, number];
+          let upperLeftPt : [number, number];
+          let upperRightPt : [number, number];
+          let lowerLeftPt : [number, number];
+          let lowerRightPt : [number, number];
+
+          ptOfInterest = babyData[babyData.length - 1];
+          upperLeftPt = [percentileData[1].data[xBounds[0]][0], percentileData[1].data[xBounds[0]][1]]; // point with x <= baby_x on 98th percentile line
+          upperRightPt = [percentileData[1].data[xBounds[1]][0], percentileData[1].data[xBounds[0]][1]]; // point with x >= baby_x on 98th percentile line
+          lowerLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+          lowerRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+
+          console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+          console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+          console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+          console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+          console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+          yellowOverweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in yellow overweight section
+          console.log("Result of check pt in quad yellow overweight: " + yellowOverweightResult);
+
+          if(yellowOverweightResult == 2) 
+          {
+            chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be overweight. Follow up with your pediatrician soon.";
+          }
+
+          else if(yellowOverweightResult == 1) 
+          {
+            chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+          }
+
+          else if(yellowOverweightResult == 3) 
+          {
+            upperLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            greenResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + greenResult);
+
+            if(greenResult == 1) 
+            {
+              chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+            }
+
+
+            upperLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[9].data[xBounds[0]][0], percentileData[9].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[9].data[xBounds[1]][0], percentileData[9].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            yellowUnderweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + yellowUnderweightResult);
+
+            if(yellowUnderweightResult == 1) 
+            {
+              chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+            }
+
+            else if(yellowUnderweightResult == 3) 
+            {
+              chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be underweight. Follow up with your pediatrician soon."
+            }
+            
+          }
+
+          console.log("Chart Interpretation: " + chartInterpretation);
+
         }else{
           seriesData = this.extractFemaleCustomarySeries(babyData, babyName);//use female customary data for percentiles
           babyChartYAxisTitle = "Weight (Lb)";
           babyChartXAxisTitle = "Length (In)";
           babyChartYAxisTooltip = " lbs";
           babyChartXAxisTooltip = " in";
+
+          percentileData = GIRLS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+        xBounds = this.findXPointsOfQuadrilateral( babyData[babyData.length - 1][0] , percentileData);
+
+        let ptOfInterest : [number, number];
+        let upperLeftPt : [number, number];
+        let upperRightPt : [number, number];
+        let lowerLeftPt : [number, number];
+        let lowerRightPt : [number, number];
+
+        ptOfInterest = babyData[babyData.length - 1];
+        upperLeftPt = [percentileData[1].data[xBounds[0]][0], percentileData[1].data[xBounds[0]][1]]; // point with x <= baby_x on 98th percentile line
+        upperRightPt = [percentileData[1].data[xBounds[1]][0], percentileData[1].data[xBounds[0]][1]]; // point with x >= baby_x on 98th percentile line
+        lowerLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+        lowerRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+
+        console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+        console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+        console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+        console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+        console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+        yellowOverweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in yellow overweight section
+        console.log("Result of check pt in quad yellow overweight: " + yellowOverweightResult);
+
+        if(yellowOverweightResult == 2) 
+        {
+          chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be overweight. Follow up with your pediatrician soon.";
+        }
+
+        else if(yellowOverweightResult == 1) 
+        {
+          chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+        }
+
+        else if(yellowOverweightResult == 3) 
+        {
+          upperLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+          upperRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+          lowerLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+          lowerRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+          console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+          console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+          console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+          console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+          console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+          greenResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+          console.log("Result of check pt in quad green: " + greenResult);
+
+          if(greenResult == 1) 
+          {
+            chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+          }
+
+
+          upperLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+          upperRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+          lowerLeftPt = [percentileData[9].data[xBounds[0]][0], percentileData[9].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+          lowerRightPt = [percentileData[9].data[xBounds[1]][0], percentileData[9].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+          console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+          console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+          console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+          console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+          console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+          yellowUnderweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+          console.log("Result of check pt in quad green: " + yellowUnderweightResult);
+
+          if(yellowUnderweightResult == 1) 
+          {
+            chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+          }
+
+          else if(yellowUnderweightResult == 3) 
+          {
+            chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be underweight. Follow up with your pediatrician soon."
+          }
+            
+          }
+
+          console.log("Chart Interpretation: " + chartInterpretation);
+
         }
         babyChartTitle = "Female Weight-Length Chart";//change the title of chart
         break;
@@ -1002,12 +1257,182 @@ export class GrowthChartsPageComponent implements OnInit {
           babyChartXAxisTitle = "Length (Cm)";
           babyChartYAxisTooltip = " kg";
           babyChartXAxisTooltip = " cm";
+
+          percentileData = BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_METRIC_SYSTEM;
+          xBounds = this.findXPointsOfQuadrilateral( babyData[babyData.length - 1][0] , percentileData);
+
+          let ptOfInterest : [number, number];
+          let upperLeftPt : [number, number];
+          let upperRightPt : [number, number];
+          let lowerLeftPt : [number, number];
+          let lowerRightPt : [number, number];
+
+          ptOfInterest = babyData[babyData.length - 1];
+          upperLeftPt = [percentileData[1].data[xBounds[0]][0], percentileData[1].data[xBounds[0]][1]]; // point with x <= baby_x on 98th percentile line
+          upperRightPt = [percentileData[1].data[xBounds[1]][0], percentileData[1].data[xBounds[0]][1]]; // point with x >= baby_x on 98th percentile line
+          lowerLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+          lowerRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+
+          console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+          console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+          console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+          console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+          console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+          yellowOverweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in yellow overweight section
+          console.log("Result of check pt in quad yellow overweight: " + yellowOverweightResult);
+
+          if(yellowOverweightResult == 2) 
+          {
+            chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be overweight. Follow up with your pediatrician soon.";
+          }
+
+          else if(yellowOverweightResult == 1) 
+          {
+            chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+          }
+
+          else if(yellowOverweightResult == 3) 
+          {
+            upperLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            greenResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + greenResult);
+
+            if(greenResult == 1) 
+            {
+              chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+            }
+
+
+            upperLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[9].data[xBounds[0]][0], percentileData[9].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[9].data[xBounds[1]][0], percentileData[9].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            yellowUnderweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + yellowUnderweightResult);
+
+            if(yellowUnderweightResult == 1) 
+            {
+              chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+            }
+
+            else if(yellowUnderweightResult == 3) 
+            {
+              chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be underweight. Follow up with your pediatrician soon."
+            }
+              
+            }
+
+            console.log("Chart Interpretation: " + chartInterpretation);
+
         }else{
           seriesData = this.extractMaleCustomarySeries(babyData, babyName);//use male customary data for percentiles
           babyChartYAxisTitle = "Weight (Lb)";
           babyChartXAxisTitle = "Length (In)";
           babyChartYAxisTooltip = " lbs";
           babyChartXAxisTooltip = " in";
+
+          percentileData = BOYS_WEIGHT_FOR_HEIGHT_BIRTH_TO_TWO_YEARS_US_CUSTOMARY_SYSTEM;
+          xBounds = this.findXPointsOfQuadrilateral( babyData[babyData.length - 1][0] , percentileData);
+
+          let ptOfInterest : [number, number];
+          let upperLeftPt : [number, number];
+          let upperRightPt : [number, number];
+          let lowerLeftPt : [number, number];
+          let lowerRightPt : [number, number];
+
+          ptOfInterest = babyData[babyData.length - 1];
+          upperLeftPt = [percentileData[1].data[xBounds[0]][0], percentileData[1].data[xBounds[0]][1]]; // point with x <= baby_x on 98th percentile line
+          upperRightPt = [percentileData[1].data[xBounds[1]][0], percentileData[1].data[xBounds[0]][1]]; // point with x >= baby_x on 98th percentile line
+          lowerLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+          lowerRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+
+          console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+          console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+          console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+          console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+          console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+          yellowOverweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in yellow overweight section
+          console.log("Result of check pt in quad yellow overweight: " + yellowOverweightResult);
+
+          if(yellowOverweightResult == 2) 
+          {
+            chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be overweight. Follow up with your pediatrician soon.";
+          }
+
+          else if(yellowOverweightResult == 1) 
+          {
+            chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+          }
+
+          else if(yellowOverweightResult == 3) 
+          {
+            upperLeftPt = [percentileData[3].data[xBounds[0]][0], percentileData[3].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[3].data[xBounds[1]][0], percentileData[3].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            greenResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + greenResult);
+
+            if(greenResult == 1) 
+            {
+              chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+            }
+
+
+            upperLeftPt = [percentileData[7].data[xBounds[0]][0], percentileData[7].data[xBounds[0]][1]]; // point with x <= baby_x on 90th percentile line
+            upperRightPt = [percentileData[7].data[xBounds[1]][0], percentileData[7].data[xBounds[0]][1]]; // point with x >= baby_x on 90th percentile line
+            lowerLeftPt = [percentileData[9].data[xBounds[0]][0], percentileData[9].data[xBounds[0]][1]]; // point with x <= baby_x on 10th percentile line
+            lowerRightPt = [percentileData[9].data[xBounds[1]][0], percentileData[9].data[xBounds[0]][1]]; // point with x >= baby_x on 10th percentile line
+
+            console.log("ptOfInterest x: " + ptOfInterest[0] + " ptOfInterest y: " + ptOfInterest[1]);
+            console.log("upperLeftPt x: " + upperLeftPt[0] + " upperLeftPt y: " + upperLeftPt[1]);
+            console.log("upperRightPt x: " + upperRightPt[0] + " upperRightPt y: " + upperRightPt[1]);
+            console.log("lowerLeftPt x: " + lowerLeftPt[0] + " lowerLeftPt y: " + lowerLeftPt[1]);
+            console.log("lowerRightPt x: " + lowerRightPt[0] + " lowerRightPt y: " + lowerRightPt[1]);
+
+            yellowUnderweightResult = this.checkIfPointInQuadrilateral(ptOfInterest, upperLeftPt, upperRightPt, lowerLeftPt, lowerRightPt); // checking if baby point in green section
+            console.log("Result of check pt in quad green: " + yellowUnderweightResult);
+
+            if(yellowUnderweightResult == 1) 
+            {
+              chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+            }
+
+            else if(yellowUnderweightResult == 3) 
+            {
+              chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be underweight. Follow up with your pediatrician soon."
+            }
+              
+            }
+
+            console.log("Chart Interpretation: " + chartInterpretation);
+
         }
         babyChartTitle = "Male Weight-Length Chart";//change the title of the chart
         break;
