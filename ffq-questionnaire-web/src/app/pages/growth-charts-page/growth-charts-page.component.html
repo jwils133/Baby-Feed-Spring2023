@@ -408,6 +408,10 @@
   ></apx-chart>
 </div>
 
+<div class="message-box" [ngClass]="{'green': interMessageColor === 'g', 'yellow': interMessageColor === 'y' , 'red': interMessageColor === 'r'}">
+  <p>{{ interMessage }}</p>
+</div>
+
 <table>
   <thead>
     <tr>
