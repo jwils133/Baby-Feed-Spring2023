@@ -310,6 +310,12 @@ export class GrowthChartsPageComponent implements OnInit {
   // current parent, data retrived from db
   currentParent: FFQParentResponse;
 
+  //interpretation message
+  interMessage: string = " ";
+
+  //message color y= yellow, g= green, r= red
+  interMessageColor: string = " ";
+
   myDocDefinition: any;
   loading: boolean = false;
   color: ThemePalette = "primary";
@@ -1097,11 +1103,13 @@ export class GrowthChartsPageComponent implements OnInit {
           if(yellowOverweightResult == 2) 
           {
             chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be overweight. Follow up with your pediatrician soon.";
+            this.interMessageColor = 'r';
           }
 
           else if(yellowOverweightResult == 1) 
           {
             chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+            this.interMessageColor = 'y';
           }
 
           else if(yellowOverweightResult == 3) 
@@ -1123,6 +1131,7 @@ export class GrowthChartsPageComponent implements OnInit {
             if(greenResult == 1) 
             {
               chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+              this.interMessageColor = 'g';
             }
 
 
@@ -1143,11 +1152,13 @@ export class GrowthChartsPageComponent implements OnInit {
             if(yellowUnderweightResult == 1) 
             {
               chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+              this.interMessageColor = 'y';
             }
 
             else if(yellowUnderweightResult == 3) 
             {
               chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be underweight. Follow up with your pediatrician soon."
+              this.interMessageColor = 'r';
             }
             
           }
@@ -1188,11 +1199,13 @@ export class GrowthChartsPageComponent implements OnInit {
         if(yellowOverweightResult == 2) 
         {
           chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be overweight. Follow up with your pediatrician soon.";
+          this.interMessageColor = 'r';
         }
 
         else if(yellowOverweightResult == 1) 
         {
           chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+          this.interMessageColor = 'y';
         }
 
         else if(yellowOverweightResult == 3) 
@@ -1214,6 +1227,7 @@ export class GrowthChartsPageComponent implements OnInit {
           if(greenResult == 1) 
           {
             chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+            this.interMessageColor = 'g';
           }
 
 
@@ -1234,11 +1248,13 @@ export class GrowthChartsPageComponent implements OnInit {
           if(yellowUnderweightResult == 1) 
           {
             chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+            this.interMessageColor = 'y';
           }
 
           else if(yellowUnderweightResult == 3) 
           {
             chartInterpretation = "Your baby is NOT following a healthy growth pattern. She could be underweight. Follow up with your pediatrician soon."
+            this.interMessageColor = 'r';
           }
             
           }
@@ -1285,11 +1301,13 @@ export class GrowthChartsPageComponent implements OnInit {
           if(yellowOverweightResult == 2) 
           {
             chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be overweight. Follow up with your pediatrician soon.";
+            this.interMessageColor = 'r';
           }
 
           else if(yellowOverweightResult == 1) 
           {
             chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+            this.interMessageColor = 'y';
           }
 
           else if(yellowOverweightResult == 3) 
@@ -1311,6 +1329,7 @@ export class GrowthChartsPageComponent implements OnInit {
             if(greenResult == 1) 
             {
               chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+              this.interMessageColor = 'g';
             }
 
 
@@ -1331,11 +1350,13 @@ export class GrowthChartsPageComponent implements OnInit {
             if(yellowUnderweightResult == 1) 
             {
               chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+              this.interMessageColor = 'y';
             }
 
             else if(yellowUnderweightResult == 3) 
             {
               chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be underweight. Follow up with your pediatrician soon."
+              this.interMessageColor = 'r';
             }
               
             }
@@ -1376,11 +1397,13 @@ export class GrowthChartsPageComponent implements OnInit {
           if(yellowOverweightResult == 2) 
           {
             chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be overweight. Follow up with your pediatrician soon.";
+            this.interMessageColor = 'r';
           }
 
           else if(yellowOverweightResult == 1) 
           {
             chartInterpretation = "Your baby is moving towards an overweight pattern. Please discuss with your pediatrician.";
+            this.interMessageColor = 'y';
           }
 
           else if(yellowOverweightResult == 3) 
@@ -1402,6 +1425,7 @@ export class GrowthChartsPageComponent implements OnInit {
             if(greenResult == 1) 
             {
               chartInterpretation = "Great job! Your baby is following a healthy growth pattern.";
+              this.interMessageColor = 'g';
             }
 
 
@@ -1422,11 +1446,13 @@ export class GrowthChartsPageComponent implements OnInit {
             if(yellowUnderweightResult == 1) 
             {
               chartInterpretation = "Your baby is moving towards an underweight pattern. Please discuss with your pediatrician.";
+              this.interMessageColor = 'y';
             }
 
             else if(yellowUnderweightResult == 3) 
             {
               chartInterpretation = "Your baby is NOT following a healthy growth pattern. He could be underweight. Follow up with your pediatrician soon."
+              this.interMessageColor = 'r';
             }
               
             }
@@ -1596,7 +1622,7 @@ export class GrowthChartsPageComponent implements OnInit {
       }
     };
    }
-   
+   this.interMessage = chartInterpretation;
 
     
   }

@@ -95,3 +95,25 @@ tr:nth-child(even) {
 tr:hover {
   background-color: #ddd;
 }
+
+.message-box {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.green {
+  background-color: #b4e8b4;
+  color: #006400;
+}
+
+.red {
+  background-color: #ffcfcf;
+  color: #8b0000;
+}
+
+.yellow {
+  background-color: #fff2cc;
+  color: #9f6000;
+}
