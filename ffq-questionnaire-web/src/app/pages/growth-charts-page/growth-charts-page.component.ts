@@ -1467,8 +1467,8 @@ export class GrowthChartsPageComponent implements OnInit {
     this.chartOptions = {//new chart options
       series: seriesData,
       chart: {
-        height: 800,
-        width: 1100,
+        height: 690,
+        width: 950,
         type: "line"
       },
       grid: {
