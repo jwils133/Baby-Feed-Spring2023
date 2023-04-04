@@ -69,11 +69,7 @@
             ngNativeValidate
             (ngSubmit)="onSubmitChildPersonalInformationForm()"
           >
-          <!--
-              Thhis tab is hidden and is always passsing the name ""
-              It can be enable again if needed
-          -->
-            <mat-form-field class="example-full-width" appearance="fill" [ngStyle]="{'display': 'none'}">
+            <mat-form-field class="example-full-width" appearance="fill">
               <mat-label>{{ "Children" | translate }}</mat-label>
               <mat-select
                 name="children"
@@ -415,23 +411,21 @@
 <table>
   <thead>
     <tr>
-      <!--<th>Name</th>-->
+      <th>Name</th>
       <th>Age</th>
-      <th>Height (cm)</th>
-      <th>Weight (kg)</th>
+      <th>Height</th>
+      <th>Weight</th>
     </tr>
   </thead>
   <tbody>
     <ng-container *ngFor="let child of currentParent.children">
-      <ng-container *ngIf="child.name === ''">
-        <ng-container *ngFor="let childData of getChildData(child)">
-          <tr>
-            <!--<td>{{ child.name }}</td>-->
-            <td>{{ childData.age }}</td>
-            <td>{{ childData.height }}</td>
-            <td>{{ childData.weight }}</td>
-          </tr>
-        </ng-container>
+      <ng-container *ngFor="let childData of getChildData(child)">
+        <tr>
+          <td>{{ child.name }}</td>
+          <td>{{ childData.age }}</td>
+          <td>{{ childData.height }}</td>
+          <td>{{ childData.weight }}</td>
+        </tr>
       </ng-container>
     </ng-container>
   </tbody>
